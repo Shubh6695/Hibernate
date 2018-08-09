@@ -1,0 +1,56 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session Sess=sf.openSession();
+		
+		
+		DepartmentDTO dto=new DepartmentDTO();
+		
+		
+		dto.setDepartmentid(101);
+		
+		dto.setDepartmentname("MATHS");
+		
+		
+										StudentDTO sdto1=new StudentDTO();
+										
+										sdto1.setSid(301);
+		
+										sdto1.setFname("Shubham");
+										
+										sdto1.setLname("Tale");
+										
+										sdto1.setEmail("shubham@gmail.com");
+										
+										sdto1.setBranch("Computer Science");
+										
+										sdto1.setMobile(111222333);
+										
+		
+	}
+	
+	
+
+	public static void main(String[] args) throws Exception
+	{
+		
+
+		InsertALL();
+		
+	}
+	
+	
+}

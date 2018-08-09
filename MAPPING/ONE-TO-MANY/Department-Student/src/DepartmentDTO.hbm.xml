@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="DepartmentDTO" table="DAVVdepartment">
+
+
+<id name="departmentid" column="DEPARTMENT_ID">
+
+</id>
+
+
+<property name="departmentname" column="DEPARTMENT_NAME"></property>
+
+
+
+
+<set name="DepartmentChild" cascade="all">
+
+
+<key column="D_ID"></key>
+
+
+<one-to-many class="StudentDTO"></one-to-many>
+
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>
+
+

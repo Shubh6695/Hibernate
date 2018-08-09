@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="co.in.dto">
+
+
+<class name="co.in.dto.CustomerDTO" table="customer">
+
+
+<id name="customerid" column="Customer_ID"></id>
+
+
+
+</class>
+
+
+</hibernate-mapping>

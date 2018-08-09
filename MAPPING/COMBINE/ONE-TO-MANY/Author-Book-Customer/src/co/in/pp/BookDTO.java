@@ -1,0 +1,72 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class BookDTO 
+{
+
+	private Integer bookid, bookisbn, bookpublicationyear ,aid;
+	
+	private String booktitle, bookcategory;
+	
+	private Set CustomerChild;
+
+	
+	public Integer getBookid() {
+		return bookid;
+	}
+
+	public void setBookid(Integer bookid) {
+		this.bookid = bookid;
+	}
+
+	public Integer getBookisbn() {
+		return bookisbn;
+	}
+
+	public void setBookisbn(Integer bookisbn) {
+		this.bookisbn = bookisbn;
+	}
+
+	public Integer getBookpublicationyear() {
+		return bookpublicationyear;
+	}
+
+	public void setBookpublicationyear(Integer bookpublicationyear) {
+		this.bookpublicationyear = bookpublicationyear;
+	}
+
+	public Integer getAid() {
+		return aid;
+	}
+
+	public void setAid(Integer aid) {
+		this.aid = aid;
+	}
+
+	public String getBooktitle() {
+		return booktitle;
+	}
+
+	public void setBooktitle(String booktitle) {
+		this.booktitle = booktitle;
+	}
+
+	public String getBookcategory() {
+		return bookcategory;
+	}
+
+	public void setBookcategory(String bookcategory) {
+		this.bookcategory = bookcategory;
+	}
+
+	public Set getCustomerChild() {
+		return CustomerChild;
+	}
+
+	public void setCustomerChild(Set customerChild) {
+		CustomerChild = customerChild;
+	}
+	
+	
+}

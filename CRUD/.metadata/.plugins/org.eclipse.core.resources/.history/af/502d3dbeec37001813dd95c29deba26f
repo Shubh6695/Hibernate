@@ -1,0 +1,51 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+	
+	public static void MergeDEMO() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session s=sf.openSession();
+		
+		
+		EmployeeDTO dto=(EmployeeDTO) s.get(EmployeeDTO.class, 1);
+		
+		
+		
+		
+	//	System.out.println(dto.getId()+"\t"+dto.getFname()+"\t"+dto.getLname()+"\t"+dto.getAddress()+"\t"+dto.getMobile()+"\t"+dto.getPincode());
+		
+		
+	s.close();	
+		
+	
+	dto.setPincode(102030);
+	
+	
+	System.out.println("Update Successfully");
+	
+	sf.close();
+	
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		MergeDEMO();
+		
+		
+	}
+	
+	
+
+}

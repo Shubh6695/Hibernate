@@ -1,0 +1,14 @@
+package co.in.pp;
+
+public class TrainDTO
+{
+
+	
+	private Integer tid, tnum;
+	
+	private String tname, ttype, tsourcestation, tdestinationstation;
+
+	private Set 
+	
+	
+}

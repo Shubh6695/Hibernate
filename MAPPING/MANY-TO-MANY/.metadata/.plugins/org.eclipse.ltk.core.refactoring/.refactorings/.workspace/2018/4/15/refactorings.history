@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;Parent-Child&apos; to &apos;Parent-Children&apos;&#x0D;&#x0A;- Original element: &apos;Parent-Child&apos;&#x0D;&#x0A;- Renamed element: &apos;Parent-Child&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;Parent-Child&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=Parent-Child" name="Parent-Children" references="true" stamp="1523621388163" version="1.0"/>
+</session>

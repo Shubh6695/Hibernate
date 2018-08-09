@@ -1,0 +1,17 @@
+package co.in.pp;
+
+public class HotelDTO 
+{
+
+	
+	private Integer hotelid, hotelcontact;
+	
+	private String hotelname, hotelcity, hotelemail;
+	
+	private Float hotelrating;
+
+	
+	
+	
+	
+}

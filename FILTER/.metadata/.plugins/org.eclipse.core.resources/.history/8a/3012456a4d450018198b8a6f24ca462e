@@ -1,0 +1,339 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+	
+	
+	public static void insertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		StudentDemo student1=new StudentDemo();
+		
+		student1.setFname("Shubham");
+		
+		student1.setLname("Tale");
+		
+		student1.setEmail("shubham@gmail.com");
+		
+		student1.setAge(24);
+		
+		student1.setMobile(999666333);
+		
+		
+		StudentDemo student2=new StudentDemo();
+		
+		student2.setFname("Aman");
+		
+		student2.setLname("Jain");
+		
+		student2.setEmail("aman@gmail.com");
+		
+		student2.setAge(45);
+		
+		student2.setMobile(999888777);
+
+		
+		
+		StudentDemo student3=new StudentDemo();
+		
+		student3.setFname("Ankit");
+		
+		student3.setLname("Sharma");
+		
+		student3.setEmail("ankit@gmail.com");
+		
+		student3.setAge(18);
+		
+		student3.setMobile(999555222);
+
+		
+		
+		StudentDemo student4=new StudentDemo();
+		
+		student4.setFname("Naveen");
+		
+		student4.setLname("Khapre");
+		
+		student4.setEmail("naveen@gmail.com");
+		
+		student4.setAge(22);
+		
+		student4.setMobile(999666555);
+
+		
+		StudentDemo student5=new StudentDemo();
+		
+		student5.setFname("Vijay");
+		
+		student5.setLname("Patel");
+		
+		student5.setEmail("vijay@gmail.com");
+		
+		student5.setAge(49);
+		
+		student5.setMobile(999444111);
+
+		
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(student1);
+		
+		sess.save(student2);
+		
+		sess.save(student3);
+		
+		sess.save(student4);
+		
+		sess.save(student5);
+		
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void likeFilterDemo() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		sess.enableFilter("likecondition");
+		
+		
+		Query q=sess.createQuery("from StudentDemo");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			StudentDemo student=(StudentDemo) itr.next();
+			
+			
+			System.out.println(student.getSid()+"\t"+student.getFname()+"\t"+student.getLname()+"\t"+student.getEmail()+"\t"+student.getAge()+"\t"+student.getMobile()+"\n");
+			
+			
+		}
+		
+		sess.disableFilter("likecondition");
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	public static void likeFilterDemo1() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Filter f=sess.enableFilter("firstnamelike");
+		
+		f.setParameter("first", "Shubham");
+		
+		
+		Query q=sess.createQuery("from StudentDemo");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			StudentDemo student=(StudentDemo) itr.next();
+			
+			
+			System.out.println(student.getSid()+"\t"+student.getFname()+"\t"+student.getLname()+"\t"+student.getEmail()+"\t"+student.getAge()+"\t"+student.getMobile()+"\n");
+			
+			
+		}
+		
+		sess.disableFilter("firstnamelike");
+		
+		sess.close();
+		
+		sf.close();
+
+		
+		
+	}
+
+	
+	
+	
+	public static void agegreaterthanDemo() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Filter f=sess.enableFilter("agegreaterthan");
+		
+		f.setParameter("a", 23);
+		
+		
+		Query q=sess.createQuery("from StudentDemo");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			StudentDemo student=(StudentDemo) itr.next();
+			
+			
+			System.out.println(student.getSid()+"\t"+student.getFname()+"\t"+student.getLname()+"\t"+student.getEmail()+"\t"+student.getAge()+"\t"+student.getMobile()+"\n");
+			
+			
+		}
+		
+		sess.disableFilter("agegreaterthan");
+		
+		sess.close();
+		
+		sf.close();
+
+		
+		
+	}
+	
+	
+	public static void multipleQuery() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		sess.enableFilter("likecondition");
+		
+		
+		Query q1=sess.createQuery("from StudentDemo");
+		
+		List rows=q1.list();
+		
+		Iterator itr1=rows.iterator();
+		
+		while(itr1.hasNext())
+		{
+			
+			StudentDemo student=(StudentDemo) itr1.next();
+			
+			
+			System.out.println(student.getSid()+"\t"+student.getFname()+"\t"+student.getLname()+"\t"+student.getEmail()+"\t"+student.getAge()+"\t"+student.getMobile()+"\n");
+			
+			
+		}
+		
+		
+		
+		Query q2=sess.createQuery("from StudentDemo where age > 20");
+		
+		List rows2=q2.list();
+		
+		Iterator itr2=rows2.iterator();
+		
+		while(itr2.hasNext())
+		{
+			
+			StudentDemo student=(StudentDemo) itr2.next();
+			
+			
+			System.out.println(student.getSid()+"\t"+student.getFname()+"\t"+student.getLname()+"\t"+student.getEmail()+"\t"+student.getAge()+"\t"+student.getMobile()+"\n");
+			
+			
+		}
+		
+
+		
+		
+		
+		
+		
+		sess.disableFilter("likecondition");
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+
+
+	public static void multiplefilter() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Filter f=sess.enableFilter("likecondition");
+		
+		Query q1=sess.createQuery("");
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	insertALL();
+		
+	//	likeFilterDemo();
+		
+	//	likeFilterDemo1();
+		
+	//	agegreaterthanDemo();
+		
+	//	multipleQuery();
+		
+		multiplefilter();
+		
+	}
+	
+
+}

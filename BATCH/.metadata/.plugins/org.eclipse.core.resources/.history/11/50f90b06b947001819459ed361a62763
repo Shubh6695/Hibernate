@@ -1,0 +1,49 @@
+package co.in.pp;
+
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+import java.util.*;
+
+
+public class Test 
+{
+
+	
+	public static void getALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		long start=System.currentTimeMillis();
+		
+		
+		System.out.println("Start Time  "+start);
+		
+		
+					Query q=sess.createQuery("from CustomerDTO");
+					
+					List rows=q.list();
+					
+					
+					
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		
+		getALL();
+		
+	}
+	
+	
+}

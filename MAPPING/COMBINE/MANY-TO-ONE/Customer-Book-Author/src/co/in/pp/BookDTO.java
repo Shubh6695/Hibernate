@@ -1,0 +1,77 @@
+package co.in.pp;
+
+public class BookDTO 
+{
+
+
+	private Integer bookid, bookisbn, bookpublicationyear;
+	
+	private String  booktitle, bookcategory;
+
+	
+	private AuthorDTO authorParent;
+
+
+	
+	public Integer getBookid() {
+		return bookid;
+	}
+
+
+	public void setBookid(Integer bookid) {
+		this.bookid = bookid;
+	}
+
+
+	public Integer getBookisbn() {
+		return bookisbn;
+	}
+
+
+	public void setBookisbn(Integer bookisbn) {
+		this.bookisbn = bookisbn;
+	}
+
+
+	public Integer getBookpublicationyear() {
+		return bookpublicationyear;
+	}
+
+
+	public void setBookpublicationyear(Integer bookpublicationyear) {
+		this.bookpublicationyear = bookpublicationyear;
+	}
+
+
+	public String getBooktitle() {
+		return booktitle;
+	}
+
+
+	public void setBooktitle(String booktitle) {
+		this.booktitle = booktitle;
+	}
+
+
+	public String getBookcategory() {
+		return bookcategory;
+	}
+
+
+	public void setBookcategory(String bookcategory) {
+		this.bookcategory = bookcategory;
+	}
+
+
+	public AuthorDTO getAuthorParent() {
+		return authorParent;
+	}
+
+
+	public void setAuthorParent(AuthorDTO authorParent) {
+		this.authorParent = authorParent;
+	}
+	
+	
+	
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="ChildDTO" table="Combine1Child">
+
+
+<id name="cid" column="C_ID">
+
+</id>
+
+
+<property name="cname" column="C_NAME"></property>
+
+
+<property name="cgender" column="C_GENDER"></property>
+
+
+<property name="ceducation" column="C_EDUCATION"></property>
+
+
+<property name="cage" column="C_AGE"></property>
+
+
+<property name="cmobile" column="C_MOBILE"></property>
+
+
+
+</class>
+
+
+</hibernate-mapping>

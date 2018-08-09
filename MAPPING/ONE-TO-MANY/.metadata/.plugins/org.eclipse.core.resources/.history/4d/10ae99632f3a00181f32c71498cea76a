@@ -1,0 +1,131 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		CustomerDTO cdto1=new CustomerDTO();									//  Parent Class Object (CustomerDTO)
+		
+		
+		cdto1.setCustomerid(1001);
+		
+		cdto1.setFname("Shubham");
+		
+		cdto1.setLname("Tale");
+		
+		cdto1.setEmail("shubham@gmail.com");
+		
+		cdto1.setAddress("Indore");
+		
+		cdto1.setMobile(999666333);
+		
+		
+		
+								BookDTO bdto1=new BookDTO();									// Parent Class Object (BookDTO)
+								
+								bdto1.setBookid(5001);
+		
+								bdto1.setTitle("Let us C");
+		
+								bdto1.setAuthor("Yashwant Kanatkar");
+								
+								bdto1.setCategory("Software");
+								
+								bdto1.setPrice(300);
+		
+		
+								
+								
+												OrderDTO odto1=new OrderDTO();						// 1 Child Class Object (OrederDTO)
+								
+												odto1.setOrderid(201);
+												
+												odto1.setDescription("Book Issue");
+												
+												odto1.setStatus("Return");
+												
+												
+
+												OrderDTO odto2=new OrderDTO();						// 2 Child Class Object (OrederDTO)
+												
+												odto2.setOrderid(202);
+												
+												odto2.setDescription("Book Issue");
+												
+												odto2.setStatus("Not Return");
+
+												
+												OrderDTO odto3=new OrderDTO();						// 3 Child Class Object (OrederDTO) 
+												
+												odto1.setOrderid(203);
+												
+												odto1.setDescription("Book Issue");
+												
+												odto1.setStatus("Return");
+
+												
+			Set s= new HashSet();
+			
+			s.add(odto1);
+			
+			s.add(odto2);
+			
+			s.add(odto3);
+			
+			
+			
+			cdto1.setCustomerChild(s);													// Set Order in CustomerDTO Child
+												
+			bdto1.setBookChild(s);														// Set Order in BookDTO Child
+			
+			
+			
+			Transaction ts=sess.beginTransaction();
+			
+			
+			sess.save(cdto1);
+			
+			sess.save(bdto1);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+												
+								
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+}

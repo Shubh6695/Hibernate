@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;co.in.XML&apos; to &apos;co.in.web&apos;&#x0D;&#x0A;- Original project: &apos;University-College-Course-Student&apos;&#x0D;&#x0A;- Original element: &apos;University-College-Course-Student/src/co.in.XML&apos;&#x0D;&#x0A;- Renamed element: &apos;University-College-Course-Student/src/co.in.web&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;co.in.XML&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;co.in.XML" name="co.in.web" qualified="false" references="true" stamp="1524310221707" textual="false" version="1.0"/>
+</session>

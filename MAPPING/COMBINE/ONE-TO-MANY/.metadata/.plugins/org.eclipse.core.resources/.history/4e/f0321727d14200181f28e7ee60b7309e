@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer cid, bid;
+	
+	private String cfname, clname, cemail ,ctype;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="CustomerDTO" table="Combine1Customer">
+
+
+<id name="" column="">
+
+	<generator class="assigned"></generator>
+
+</id>
+
+
+
+</class>
+
+</hibernate-mapping>

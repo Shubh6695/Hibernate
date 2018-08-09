@@ -1,0 +1,4 @@
+INDEX VERSION 1.130+E:\TEST\TEST1\Hibernate\INHERITANCE\Table-Per-Class\.metadata\.plugins\org.eclipse.jdt.core
+1375933165.index
+1891403363.index
+2647429114.index

@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer tid, tnum;
+	
+	private String tname, traintype, tsourcestation, tdestinationstation;
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="TrainDTO" table="RailwayTrain">
+
+<id name="tid" column="T_ID">
+
+</id>
+
+
+
+
+
+</class>
+
+</hibernate-mapping>	
+	

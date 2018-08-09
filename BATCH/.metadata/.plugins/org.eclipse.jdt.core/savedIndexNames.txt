@@ -1,0 +1,5 @@
+INDEX VERSION 1.130+E:\TEST\TEST1\Hibernate\BATCH\.metadata\.plugins\org.eclipse.jdt.core
+1749720458.index
+1072127465.index
+697131676.index
+651742476.index

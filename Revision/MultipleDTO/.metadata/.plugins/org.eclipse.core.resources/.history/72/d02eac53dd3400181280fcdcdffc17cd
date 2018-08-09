@@ -1,0 +1,82 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+import org.hibernate.criterion.Restrictions;
+
+
+public class CombineTable {
+
+	
+	
+	public static void COMBINE() throws Exception 
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session s=sf.openSession();
+		
+		
+		Criteria crit=s.createCriteria(StudentDTO.class, "stu").createAlias("stu.result", "result")
+				
+				.add(Restrictions.eq("stu.rollno", 1))
+				.add(Restrictions.eq("result.rollno", 1))
+				;
+				
+		List rows=crit.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			Object columns[]=(Object[]) itr.next();
+			
+			
+			Integer rollno1=(Integer) columns[0];
+			
+			String fname1=(String) columns[1];
+			
+			String lname1=(String) columns[2];
+			
+			Integer physics=(Integer) columns[3];
+			
+			Integer chemistry=(Integer) columns[4];
+			
+			Integer maths=(Integer) columns[5];
+			
+			Integer rollno2=(Integer) columns[6];
+			
+			String fname2=(String) columns[7];
+			
+			String lname2=(String) columns[8];
+
+			Integer total=(Integer) columns[9];
+			
+			Float average=(Float) columns[10];
+			
+			String status=(String) columns[11];
+			
+			
+			System.out.println(x);
+			
+			
+			System.out.println();
+			
+		}
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws  Exception
+	{
+		
+		COMBINE();
+		
+	}
+
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer uid, ucontact;
+	
+	private String uname, uemail ,ucode;
+	
+	private Set collegeChild;
+
+	
+<hibernate-mapping package="co.in.DTO">
+
+<class name="UniversityDTO" table="college3university">
+
+<id name="uid" column="U_ID">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+<property name="uname" column="U_NAME"></property>
+
+
+<property name="uemail" column="U_EMAIL"></property>
+
+
+<property name="ucode" column="U_CODE"></property>
+
+
+
+</class>
+
+</hibernate-mapping>	

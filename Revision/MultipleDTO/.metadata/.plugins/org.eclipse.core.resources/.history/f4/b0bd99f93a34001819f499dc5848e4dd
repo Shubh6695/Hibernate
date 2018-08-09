@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class ResultDTO {
+
+	private int rollno, total;
+	
+	private String fname, lname, status;
+	
+	private float average;
+	
+	
+}

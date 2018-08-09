@@ -1,0 +1,34 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class StateDTO 
+{
+
+	private Integer stateid;
+	
+	private String statename;
+	
+	private Set cityParent;
+	
+	
+	
+	public Integer getStateid() {
+		return stateid;
+	}
+
+	public void setStateid(Integer stateid) {
+		this.stateid = stateid;
+	}
+
+	public String getStatename() {
+		return statename;
+	}
+
+	public void setStatename(String statename) {
+		this.statename = statename;
+	}
+
+	
+	
+}

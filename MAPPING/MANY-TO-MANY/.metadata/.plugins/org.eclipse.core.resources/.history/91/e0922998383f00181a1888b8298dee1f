@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer customerid, mobile;
+	
+	private String fname, lname, email, address;
+
+	private Set BankParent;
+	
+
+<hibarnate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="BankCustomer">
+
+
+<id name="customerid" column="">
+
+</id>
+
+
+
+</class>
+
+</hibarnate-mapping>	
+	

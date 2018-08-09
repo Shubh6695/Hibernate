@@ -1,0 +1,17 @@
+package co.in.pp;
+
+import java.util.*;
+
+
+public class ProductDTO
+{
+
+	private Integer pid;
+	
+	private String pname;
+	
+	
+	
+	
+	
+}

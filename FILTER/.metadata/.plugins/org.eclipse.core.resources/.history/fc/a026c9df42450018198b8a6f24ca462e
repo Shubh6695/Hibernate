@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer sid, age, smobile;
+	
+	private String fname, lname, email;
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDemo" table="studentinfo">
+
+
+<id name="sid" column="S_ID">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+
+
+</class>
+
+</hibernate-mapping>

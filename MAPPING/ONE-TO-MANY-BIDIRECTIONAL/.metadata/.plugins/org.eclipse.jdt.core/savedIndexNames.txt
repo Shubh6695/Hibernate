@@ -1,0 +1,9 @@
+INDEX VERSION 1.130+E:\TEST\TEST1\Hibernate\MAPPING\ONE-TO-MANY-BIDIRECTIONAL\.metadata\.plugins\org.eclipse.jdt.core
+4006944848.index
+123684991.index
+97996445.index
+2281693315.index
+2816434557.index
+1923922313.index
+3058955424.index
+2920581725.index

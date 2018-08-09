@@ -1,0 +1,8 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class ProductDTO 
+{
+
+}

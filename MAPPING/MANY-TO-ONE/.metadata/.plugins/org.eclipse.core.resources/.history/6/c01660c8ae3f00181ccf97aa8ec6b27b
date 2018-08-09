@@ -1,0 +1,56 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		
+		Configuration cfg=new Configuration().configure();
+		
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		
+		UserDTO udto1=new UserDTO(1001, 25, 999555111, "Shubahm", "shubahm@gmail.com");
+		
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(gdto1);
+		
+		sess.save(gdto2);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+}

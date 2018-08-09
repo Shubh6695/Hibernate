@@ -1,0 +1,26 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class PoliceDTO 
+{
+
+	private Integer pid;
+	
+	private String pname, pdepartment, pstation,  ppost;
+	
+	
+	private Set PoliceChild;
+	
+	
+	
+	public int getPind()
+	{
+		return pid;
+	}
+	
+	
+	
+	
+	
+}

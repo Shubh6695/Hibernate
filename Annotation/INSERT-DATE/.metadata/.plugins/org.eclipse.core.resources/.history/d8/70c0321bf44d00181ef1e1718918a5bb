@@ -1,0 +1,7 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+public class CustomerDTO {
+
+}

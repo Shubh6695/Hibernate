@@ -1,0 +1,71 @@
+package co.in.pp;
+
+public class ManufacturerDTO {
+
+	private Integer mid, licenceno ,validity, pid;
+	
+	private String name, email, address;
+
+	
+	
+	public Integer getMid() {
+		return mid;
+	}
+
+	public void setMid(Integer mid) {
+		this.mid = mid;
+	}
+
+
+	public Integer getLicenceno() {
+		return licenceno;
+	}
+
+	public void setLicenceno(Integer licenceno) {
+		this.licenceno = licenceno;
+	}
+
+	public Integer getValidity() {
+		return validity;
+	}
+
+	public void setValidity(Integer validity) {
+		this.validity = validity;
+	}
+
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
+	
+	
+}

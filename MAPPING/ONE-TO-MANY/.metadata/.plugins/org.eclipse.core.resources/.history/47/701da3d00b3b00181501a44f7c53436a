@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer pid;
+	
+	private String pname, pdepartment, pstation,  ppost;
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="PoliceDTO" table="CrimePolice">
+
+
+<id name="pid" column="P_ID">
+
+</id>
+
+
+
+
+
+
+</class>
+
+</hibernate-mapping>

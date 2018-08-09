@@ -1,0 +1,18 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class CityDTO 
+{
+
+	private Integer cityid;
+	
+	private String cityname;
+	
+	private CountryDTO countryParent;
+	
+	private Set stateChild;
+	
+	
+	
+}

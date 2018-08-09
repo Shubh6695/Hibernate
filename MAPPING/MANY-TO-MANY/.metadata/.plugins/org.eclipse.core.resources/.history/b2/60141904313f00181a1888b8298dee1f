@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer teacherid, mobile;
+	
+	private String tname, subject, email , gender;
+
+	private Set StudentChild;
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="TeacherDTO" table="DAVVTeacher">
+
+
+<id name="teacherid" column="T_ID">
+
+</id>
+
+
+<property name="tname" column="T_NAME"></property>
+
+
+<property name="subject" column="T_SUBJECT"></property>
+
+
+
+
+</class>
+
+</hibernate-mapping>

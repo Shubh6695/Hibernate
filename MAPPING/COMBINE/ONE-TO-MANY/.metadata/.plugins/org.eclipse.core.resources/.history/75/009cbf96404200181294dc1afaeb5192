@@ -1,0 +1,19 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class ProductDTO 
+{
+
+	
+	private Integer productid;
+	
+	private String productname;
+	
+	
+	private Set ManufacturerChild;
+	
+	
+	
+	
+}

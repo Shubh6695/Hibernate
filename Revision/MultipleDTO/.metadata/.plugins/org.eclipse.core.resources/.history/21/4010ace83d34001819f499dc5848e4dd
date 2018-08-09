@@ -1,0 +1,27 @@
+package co.in.pp;
+
+public class Test {
+
+	
+	public static void MultipleDTOFileTest() throws Exception
+	{
+	
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args) throws Exception 
+	
+	{
+		
+		MultipleDTOFileTest();
+
+	}
+
+}

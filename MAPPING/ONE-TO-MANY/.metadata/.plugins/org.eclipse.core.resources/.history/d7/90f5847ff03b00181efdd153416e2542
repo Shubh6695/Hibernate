@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="SingerDTO" table="SongSinger">
+
+
+<id name="sid" column="S_ID">
+
+</id>
+
+
+<property name="sname" column="S_NAME"></property>
+
+
+<property name="semail" column="S_EMAIL"></property>
+
+
+<property name="saddress" column="S_ADDRESS"></property>
+
+
+<property name="smobile" column="S_MOBILE"></property>
+
+
+
+<set name="SingerChild" cacade="all">
+
+
+<key column="SINGER_ID"></key>
+
+
+<one-to-many class=""></one-to-many>
+
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>	

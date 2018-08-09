@@ -1,0 +1,18 @@
+package co.in.pp;
+
+public class StudentDTO 
+{
+
+	private Integer departmentid;
+	
+	private String departmentname;
+
+	
+	private Integer sid, mobile;
+	
+	private String fname, lname, email, branch;
+
+	
+	
+	
+}

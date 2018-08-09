@@ -1,0 +1,13 @@
+package co.in.pp;
+
+public class DoctorDTO 
+{
+
+	private Integer doctorid, mobile;
+
+	private String dname, specialistIn, email, address;
+
+	
+	
+	
+}

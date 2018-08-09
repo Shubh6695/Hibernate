@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer id, mid;
+	
+	private String directorname, actorname, actressname, producer;
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="DescriptionDTO" table="MovieDescription">
+
+
+<id name="id" column="ID">
+
+</id>
+
+
+
+
+
+
+</class>
+
+</hibernate-mapping>

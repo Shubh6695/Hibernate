@@ -1,0 +1,31 @@
+package co.in.pp;
+
+public class Test 
+{
+
+	
+	public static Integer generateRandom(Integer min, Integer max)throws Exception
+	{
+		
+		Integer r=(int) ((Math.random() * ((max-min)+ 1)) +min);
+		
+		
+		return r;
+	    
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		generateRandom(1, 100);
+		
+		
+		
+		
+	}
+	
+	
+	
+}

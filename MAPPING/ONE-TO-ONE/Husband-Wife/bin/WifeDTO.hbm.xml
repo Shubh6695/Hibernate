@@ -1,0 +1,49 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="WifeDTO" table="FamilyWifeInfo">
+
+
+<id name="wid" column="W_ID">
+
+	<generator class="foreign">
+
+		<param name="property">HusbandParent</param>
+
+	</generator>
+
+</id>
+
+
+
+<property name="wfname" column="W_FIRST_NAME"></property>
+
+
+<property name="wlname" column="W_LAST_NAME"></property>
+
+
+<property name="wgender" column="W_GENDER"></property>
+
+
+<property name="wage" column="W_AGE"></property>
+
+
+<property name="wmobile" column="W_MOBILE"></property>
+
+
+
+
+<one-to-one name="HusbandParent" class="HusbandDTO" cascade="all"></one-to-one>
+
+
+</class>
+
+
+</hibernate-mapping>	

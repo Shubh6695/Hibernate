@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="PatientDTO" table="CHLpatients">
+
+
+<id name="patientid" column="P_ID">
+
+</id>
+
+
+<property name="pname" column="P_NAME"></property>
+
+
+<property name="pemail" column="P_EMAIL"></property>
+
+
+<property name="age" column="AGE"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+<property name="disease" column="DISEASE"></property>
+
+
+<property name="doctorid" column="D_ID"></property>
+
+
+</class>
+
+</hibernate-mapping>	
+	

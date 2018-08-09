@@ -1,0 +1,51 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		MovieDTO mdto1=new MovieDTO();
+		
+		mdto1.setMovieid(101);
+		
+		mdto1.setMoviename("Padmaavat");
+		
+		mdto1.setMovietype("Histotic");
+		
+		mdto1.setReleaseyear(2018);
+		
+		mdto1.setMovielength(163.00f);
+			
+		
+								
+								DescriptionDTO dto1=new DescriptionDTO();
+								
+								
+								
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+}

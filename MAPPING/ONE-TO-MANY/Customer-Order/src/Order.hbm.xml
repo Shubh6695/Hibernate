@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="OrderDTO" table="BookOrder">
+
+<id name="orderid" column="O_ID">
+
+<generator class="assigned"></generator>
+
+</id>
+
+
+<property name="description" column="DESCRIPTION"></property>
+
+
+<property name="amount" column="AMOUNT"></property>
+
+
+<property name="status" column="STATUS"></property>
+
+
+<property name="cid" column="C_ID"></property>
+
+
+
+</class>
+
+</hibernate-mapping>
+

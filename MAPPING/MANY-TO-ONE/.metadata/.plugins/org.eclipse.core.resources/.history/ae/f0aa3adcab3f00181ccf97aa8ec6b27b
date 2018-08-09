@@ -1,0 +1,17 @@
+package co.in.pp;
+
+public class GadgetDTO 
+{
+
+	private Integer gid, gyearofpurchase;
+	
+	private String gname, gbrand;
+	
+	private UserDTO UserParent;
+	
+	
+	
+	
+	
+	
+}

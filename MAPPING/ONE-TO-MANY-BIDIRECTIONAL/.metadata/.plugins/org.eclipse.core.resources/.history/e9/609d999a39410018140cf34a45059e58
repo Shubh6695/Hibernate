@@ -1,0 +1,88 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class TeacherDTO 
+{
+
+	
+	private Integer teacherid, mobile;
+	
+	private String tname, subject, email , gender;
+
+	
+	private Set StudentChild;
+
+
+	
+	public Integer getTeacherid() {
+		return teacherid;
+	}
+
+
+	public void setTeacherid(Integer teacherid) {
+		this.teacherid = teacherid;
+	}
+
+
+	public Integer getMobile() {
+		return mobile;
+	}
+
+
+	public void setMobile(Integer mobile) {
+		this.mobile = mobile;
+	}
+
+
+	public String getTname() {
+		return tname;
+	}
+
+
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+
+
+	public String getSubject() {
+		return subject;
+	}
+
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+	public Set getStudentChild() {
+		return StudentChild;
+	}
+
+
+	public void setStudentChild(Set studentChild) {
+		TeacherChild = teacherChild;
+	}
+
+	
+}

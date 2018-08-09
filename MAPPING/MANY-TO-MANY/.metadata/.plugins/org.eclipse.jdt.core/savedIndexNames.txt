@@ -1,0 +1,9 @@
+INDEX VERSION 1.130+E:\TEST\TEST1\Hibernate\MAPPING\MANY-TO-MANY\.metadata\.plugins\org.eclipse.jdt.core
+692115672.index
+1038489169.index
+3316644334.index
+2281693315.index
+2920581725.index
+2816434557.index
+4006944848.index
+3752476501.index

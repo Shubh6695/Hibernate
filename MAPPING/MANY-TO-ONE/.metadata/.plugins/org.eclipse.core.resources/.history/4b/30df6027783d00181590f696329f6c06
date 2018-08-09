@@ -1,0 +1,87 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test
+{
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		OwnerDTO odto=new OwnerDTO();
+		
+		odto.setOwnerid(101);
+		
+		odto.setOwnername("Shubham");
+		
+		odto.setOwneremail("shubham@gmail.com");
+		
+		odto.setOwnergender("Male");
+		
+		odto.setOwnermobile(999666333);
+		
+																				CarDTO cdto1=new CarDTO();
+		
+																				cdto1.setCarid(504);	
+			
+																				cdto1.setBrand("Audi");
+
+																				cdto1.setModel("Q 7");
+
+																				cdto1.setColor("RED");	
+
+																				cdto1.setPurchaseyear(2016);
+
+
+
+		
+																				CarDTO cdto2=new CarDTO();
+		
+																				cdto2.setCarid(505);	
+			
+																				cdto2.setBrand("Mahindra");
+
+																				cdto2.setModel("TUV 300");
+
+																				cdto2.setColor("BLACK");	
+
+																				cdto2.setPurchaseyear(2016);
+		
+		
+
+																				CarDTO cdto3=new CarDTO();
+		
+																				cdto3.setCarid(506);	
+			
+																				cdto3.setBrand("Hyundai");
+
+																				cdto3.setModel("VERNA");
+
+																				cdto3.setColor("WHITE");	
+
+																				cdto3.setPurchaseyear(2018);
+
+
+												
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+
+}

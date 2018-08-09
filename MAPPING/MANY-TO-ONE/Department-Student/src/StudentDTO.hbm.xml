@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDTO" table="davvstudents">
+
+
+<id name="sid" column="S_ID">
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="email" column="EMAIL"></property>
+
+
+<property name="branch" column="BRANCH"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+
+<!-- many-to-one mapping created foreign key column="DEP_ID" and Taking Primary Key from DepartmentDTO class -->
+
+<many-to-one name="DepParent" class="DepartmentDTO" column="DEP_ID" cascade="all"></many-to-one>
+
+
+
+</class>
+
+</hibernate-mapping>

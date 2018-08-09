@@ -1,0 +1,61 @@
+package co.in.pp;
+
+public class DesriptionDTO 
+{
+
+	private Integer id, mid;
+	
+	private String directorname, actorname, actressname, producer;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getMid() {
+		return mid;
+	}
+
+	public void setMid(Integer mid) {
+		this.mid = mid;
+	}
+
+	public String getDirectorname() {
+		return directorname;
+	}
+
+	public void setDirectorname(String directorname) {
+		this.directorname = directorname;
+	}
+
+	public String getActorname() {
+		return actorname;
+	}
+
+	public void setActorname(String actorname) {
+		this.actorname = actorname;
+	}
+
+	public String getActressname() {
+		return actressname;
+	}
+
+	public void setActressname(String actressname) {
+		this.actressname = actressname;
+	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
+	} 
+	
+	
+	
+	
+}

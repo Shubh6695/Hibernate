@@ -1,0 +1,429 @@
+package co.in.MAIN;
+
+import co.in.DTO.*;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	
+	public static void insertALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		UniversityDTO udto=new UniversityDTO();
+		
+		
+		udto.setUname("RGPV");
+		
+		udto.setUemail("rgpv@gmail.com");
+		
+		udto.setUcode("RGPV1234");
+		
+		udto.setUcontact(999666333);
+		
+		
+		
+												CollegeDTO c1=new CollegeDTO();
+												
+												c1.setCname("Vaishnav");
+		
+												c1.setCemail("vaishnav@gmail.com");
+		
+												c1.setCgrade("A++");
+		
+												c1.setCcontact(111222333);
+		
+												
+																CourseDTO course1=new CourseDTO();
+																
+																course1.setCoursename("Engineering");
+												
+																
+																
+																						StudentDTO student1=new StudentDTO();
+																
+																						student1.setSfname("Shubham");
+							
+																						student1.setSlname("Tale");
+							
+																						student1.setSemail("shubham@gmail.com");
+																
+																						student1.setSage(24);
+																
+																						student1.setSmobile(1010101010);
+
+																
+
+																						StudentDTO student2=new StudentDTO();
+																						
+																						student2.setSfname("Aman");
+							
+																						student2.setSlname("Jain");
+							
+																						student2.setSemail("aman@gmail.com");
+																
+																						student2.setSage(18);
+																
+																						student2.setSmobile(1011223344);
+
+																Set s1=new HashSet();
+																
+																s1.add(student1);
+																
+																s1.add(student2);
+																						
+																
+																course1.setStudentChild(s1);						// Insert student1 and student2 in course1.
+																
+														
+																
+																
+																CourseDTO course2=new CourseDTO();
+																
+																course2.setCoursename("Management");
+																
+																
+																						StudentDTO student3=new StudentDTO();
+																
+																						student3.setSfname("Ankit");
+	
+																						student3.setSlname("Sharma");
+	
+																						student3.setSemail("ankit@gmail.com");
+										
+																						student3.setSage(27);
+																
+																						student3.setSmobile(1011445522);
+
+																						
+																						
+																						StudentDTO student4=new StudentDTO();
+																						
+																						student4.setSfname("Parag");
+							
+																						student4.setSlname("Jain");
+							
+																						student4.setSemail("parag@gmail.com");
+																
+																						student4.setSage(24);
+																
+																						student4.setSmobile(1010203040);
+
+																
+																Set s2=new HashSet();
+																
+																s2.add(student3);
+																
+																s2.add(student4);
+																						
+																		
+																course2.setStudentChild(s2);						// Insert student3 and student4 in course2
+																
+												
+																
+												Set s7=new HashSet();
+												
+												s7.add(course1);
+												s7.add(course2);
+												
+												
+												c1.setCourseChild(s7);												// Insert course1 and course2 in c1. (college Vaishnav)	
+												
+																
+												
+												CollegeDTO c2=new CollegeDTO();
+												
+												c2.setCname("Bansal");
+		
+												c2.setCemail("bansal@gmail.com");
+		
+												c2.setCgrade("A");
+		
+												c2.setCcontact(111555999);
+
+												
+												
+												
+																			CourseDTO course3=new CourseDTO();
+												
+																			course3.setCoursename("Engineering");
+								
+												
+												
+																						StudentDTO student5=new StudentDTO();
+												
+																						student5.setSfname("Naveen");
+			
+																						student5.setSlname("Khapre");
+			
+																						student5.setSemail("naveen@gmail.com");
+												
+																						student5.setSage(28);
+												
+																						student5.setSmobile(1010104020);
+
+												
+
+																						StudentDTO student6=new StudentDTO();
+																		
+																						student6.setSfname("Vijay");
+			
+																						student6.setSlname("Patel");
+			
+																						student6.setSemail("vijay@gmail.com");
+												
+																						student6.setSage(29);
+																						
+																						student6.setSmobile(1010101122);
+
+												Set s3=new HashSet();
+												
+												s3.add(student5);
+												
+												s3.add(student6);
+																		
+												
+												course3.setStudentChild(s3);						// Insert student5 and student6 in course3 and college2(Bansal)
+												
+												
+												
+																		CourseDTO course4=new CourseDTO();
+												
+																		course4.setCoursename("B.Farma");
+												
+												
+																						StudentDTO student7=new StudentDTO();
+												
+																						student7.setSfname("Manvendra");
+
+																						student7.setSlname("Arya");
+
+																						student7.setSemail("manvendra@gmail.com");
+						
+																						student7.setSage(21);
+												
+																						student7.setSmobile(1011441122);
+
+																		
+																		
+																						StudentDTO student8=new StudentDTO();
+																		
+																						student8.setSfname("Hitansh");
+			
+																						student8.setSlname("Tale");
+			
+																						student8.setSemail("hitansh@gmail.com");
+												
+																						student8.setSage(24);
+												
+																						student8.setSmobile(1010207080);
+
+												
+														Set s4=new HashSet();
+												
+														s4.add(student7);
+												
+														s4.add(student8);
+																		
+														
+														course4.setStudentChild(s4);						// Insert student7 and student8 in course2.
+												
+												
+												
+												
+		
+		
+												CollegeDTO c3=new CollegeDTO();
+												
+												c3.setCname("Medicaps");
+		
+												c3.setCemail("medicaps@gmail.com");
+		
+												c3.setCgrade("A+");
+		
+												c3.setCcontact(111444777);
+
+												
+												
+												
+												
+																				CourseDTO course5=new CourseDTO();
+												
+																				course5.setCoursename("B.Farma");
+	
+					
+					
+																						StudentDTO student9=new StudentDTO();
+					
+																						student9.setSfname("Sunil");
+
+																						student9.setSlname("Verma");
+
+																						student9.setSemail("sunil@gmail.com");
+					
+																						student9.setSage(32);
+					
+																						student9.setSmobile(1030104020);
+
+					
+
+																						StudentDTO student10=new StudentDTO();
+															
+																						student10.setSfname("Shrangesh");
+
+																						student10.setSlname("Chourey");
+
+																						student10.setSemail("shrangesh@gmail.com");
+					
+																						student10.setSage(36);
+															
+																						student10.setSmobile(1030401122);
+
+																Set s5=new HashSet();
+					
+																s5.add(student9);
+					
+																s5.add(student10);
+					
+																
+																course5.setStudentChild(s5);						// Insert student9 and student10 in course5 and college2(Bansal)
+					
+					
+					
+																		CourseDTO course6=new CourseDTO();
+					
+																		course6.setCoursename("B.Sc");
+					
+					
+																						StudentDTO student11=new StudentDTO();
+					
+																						student11.setSfname("Ankush");
+
+																						student11.setSlname("Solanky");
+
+																						student11.setSemail("ankush@gmail.com");
+
+																						student11.setSage(19);
+											
+																						student11.setSmobile(1010104010);
+
+											
+											
+																						StudentDTO student12=new StudentDTO();
+											
+																						student12.setSfname("Nilesh");
+
+																						student12.setSlname("Suryawanshi");
+
+																						student12.setSemail("nilesh@gmail.com");	
+					
+																						student12.setSage(30);
+					
+																						student12.setSmobile(1010107080);
+
+					
+																Set s6=new HashSet();
+					
+																s6.add(student11);
+					
+																s6.add(student12);
+											
+							
+																course6.setStudentChild(s6);						// Insert student11 and student12 in course6.
+
+												
+												
+												
+												
+												
+		Set s=new HashSet();
+		
+		s.add(c1);
+		
+		s.add(c2);
+		
+		s.add(c3);
+												
+												
+		
+		udto.setCollegeChild(s);
+		
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		sess.save(udto);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void getALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from UniversityDTO");
+				
+		List rows=q1.list();
+		
+		
+		Iterator itr1=rows.iterator();
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			UniversityDTO udto=(UniversityDTO) itr1.next();
+
+			System.out.println(udto.getUid()+"\t"+udto.getUname()+"\t"+udto.getUemail()+"\t"+udto.getUcode()+"\t"+udto.getUcontact()+"\t");
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+	
+	//	insertALL();
+		
+		
+	//	getALL();
+		
+		
+	}
+	
+	
+}

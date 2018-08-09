@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="HotelCustomer">
+
+<id name="cid" column="C_ID">
+
+</id>
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="email" column="EMAIL"></property>
+
+
+<property name="address" column="ADDRESS"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+<property name="hid" column="H_ID"></property>
+
+
+
+</class>
+
+</hibernate-mapping>

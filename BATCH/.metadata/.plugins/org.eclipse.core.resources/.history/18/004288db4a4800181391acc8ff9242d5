@@ -1,0 +1,8 @@
+
+
+
+
+	private Integer customerid; 
+	
+	private String customername, city, state;
+

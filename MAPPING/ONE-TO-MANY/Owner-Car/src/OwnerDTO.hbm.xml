@@ -1,0 +1,46 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="OwnerDTO" table="SPEEDowner">
+
+
+<id name="ownerid" column="OWNER_ID">
+
+
+</id>
+
+
+<property name="ownername" column="OWNER_NAME"></property>
+
+
+<property name="owneremail" column="OWNER_EMAIL"></property>
+
+
+<property name="ownergender" column="OWNER_GENDER"></property>
+
+
+<property name="ownermobile" column="OWNER_MOBILE"></property>
+
+
+
+<set name="OwnerChild" cascade="all">
+
+<key column="O_ID"></key>
+
+
+<one-to-many class="CarDTO"></one-to-many>
+
+</set>
+
+
+
+
+</class>
+
+</hibernate-mapping>	
+	

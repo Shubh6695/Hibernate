@@ -1,0 +1,77 @@
+package co.in.pp;
+
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void getALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		long start=System.currentTimeMillis();
+		
+		System.out.println("Starting Time :-- "+start);
+		
+	//	int count=0;
+		
+		
+		Query q=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q.list();
+			
+		System.out.println("ROW Size :--" +rows.size());
+		
+		Iterator itr=rows.iterator();
+		
+
+		while(itr.hasNext())
+		{
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		long end=System.currentTimeMillis();
+		
+		System.out.println("Ending  Time :-- "+end);
+
+		
+		System.out.println("Difference :-- "+(end-start));
+		
+		
+	//	System.out.println("Count "+count);
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		getALL();
+		
+	}
+	
+	
+}

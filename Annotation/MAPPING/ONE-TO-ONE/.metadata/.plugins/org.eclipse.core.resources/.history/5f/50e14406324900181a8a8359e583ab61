@@ -1,0 +1,24 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="familywife")
+
+public class WifeDTO 
+{
+
+	@Id
+	@Column(name="W_ID")
+	private Integer wid;
+	
+	
+	@Column(name="")
+	private String wname;
+	
+	
+	private HusbandDTO husbandParent;
+	
+	
+}

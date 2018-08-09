@@ -1,0 +1,11 @@
+package co.in.pp;
+
+public class VendorDTO 
+{
+
+	private Integer vendorid;
+	
+	private String vendorname; 
+	
+	
+}

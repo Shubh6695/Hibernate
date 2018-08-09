@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer eid, mobile, salary;
+	
+	private String fname, lname, email;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="EmployeeDTO" table="aartekemployee">
+
+<id name="eid" column="E_ID">
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="" column="">></property>
+
+
+
+</class>
+
+</hibernate-mapping>	

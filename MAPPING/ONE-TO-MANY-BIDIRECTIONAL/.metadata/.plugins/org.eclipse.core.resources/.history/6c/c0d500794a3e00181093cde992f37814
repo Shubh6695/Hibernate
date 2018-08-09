@@ -1,0 +1,642 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+
+	public static void Insert_ONE_MANY_TO() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeamDTO tdto=new TeamDTO();
+		
+		
+		tdto.setTeamid(1001);
+		
+		tdto.setTeamname("Manchester United");
+		
+		tdto.setTeamcountry("Englend");
+		
+		tdto.setTeamsport("FootBall");
+		
+		
+									PlayerDTO pdto1=new PlayerDTO();
+									
+									pdto1.setPid(5001);
+									
+									pdto1.setPname("David Backham");
+		
+									pdto1.setPemail("david@gmail.com");
+									
+									pdto1.setPaddress("LONDON");
+									
+									pdto1.setPmobile(999911111);
+									
+									pdto1.setPage(38);
+									
+									pdto1.setTeamParent(tdto);
+									
+									
+
+									PlayerDTO pdto2=new PlayerDTO();
+									
+									pdto2.setPid(5002);
+									
+									pdto2.setPname("Shaun Marsh");
+		
+									pdto2.setPemail("shaun@gmail.com");
+									
+									pdto2.setPaddress("LORDS");
+									
+									pdto2.setPmobile(999922222);
+									
+									pdto2.setPage(27);
+
+									pdto2.setTeamParent(tdto);
+									
+									
+									
+									PlayerDTO pdto3=new PlayerDTO();
+									
+									pdto3.setPid(5003);
+									
+									pdto3.setPname("Chirs Rabada");
+		
+									pdto3.setPemail("chris@gmail.com");
+									
+									pdto3.setPaddress("OVEL");
+									
+									pdto3.setPmobile(999933333);
+									
+									pdto3.setPage(32);
+
+									pdto3.setTeamParent(tdto);
+									
+			
+		Set s= new HashSet();														// One-to-Many Part Start
+		
+		
+		s.add(pdto1);
+		
+		s.add(pdto2);
+		
+		s.add(pdto3);
+										
+	
+		tdto.setPlayerChild(s);
+		
+		
+		sess.save(tdto);															// One-to-Many Part End
+		
+							
+		
+/*			sess.save(pdto1);														// Many-to-One Part Start 
+			
+			sess.save(pdto2);
+			
+			sess.save(pdto3);														// Many-to-One Part End
+									
+*/									
+									
+		Transaction ts=sess.beginTransaction();
+		
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		
+		sf.close();
+		
+									
+	}
+	
+	
+	public static void Insert_MANY_TO_ONE() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeamDTO tdto=new TeamDTO();
+		
+		
+		tdto.setTeamid(1002);
+		
+		tdto.setTeamname("Mumbai Indians");
+		
+		tdto.setTeamcountry("India");
+		
+		tdto.setTeamsport("Cricket");
+		
+		
+									PlayerDTO pdto1=new PlayerDTO();
+									
+									pdto1.setPid(5004);
+									
+									pdto1.setPname("Rohit Sharma");
+		
+									pdto1.setPemail("rohit@gmail.com");
+									
+									pdto1.setPaddress("Mumbai");
+									
+									pdto1.setPmobile(999988888);
+									
+									pdto1.setPage(30);
+									
+									pdto1.setTeamParent(tdto);
+									
+									
+
+									PlayerDTO pdto2=new PlayerDTO();
+									
+									pdto2.setPid(5005);
+									
+									pdto2.setPname("Hardik Pandya");
+		
+									pdto2.setPemail("hardik@gmail.com");
+									
+									pdto2.setPaddress("Baroda");
+									
+									pdto2.setPmobile(999977777);
+									
+									pdto2.setPage(27);
+
+									pdto2.setTeamParent(tdto);
+									
+									
+									
+									PlayerDTO pdto3=new PlayerDTO();
+									
+									pdto3.setPid(5006);
+									
+									pdto3.setPname("Jaspreet Bumrah");
+		
+									pdto3.setPemail("jaspreet@gmail.com");
+									
+									pdto3.setPaddress("Pune");
+									
+									pdto3.setPmobile(999966666);
+									
+									pdto3.setPage(32);
+
+									pdto3.setTeamParent(tdto);
+									
+			
+						
+		
+			sess.save(pdto1);														// Many-to-One Part Start 
+			
+			sess.save(pdto2);
+			
+			sess.save(pdto3);														// Many-to-One Part End
+									
+									
+									
+		Transaction ts=sess.beginTransaction();
+		
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		
+		sf.close();
+		
+									
+	}
+
+	
+	
+	public static void GetALL_ONE_TO_MANY(int TID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeamDTO tdto=(TeamDTO) sess.get(TeamDTO.class, TID);
+		
+		
+		System.out.println("Team Detail's");
+		
+		System.out.println(tdto.getTeamid()+"\t"+tdto.getTeamname()+"\t"+tdto.getTeamcountry()+"\t"+tdto.getTeamsport());
+		
+		
+		Set s=tdto.getPlayerChild();
+		
+		
+		System.out.println("Player's Details");
+		
+		
+		Iterator itr=s.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			PlayerDTO pdto=(PlayerDTO) itr.next();										// Type-cast Set in to PlayerDTO
+			
+			
+			System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPage()+"\t"+pdto.getPmobile());
+			
+			System.out.println();
+			
+			
+		}
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	public static void GetALL_MANY_TO_ONE(int TID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from PlayerDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			
+			PlayerDTO pdto=(PlayerDTO) itr.next();
+			
+			if(pdto.getTeamParent().getTeamid() == TID)
+			{
+				
+				System.out.println("Player Information");
+				
+				System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+				
+				System.out.println();
+				
+				System.out.println("Team Information");
+				
+				System.out.println(pdto.getTeamParent().getTeamid()+"\t"+pdto.getTeamParent().getTeamname()+"\t"+pdto.getTeamParent().getTeamcountry()+"\t"+pdto.getTeamParent().getTeamsport());
+				
+				System.out.println();
+				
+			}
+				
+				System.out.println("TEAM ID Not Found ");
+				
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+		
+	}
+	
+	
+	public static void Update_Parent_ONE_TO_MANY(int TID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeamDTO tdto=(TeamDTO) sess.get(TeamDTO.class, TID); 
+		
+		
+		System.out.println("OLD Data");
+		
+		System.out.println(tdto.getTeamid()+"\t"+tdto.getTeamname()+"\t"+tdto.getTeamcountry()+"\t"+tdto.getTeamsport()+"\n");
+		
+		
+		tdto.setTeamname("Barcelona");
+		
+		tdto.setTeamcountry("Spain");
+		
+		
+		sess.update(tdto);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		
+		System.out.println("OLD Data");
+		
+		System.out.println(tdto.getTeamid()+"\t"+tdto.getTeamname()+"\t"+tdto.getTeamcountry()+"\t"+tdto.getTeamsport());
+
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void Update_Child_ONE_TO_MANY(int PID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+
+		
+		Query q1=sess.createQuery("from TeamDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr =rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			TeamDTO tdto=(TeamDTO) itr.next();
+			
+			
+			Set s=tdto.getPlayerChild();
+			
+			Iterator itr1=s.iterator();
+			
+			
+			while(itr1.hasNext())
+			{
+			
+				
+				PlayerDTO pdto=(PlayerDTO) itr1.next();
+				
+				if(pdto.getPid() == PID)
+				{
+					
+				System.out.println("OLD DATA");	
+					
+				System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+
+				
+				pdto.setPaddress("Delhi");
+				
+				
+				sess.update(tdto);
+				
+				
+				Transaction ts=sess.beginTransaction();
+				
+				
+				ts.commit();
+				
+				
+				
+				
+				System.out.println("NEW DATA");	
+				
+				System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+
+				
+				
+				}
+			
+				
+				
+				
+			}
+		
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	public static void  Delete_Parent_ONE_TO_MANY(int TID) throws Exception
+	{
+		
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeamDTO tdto=(TeamDTO) sess.get(TeamDTO.class, TID);
+		
+		
+		System.out.println("Team Detail's");
+		
+		System.out.println(tdto.getTeamid()+"\t"+tdto.getTeamname()+"\t"+tdto.getTeamcountry()+"\t"+tdto.getTeamsport());
+
+		
+		sess.delete(tdto);
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		System.out.println("Delete Parent and Child Both");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	public static void  Delete_Parent_MANY_TO_ONE(int PID) throws Exception
+	{
+		
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		PlayerDTO pdto=(PlayerDTO) sess.get(PlayerDTO.class, PID);
+		
+		
+		System.out.println("Player Detail's");
+		
+		System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+
+		
+		sess.delete(pdto);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		System.out.println("Delete Parent and Child Both");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+
+	
+	
+	public static void Update_Parent_MANY_TO_ONE(int TID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from PlayerDTO");
+
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			
+			
+			
+			
+			
+		}
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void 	Update_Child_MANY_TO_ONE(int PID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		PlayerDTO pdto=(PlayerDTO) sess.get(PlayerDTO.class, PID);
+		
+
+		System.out.println("Player OLD Detail's");
+		
+		
+		System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+
+		
+
+		pdto.setPaddress("Delhi");
+		
+		
+		sess.save(pdto);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		
+		
+		System.out.println("Player NEW Detail's");
+		
+		
+		System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	Insert_ONE_MANY_TO();
+		
+		
+	//	Insert_MANY_TO_ONE();
+		
+		
+	//	GetALL_ONE_TO_MANY(1001);
+		
+		
+	//	GetALL_MANY_TO_ONE(1002);
+		
+		
+	//	Update_Parent_ONE_TO_MANY(1001);
+		
+		
+	//	Update_Child_ONE_TO_MANY(5006);
+		
+		
+		Update_Parent_MANY_TO_ONE(1001);									// Pending
+		
+		
+	//	Update_Child_MANY_TO_ONE(5006);
+		
+		
+	//	Delete_Parent_ONE_TO_MANY(1001);
+		
+		
+	//	Delete_Parent_MANY_TO_ONE(5004);
+		
+	}
+	
+}

@@ -1,0 +1,13 @@
+package co.in.pp;
+
+public class OwnerDTO 
+{
+
+	private Integer ownerid, ownermobile;
+	
+	private String ownername, ownergender,  owneremail;
+
+	
+	
+	
+}

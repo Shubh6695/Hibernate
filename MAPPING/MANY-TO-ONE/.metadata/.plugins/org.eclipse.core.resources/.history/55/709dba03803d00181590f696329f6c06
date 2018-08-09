@@ -1,0 +1,13 @@
+package co.in.pp;
+
+public class ProductDTO 
+{
+
+	private Integer productid;
+	
+	private String productname;
+
+	
+	
+	
+}

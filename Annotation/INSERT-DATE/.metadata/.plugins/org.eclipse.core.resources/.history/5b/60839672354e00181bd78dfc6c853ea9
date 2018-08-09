@@ -1,0 +1,33 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="bankcustomer")
+
+public class CustomerDTO 
+{
+
+	
+	private Integer cid;
+	
+	
+	private String fname;
+	
+	
+	private String lname;
+	
+	
+	private String email;
+	
+	
+	private String address;
+	
+	
+	private Integer mobile;
+	
+	private Integer bid;
+	
+	
+	
+}

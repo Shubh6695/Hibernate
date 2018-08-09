@@ -1,0 +1,160 @@
+package co.in.pp;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void insertALL() throws Exception
+	{
+		
+	
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("Insert Bank Information ");
+
+		
+		System.out.println("Insert Bank ID :--- ");
+		
+		int bid=sc.nextInt();
+		
+		
+		System.out.println("Insert Bank Name :---  ");
+		
+		String bname=sc.next();
+		
+		
+		System.out.println("Insert Bank Email :---  ");
+		
+		String bemail=sc.next(); 
+		
+		
+		System.out.println("Insert Bank Address :---  ");
+		
+		String baddress=sc.nextLine();
+		
+		
+		System.out.println("Insert Bank Contact :---  ");
+		
+		int bcontact=sc.nextInt();
+		
+		
+		BankDTO bdto=new BankDTO();
+		
+		bdto.setBankid(bid);
+		
+		bdto.setBankname(bname);
+		
+		bdto.setBankemail(bemail);
+		
+		bdto.setBankaddress(baddress);
+		
+		bdto.setBankcontact(bcontact);
+		
+		
+		Set s=new HashSet();
+		
+																	System.out.println("Insert Number of Customer You Want");
+		
+																	int size=sc.nextInt();
+																																
+																	for(int i=1; i<=size ; i++)
+																	{
+																	System.out.println("Insert Customer Details No :-- "+i);
+																	
+																		
+																	System.out.println("Insert Customer Id :-- ");
+																		
+																	int cid=sc.nextInt();
+																	
+																	
+																	System.out.println("Insert Customer First Name :-- ");
+																	
+																	String cfname=sc.next();
+																	
+																	
+																	System.out.println("Insert Customer Last Name :-- ");
+																	
+																	String clname=sc.next();
+																	
+																	
+																	System.out.println("Insert Customer Email :--  ");
+																	
+																	String cemail=sc.nextLine(); 
+																	
+																	
+																	System.out.println("Insert Customer Address :--  ");
+																	
+																	String caddress=sc.next();
+																	
+																	
+																	System.out.println("Insert Customer Mobile no :--  ");
+																	
+																	int cmobile=sc.nextInt();
+																	
+																	
+																	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+																	
+																	Date start= dateFormat.parse(dateFormat.format(new Date()));
+																	
+																	
+																	CustomerDTO cdto=new CustomerDTO();
+																	
+																	cdto.setCid(cid);
+																	
+																	cdto.setFname(cfname);
+																	
+																	cdto.setFname(clname);
+																	
+																	cdto.setEmail(cemail);
+																	
+																	cdto.setAddress(caddress);
+																	
+																	cdto.setMobile(cmobile);
+																	
+																	cdto.setCreatedate(start);
+																	
+																	
+																	s.add(cdto);
+																	
+																	
+																	
+																	}
+		
+		bdto.setCustomerChild(s);															
+																	
+																	
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(bdto);
+		
+		ts.commit();
+					
+		System.out.println("Insert Successfully");
+												
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		insertALL();
+		
+	}
+	
+	
+	
+}

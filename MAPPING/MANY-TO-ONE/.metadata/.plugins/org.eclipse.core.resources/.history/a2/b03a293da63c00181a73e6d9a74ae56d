@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer teamid;
+	
+	private String teamname, teamcountry, teamsport;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="TeamDTO" table="SportTeam">
+
+<id name="teamid" column="TEAM_ID">
+
+</id>
+
+
+
+</class>
+
+
+</hibernate-mapping>	
+	

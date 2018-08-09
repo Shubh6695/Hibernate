@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="DepartmentDTO" table="aartekdepartment_using_list">
+
+<id name="depid" column="DEP_ID">
+
+	<generator class="assigned"></generator>
+	
+</id>
+
+<property name="depname" column="DEP_NAME"></property>
+
+
+<list name="employeeChild" cascade="all">
+
+	<key column="DEP_ID"></key>
+
+	 <list-index></list-index>
+	
+	<one-to-many class="EmployeeDTO"></one-to-many>		
+
+</list>
+
+
+
+</class>
+
+</hibernate-mapping>

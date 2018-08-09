@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;co.in.pp.Test&apos; to &apos;MainWithOUTForeignKey&apos;&#x0D;&#x0A;- Original project: &apos;Husband-Wife-WithOUT-Foreign-Key&apos;&#x0D;&#x0A;- Original element: &apos;co.in.pp.Test&apos;&#x0D;&#x0A;- Renamed element: &apos;co.in.pp.MainWithOUTForeignKey&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Test&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;co.in.pp{Test.java[Test" matchStrategy="1" name="MainWithOUTForeignKey" qualified="false" references="true" similarDeclarations="false" stamp="1524891848669" textual="false" version="1.0"/>
+</session>

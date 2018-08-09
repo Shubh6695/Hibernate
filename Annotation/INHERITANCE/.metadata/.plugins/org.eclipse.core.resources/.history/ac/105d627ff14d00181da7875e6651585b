@@ -1,0 +1,42 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="payment")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)  
+/*@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)  
+@DiscriminatorValue(value="PaymentDTO")
+*/
+public class PaymentDTO 
+{
+
+	@Id
+	@Column(name="P_ID")
+//	@GeneratedValue(strategy=GenerationType.AUTO)  
+	
+	public Integer pid;
+	
+	
+	
+	@Column(name="AMOUNT")
+	public Double amount;
+
+	
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+	
+}

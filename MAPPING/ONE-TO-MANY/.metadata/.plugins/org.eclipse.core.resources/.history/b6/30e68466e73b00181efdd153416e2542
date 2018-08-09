@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="MovieDTO" table="MovieHome">
+
+
+<id name="movieid" column="MOVIE_ID">
+
+</id>
+
+
+<property name="moviename" column="MOVIE_NAME"></property>
+
+
+<property name="movietype" column="MOVIE_TYPE"></property>
+
+
+<property name="releaseyear" column="RELEASE_YEAR"></property>
+
+
+<property name="movielength" column="MOVIE_LENGTH"></property>
+
+
+
+<set name="MovieChild" cascade="all">
+
+<key column="M_ID"></key>
+
+
+<one-to-many class=""></one-to-many>
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>

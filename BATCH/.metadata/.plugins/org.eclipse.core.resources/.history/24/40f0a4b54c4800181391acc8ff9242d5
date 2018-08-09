@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.DTO">
+
+<class name="CustomerDTO" table="customer">
+
+
+<id name="customerid" column="CUSTOMER_ID">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+<property name="customername" column="CUSTOMER_NAME"></property>
+
+
+<property name="city" column="CITY"></property>
+
+
+<property name="state" column="STATE"></property>
+
+
+<property name="userid" column="USER_ID"></property>
+
+
+</class>
+
+</hibernate-mapping>
+
+

@@ -1,0 +1,19 @@
+package co.in.pp;
+
+import java.util.*;
+
+
+public class OwnerDTO 
+{
+
+	private Integer ownerid, ownermobile;
+	
+	private String ownername, ownergender,  owneremail;
+	
+	
+	private Set OwnerChild;
+
+	
+	
+	
+}

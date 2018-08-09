@@ -1,0 +1,34 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="familywife")
+
+public class WifeDTO 
+{
+
+	@Id
+	@Column(name="W_ID")
+	private Integer wid;
+	
+	
+	@Column(name="W_NAME")
+	private String wname;
+	
+	
+	@Column(name="W_GENDER")
+	private String wgender;
+	
+	
+	
+	@OneToOne(targetEntity=HusbandDTO.class, cascade=CascadeType.ALL)
+	
+	@JoinColumn(name="H_ID", referencedColumnName="hid")
+	
+	
+	private HusbandDTO husbandParent;
+	
+	
+}

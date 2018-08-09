@@ -1,0 +1,40 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	public static void insertALL() throws Exception
+	{
+		
+		
+		AnnotationConfiguration cfg= new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		TeamDTO tdto=new TeamDTO();
+		
+		tdto.setTeamid(1001);
+		
+		tdto.setTeamcountry("");
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		insertALL();
+		
+	}
+	
+	
+}

@@ -1,0 +1,36 @@
+package co.in.pp;
+
+import java.util.*;
+
+
+public class UserDTO
+{
+
+	
+	private Integer uid, umobile;
+	
+	private String uname,uemail, uage;
+	
+	private Set GadgetChild;
+
+
+	public UserDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public UserDTO(Integer uid, Integer umobile, String uname, String uemail, String uage, Set gadgetChild) {
+		super();
+		this.uid = uid;
+		this.umobile = umobile;
+		this.uname = uname;
+		this.uemail = uemail;
+		this.uage = uage;
+		GadgetChild = gadgetChild;
+	}
+
+	
+	
+	
+}

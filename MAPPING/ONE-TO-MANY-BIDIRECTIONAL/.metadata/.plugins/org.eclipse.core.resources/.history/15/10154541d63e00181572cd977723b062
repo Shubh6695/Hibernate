@@ -1,0 +1,18 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class DepartmentDTO 
+{
+
+	private Integer departmentid;
+	
+	private String departmentname;
+
+
+	
+	
+	
+	
+	
+}

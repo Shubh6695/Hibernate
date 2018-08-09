@@ -1,0 +1,57 @@
+package co.in.DTO;
+
+import java.util.*;
+
+public class CustomerDTO 
+{
+
+	private Integer customerid; 
+	
+	private String customername, city, state;
+
+	private Set userChild;
+	
+	
+	
+	public Integer getCustomerid() {
+		return customerid;
+	}
+
+	public void setCustomerid(Integer customerid) {
+		this.customerid = customerid;
+	}
+
+	public String getCustomername() {
+		return customername;
+	}
+
+	public void setCustomername(String customername) {
+		this.customername = customername;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Set getUserChild() {
+		return userChild;
+	}
+
+	public void setUserChild(Set userChild) {
+		this.userChild = userChild;
+	}
+	
+	
+}

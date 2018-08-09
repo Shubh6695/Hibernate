@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in">
+
+<class name="StudentDTO" table="users">
+
+<id name="id" column="ID">
+	
+<!-- 	<generator class="increment"></generator>	 -->
+
+</id>
+
+<!-- 
+<property name="userid" column="USERID"></property>
+
+<property name="password" column="PASSWORD"></property>
+
+<property name="fname" column="FNAME"></property>
+
+<property name="lname" column="LNAME"></property>
+
+<property name="address" column="ADDRESS"></property>
+
+
+ -->
+
+</class>
+
+</hibernate-mapping>

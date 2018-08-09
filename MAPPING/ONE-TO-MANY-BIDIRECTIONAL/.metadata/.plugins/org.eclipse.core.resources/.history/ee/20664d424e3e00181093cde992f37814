@@ -1,0 +1,54 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer ownerid, ownermobile;
+	
+	private String ownername, ownergender,  owneremail;
+	
+	
+	private Set CarChild;
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="OwnerDTO" table="SpeedOwner">
+
+
+<id name="ownerid" column="OWNER_ID">
+
+</id>
+
+<property name="ownername" column="OWNER_NAME"></property>
+
+
+<property name="owneremail" column="OWNER_EMAIL"></property>
+
+
+<property name="ownergender" column="OWNER_GENDER"></property>
+
+
+<property name="ownermobile" column="OWNER_MOBILE"></property>
+
+
+
+
+<set name="CarChild" cascade="" inverse="all">
+
+
+<key column=""></key>
+
+
+<one-to-many class=""></one-to-many>
+
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>
+

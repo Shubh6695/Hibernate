@@ -1,0 +1,12 @@
+package co.in.dto;
+
+public class VendorDTO {
+	
+	private int id;
+	
+	private String vendorname;
+	
+	private Set children;
+	
+
+}

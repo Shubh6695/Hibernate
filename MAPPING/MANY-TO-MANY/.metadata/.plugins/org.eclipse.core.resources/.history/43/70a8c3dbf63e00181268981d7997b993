@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="VendorDTO" table="Vendor">
+
+
+<id name="vendorid" column="VENDOR_ID">
+
+
+</id>
+
+
+<property name="vendorname" column="VENDOR_NAME"></property>
+
+
+<!-- table attribute is used to create 3rd table(Relationship Table) -->
+
+
+<set name="CustomerChild" cascade="all" table="VendorCustomerRelationship">
+
+
+<key column="V_ID"></key>
+
+
+<many-to-many class="CustomerDTO" column="C_ID"></many-to-many>
+
+
+
+</set>
+
+
+
+</class>
+
+
+</hibernate-mapping>	

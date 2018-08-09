@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+
+
+	private Integer gid, gyearofpurchase;
+	
+	private String gname, gbrand;
+	
+	private UserDTO UserParent;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="co.in.pp">
+
+
+<id name="gid" column="G_ID">
+
+</id>
+
+
+<property name="gname" column="G_NAME"></property>
+
+
+<property name="gbrand" column="G_BRAND"></property>
+
+
+<property name="gyearofpurchase" column="G_YEAR_OF_PURCHASE"></property>
+
+
+
+<!-- many-to-one mapping created foreign key column="USER_ID" and Taking Primary Key from UserDTO class -->
+
+<many-to-one name="UserParent" class="UserDTO" column="USER_ID" cascade="all"></many-to-one>
+
+
+
+</class>
+
+
+</hibernate-mapping>
+
+	

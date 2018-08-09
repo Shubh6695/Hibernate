@@ -1,0 +1,29 @@
+package co.in.pp;
+
+public class Test {
+
+	
+	public static void MultipleDTOFileTest() throws Exception
+	{
+	
+		
+		StudentDTO stu=new StudentDTO();
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args) throws Exception 
+	
+	{
+		
+		MultipleDTOFileTest();
+
+	}
+
+}

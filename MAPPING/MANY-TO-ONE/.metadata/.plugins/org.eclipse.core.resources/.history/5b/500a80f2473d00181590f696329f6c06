@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer bankid, bankcontact;
+	
+	private String bankname, bankemail, bankaddress;
+
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="BankDTO" table="BankDetails">
+
+
+<id name="bankid" column="BANK_ID">
+
+</id>
+
+
+<property name="bankname" column="BANK_NAME"></property>
+
+
+<property name="bankemail" column="BANK_EMAIL"></property>
+
+
+<property name="bankaddress" column="BANK_ADDRESS"></property>
+
+
+<property name="bankcontact" column=""></property>
+
+
+
+
+
+</class>
+
+</hibernate-mapping>

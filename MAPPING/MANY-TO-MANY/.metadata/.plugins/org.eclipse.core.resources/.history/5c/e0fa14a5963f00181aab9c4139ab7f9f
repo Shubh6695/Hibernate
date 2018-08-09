@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer sid, smobile;
+	
+	private String sname, semail, saddress; 
+
+	private Set SongChild;
+
+	
+<hibetrnate-mapping package="co.in.pp">
+
+<class name="SingerDTO" table="SongSinger">
+
+<id name="" column="">
+
+</id>
+
+
+
+
+
+
+</class>
+
+</hibetrnate-mapping>	

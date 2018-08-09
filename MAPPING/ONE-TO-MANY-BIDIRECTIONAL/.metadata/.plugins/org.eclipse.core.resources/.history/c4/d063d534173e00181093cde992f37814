@@ -1,0 +1,98 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Many_To_One_Test 
+{
+
+
+	public static void InsertALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		VendorDTO vdto=new VendorDTO();
+		
+		vdto.setVendorid(101);
+		
+		vdto.setVendorname("DELL");
+		
+		
+									CustomerDTO cdto1=new CustomerDTO();
+									
+									cdto1.setCustomerid(201);
+		
+									cdto1.setCustomername("Shubham");
+		
+									cdto1.setVendorParent(vdto);
+									
+									
+									
+									CustomerDTO cdto2=new CustomerDTO();
+									
+									cdto2.setCustomerid(202);
+		
+									cdto2.setCustomername("Ankit");
+		
+									cdto2.setVendorParent(vdto);
+									
+									
+									CustomerDTO cdto3=new CustomerDTO();
+									
+									cdto3.setCustomerid(203);
+		
+									cdto3.setCustomername("Naveen");
+		
+									cdto3.setVendorParent(vdto);
+
+									
+									
+									
+									sess.save(cdto1);
+									
+									sess.save(cdto2);
+									
+									sess.save(cdto3);
+									
+					
+									
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		
+		System.out.println("Insertion Through MANY-TO-ONE Using Bi-Directional"); 
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		
+		sf.close();
+		
+
+									
+
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+
+	
+	
+	
+}

@@ -1,0 +1,41 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="sportplayer")
+public class PlayerDTO 
+{
+	
+	@Id
+	@Column(name="P_ID")
+	private Integer pid;
+
+	
+	@Column(name="P_NAME")
+	private String pname;
+	
+	
+	@Column(name="P_EMAIL")
+	private String pemail;
+	
+	
+	@Column(name="P_ADDRESS")
+	private String paddress;
+	
+	
+	@Column(name="P_MOBILE")
+	private Integer pmobile;
+	
+	
+	@Column(name="P_AGE")	
+	private Integer page;
+	
+	
+	
+	
+	
+	private TeamDTO teamParent; 
+	
+	
+}

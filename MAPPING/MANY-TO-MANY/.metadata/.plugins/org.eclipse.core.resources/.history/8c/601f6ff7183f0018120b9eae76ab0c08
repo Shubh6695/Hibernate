@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="ChildrenDTO" table="FamilyChildren">
+
+
+<id name="cid" column="C_ID">
+
+</id>
+
+
+<property name="name" column="NAME"></property>
+
+
+<property name="email" column="EMAIL"></property>
+
+
+<property name="age" column="AGE"></property>
+
+
+<property name="yearofbirth" column="yearofbirth"></property>
+
+
+
+<set name="ParentInfo" cascade="all" table="FamilyRelationship">
+
+
+<key column=""></key>
+
+
+<many-to-many class="ParentDTO" column="Parent_ID"></many-to-many>
+
+
+</set>
+
+
+
+
+</class>
+
+
+</hibernate-mapping>

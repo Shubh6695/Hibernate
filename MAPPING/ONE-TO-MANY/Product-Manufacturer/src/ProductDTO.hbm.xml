@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="ProductDTO" table="ProductDetail">
+
+<id name="productid" column="PRODUCT_ID">
+
+</id>
+
+<property name="productname" column="PRODUCT_NAME"></property>
+
+
+<set name="ProductChild" cascade="all">
+
+<key column="P_ID"></key>
+
+
+<one-to-many class="ManufacturerDTO"></one-to-many>
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>

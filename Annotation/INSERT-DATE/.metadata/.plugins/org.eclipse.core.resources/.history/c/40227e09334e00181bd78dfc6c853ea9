@@ -1,0 +1,90 @@
+package co.in.pp;
+
+import java.util.*;
+import java.text.*;
+import java.time.LocalDate;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="datedemo")
+
+public class DateDTO 
+{
+
+	@Id
+	@Column(name="ID")
+	private Integer id;
+	
+	
+	@Column(name="NAME")
+	private String name;
+	
+	
+	@Column(name="START_DATE")
+	@Temporal(TemporalType.DATE)
+	private Date startdate;
+	
+	
+	@Column(name="END_DATE")
+	@Temporal(TemporalType.DATE)
+	private Date enddate;
+
+	@Column(name="START_LOCAL")
+	private LocalDate start;
+	
+	@Column(name="END_LOCAL")
+	private LocalDate
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public Date getStartdate() {
+		return startdate;
+	}
+
+
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+
+
+	public Date getEnddate() {
+		return enddate;
+	}
+
+
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
+	}
+
+
+	public LocalDate getStart() {
+		return start;
+	}
+
+
+	public void setStart(LocalDate start) {
+		this.start = start;
+	}
+	
+	
+	
+}

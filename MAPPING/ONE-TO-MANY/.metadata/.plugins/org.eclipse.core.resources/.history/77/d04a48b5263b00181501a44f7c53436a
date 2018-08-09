@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="TrainDTO" table="RailwayTrain">
+
+<id name="tid" column="T_ID">
+
+</id>
+
+
+<property name="tnum" column="T_NUM"></property>
+
+
+<property name="tname" column="T_NAME"></property>
+
+
+<property name="ttype" column="T_TYPE"></property>
+
+
+<property name="tsourcestation" column="T_SOURCESTATION"></property>
+
+
+<property name="tdestinationstation" column="T_DESTINATIONSTATION"></property>
+
+
+
+<set name="TrainChild" cascade="all">
+
+<key column="TRAIN_ID"></key>
+
+
+<one-to-many class="UserDTO"></one-to-many>
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>	
+	

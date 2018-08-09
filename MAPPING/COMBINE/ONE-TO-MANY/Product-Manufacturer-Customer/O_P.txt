@@ -1,0 +1,135 @@
+1.   insertALL();
+
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select manufactur_.M_ID, manufactur_.M_NAME as M2_1_, manufactur_.P_ID as P3_1_ from ProductManufacturer manufactur_ where manufactur_.M_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_NAME as C2_2_, customerdt_.M_ID as M3_2_ from ProductCustomer customerdt_ where customerdt_.C_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_NAME as C2_2_, customerdt_.M_ID as M3_2_ from ProductCustomer customerdt_ where customerdt_.C_ID=?
+Hibernate: select manufactur_.M_ID, manufactur_.M_NAME as M2_1_, manufactur_.P_ID as P3_1_ from ProductManufacturer manufactur_ where manufactur_.M_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_NAME as C2_2_, customerdt_.M_ID as M3_2_ from ProductCustomer customerdt_ where customerdt_.C_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_NAME as C2_2_, customerdt_.M_ID as M3_2_ from ProductCustomer customerdt_ where customerdt_.C_ID=?
+Hibernate: insert into Productinfo (PRODUCT_NAME, PRODUCT_ID) values (?, ?)
+Hibernate: insert into ProductManufacturer (M_NAME, P_ID, M_ID) values (?, ?, ?)
+Hibernate: insert into ProductCustomer (C_NAME, M_ID, C_ID) values (?, ?, ?)
+Hibernate: insert into ProductCustomer (C_NAME, M_ID, C_ID) values (?, ?, ?)
+Hibernate: insert into ProductManufacturer (M_NAME, P_ID, M_ID) values (?, ?, ?)
+Hibernate: insert into ProductCustomer (C_NAME, M_ID, C_ID) values (?, ?, ?)
+Hibernate: insert into ProductCustomer (C_NAME, M_ID, C_ID) values (?, ?, ?)
+Hibernate: update ProductManufacturer set P_ID=? where M_ID=?
+Hibernate: update ProductManufacturer set P_ID=? where M_ID=?
+Hibernate: update ProductCustomer set M_ID=? where C_ID=?
+Hibernate: update ProductCustomer set M_ID=? where C_ID=?
+Hibernate: update ProductCustomer set M_ID=? where C_ID=?
+Hibernate: update ProductCustomer set M_ID=? where C_ID=?
+Insert Successfully
+
+
+
+2.  getALL(101);
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select productdto0_.PRODUCT_ID as PRODUCT1_0_0_, productdto0_.PRODUCT_NAME as PRODUCT2_0_0_ from Productinfo productdto0_ where productdto0_.PRODUCT_ID=?
+Product Detail's
+101	Laptop
+Hibernate: select manufactur0_.P_ID as P3_1_, manufactur0_.M_ID as M1_1_, manufactur0_.M_ID as M1_1_0_, manufactur0_.M_NAME as M2_1_0_, manufactur0_.P_ID as P3_1_0_ from ProductManufacturer manufactur0_ where manufactur0_.P_ID=?
+Manufacturer Detail's 
+202	APPLE
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Customer Detail's
+303	Ankit
+Customer Detail's
+304	Ankita
+Manufacturer Detail's 
+201	DELL
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Customer Detail's
+302	Aman
+Customer Detail's
+301	Shubham
+
+
+
+3.  updateALL(101, 201, 301);
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select productdto0_.PRODUCT_ID as PRODUCT1_0_, productdto0_.PRODUCT_NAME as PRODUCT2_0_ from Productinfo productdto0_
+Hibernate: select manufactur0_.P_ID as P3_1_, manufactur0_.M_ID as M1_1_, manufactur0_.M_ID as M1_1_0_, manufactur0_.M_NAME as M2_1_0_, manufactur0_.P_ID as P3_1_0_ from ProductManufacturer manufactur0_ where manufactur0_.P_ID=?
+Manufacturer Part
+Manufacturer Part
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Customer Part
+NOT Found
+Customer Part
+Hibernate: update Productinfo set PRODUCT_NAME=? where PRODUCT_ID=?
+Hibernate: update ProductManufacturer set M_NAME=?, P_ID=? where M_ID=?
+Hibernate: update ProductCustomer set C_NAME=?, M_ID=? where C_ID=?
+Update Successfully
+
+
+
+4. updateChild(202, 304);
+
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select productdto0_.PRODUCT_ID as PRODUCT1_0_, productdto0_.PRODUCT_NAME as PRODUCT2_0_ from Productinfo productdto0_
+Hibernate: select manufactur0_.P_ID as P3_1_, manufactur0_.M_ID as M1_1_, manufactur0_.M_ID as M1_1_0_, manufactur0_.M_NAME as M2_1_0_, manufactur0_.P_ID as P3_1_0_ from ProductManufacturer manufactur0_ where manufactur0_.P_ID=?
+Manufacturer Part
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Customer Part
+Customer Part
+NOT Found
+Manufacturer Part
+Hibernate: update ProductManufacturer set M_NAME=?, P_ID=? where M_ID=?
+Hibernate: update ProductCustomer set C_NAME=?, M_ID=? where C_ID=?
+Update Successfully
+
+
+5. updateChildOnly(301);
+
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select productdto0_.PRODUCT_ID as PRODUCT1_0_, productdto0_.PRODUCT_NAME as PRODUCT2_0_ from Productinfo productdto0_
+Hibernate: select manufactur0_.P_ID as P3_1_, manufactur0_.M_ID as M1_1_, manufactur0_.M_ID as M1_1_0_, manufactur0_.M_NAME as M2_1_0_, manufactur0_.P_ID as P3_1_0_ from ProductManufacturer manufactur0_ where manufactur0_.P_ID=?
+Manufacturer Part
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Customer Part
+Customer Part
+Manufacturer Part
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Customer Part
+Customer Part
+Hibernate: update ProductCustomer set C_NAME=?, M_ID=? where C_ID=?
+Update Successfully
+
+
+
+6.  deleteALL(101);
+
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select productdto0_.PRODUCT_ID as PRODUCT1_0_0_, productdto0_.PRODUCT_NAME as PRODUCT2_0_0_ from Productinfo productdto0_ where productdto0_.PRODUCT_ID=?
+Hibernate: select manufactur0_.P_ID as P3_1_, manufactur0_.M_ID as M1_1_, manufactur0_.M_ID as M1_1_0_, manufactur0_.M_NAME as M2_1_0_, manufactur0_.P_ID as P3_1_0_ from ProductManufacturer manufactur0_ where manufactur0_.P_ID=?
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Hibernate: select customerch0_.M_ID as M3_1_, customerch0_.C_ID as C1_1_, customerch0_.C_ID as C1_2_0_, customerch0_.C_NAME as C2_2_0_, customerch0_.M_ID as M3_2_0_ from ProductCustomer customerch0_ where customerch0_.M_ID=?
+Hibernate: update ProductManufacturer set P_ID=null where P_ID=?
+Hibernate: update ProductCustomer set M_ID=null where M_ID=?
+Hibernate: update ProductCustomer set M_ID=null where M_ID=?
+Hibernate: delete from ProductCustomer where C_ID=?
+Hibernate: delete from ProductCustomer where C_ID=?
+Hibernate: delete from ProductManufacturer where M_ID=?
+Hibernate: delete from ProductCustomer where C_ID=?
+Hibernate: delete from ProductCustomer where C_ID=?
+Hibernate: delete from ProductManufacturer where M_ID=?
+Hibernate: delete from Productinfo where PRODUCT_ID=?
+Delete Successfully
+
+
+
+
+

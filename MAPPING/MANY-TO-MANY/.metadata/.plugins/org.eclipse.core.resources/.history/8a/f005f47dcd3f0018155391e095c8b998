@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+		private Integer bookid, price;
+	
+	private String title, author, category;
+	
+	private Set CustomerParent;
+
+<hibernate-mapping package="co.in.dto">
+
+
+<class name="BookDTO" table="">
+
+
+
+</class>
+
+
+</hibernate-mapping>	

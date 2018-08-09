@@ -1,0 +1,12 @@
+package co.in.DTO;
+
+public class CustomerDTO 
+{
+
+	private Integer customerid; 
+	
+	private String customername, city, state;
+	
+	
+	
+}

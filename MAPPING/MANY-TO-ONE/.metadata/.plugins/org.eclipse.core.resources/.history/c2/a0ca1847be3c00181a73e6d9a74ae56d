@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="EmployeeDTO" table="aartekemployee">
+
+<id name="eid" column="E_ID">
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="email" column="EMAIL"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+<property name="salary" column="SALARY"></property>
+
+
+
+<!-- many-to-one mapping created foreign key column="T_ID" -->
+
+
+<many-to-one name="" class="" column="DEP_ID" cascade="all"></many-to-one>
+
+
+</class>
+
+</hibernate-mapping>	

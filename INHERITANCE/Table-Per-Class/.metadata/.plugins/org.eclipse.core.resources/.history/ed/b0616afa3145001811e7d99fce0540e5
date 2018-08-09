@@ -1,0 +1,71 @@
+package co.in.pp;
+
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void insertALL() throws Exception
+	{
+		
+		
+		Configuration cfg=new Configuration().configure();
+		
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		CreditCard credit=new CreditCard();
+		
+		credit.setPid(101);
+		
+		credit.setAmount(1000.00);
+		
+		credit.setCreditCardType("Visa");
+		
+		
+		
+										Cheque cq=new Cheque();
+		
+										cq.setPid(102);
+		
+										cq.setAmount(2000.00);
+		
+										cq.setChequeType("SBI");
+		
+										
+			Transaction ts=sess.beginTransaction();
+			
+			sess.save(credit);
+			
+			sess.save(cq);
+			
+			ts.commit();
+			
+			System.out.println("Insert Successfully");
+										
+				
+			sess.close();
+			
+			sf.close();
+			
+			
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		insertALL();
+		
+		
+	}
+	
+	
+}

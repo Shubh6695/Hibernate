@@ -1,0 +1,46 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test
+{
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		OwnerDTO odto=new OwnerDTO();
+		
+		odto.setOwnerid(101);
+		
+		odto.setOwnername("Shubham");
+		
+		odto.setOwneremail("shubham@gmail.com");
+		
+		odto.setOwnergender("Male");
+		
+		odto.setOwnermobile(999666333);
+		
+		
+											
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+
+}

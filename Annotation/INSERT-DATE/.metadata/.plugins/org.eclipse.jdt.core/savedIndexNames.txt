@@ -1,0 +1,4 @@
+INDEX VERSION 1.130+E:\TEST\TEST1\Hibernate\Annotation\INSERT-DATE\.metadata\.plugins\org.eclipse.jdt.core
+1680618978.index
+4145361803.index
+1106478243.index

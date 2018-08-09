@@ -1,0 +1,30 @@
+package co.in.pp;
+
+public class GadgetDTO 
+{
+
+	private Integer gid, gyearofpurchase, uid;
+	
+	private String gname, gbrand;
+
+	public GadgetDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public GadgetDTO(Integer gid, Integer gyearofpurchase, Integer uid, String gname, String gbrand) {
+		super();
+		this.gid = gid;
+		this.gyearofpurchase = gyearofpurchase;
+		this.uid = uid;
+		this.gname = gname;
+		this.gbrand = gbrand;
+	}
+
+	
+	
+	
+	
+
+
+}

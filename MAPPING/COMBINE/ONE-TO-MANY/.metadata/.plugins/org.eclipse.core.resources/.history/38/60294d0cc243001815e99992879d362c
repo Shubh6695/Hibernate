@@ -1,0 +1,17 @@
+package co.in.pp;
+
+public class StateDTO 
+{
+
+	private Integer stateid;
+	
+	private String statename;
+	
+	private CityDTO cityParent;
+	
+	
+	
+	
+	
+	
+}

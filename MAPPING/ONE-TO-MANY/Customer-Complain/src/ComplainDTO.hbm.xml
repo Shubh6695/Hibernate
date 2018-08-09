@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="ComplainDTO" table="FeedbackComplainDTO">
+
+
+<id name="complainid" column="COMPLAIN_ID">
+
+</id>
+
+
+
+<property name="complaindetail" column="COMPLAIN_DETAIL"></property>
+
+
+<property name="complaintype" column="COMPLAIN_TYPE"></property>
+
+
+<property name="complainstatus" column="COMPLAIN_STATUS"></property>
+
+
+<property name="customerid" column="CUSTOMER_ID"></property>
+
+
+</class>
+
+
+</hibernate-mapping>

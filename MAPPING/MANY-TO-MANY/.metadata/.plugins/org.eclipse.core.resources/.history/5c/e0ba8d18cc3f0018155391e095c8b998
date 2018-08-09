@@ -1,0 +1,14 @@
+package co.in.dto;
+
+import java.util.*;
+
+public class BookDTO 
+{
+
+	
+	private Integer bookid, price;
+	
+	private String title, author, category;
+	
+	
+}

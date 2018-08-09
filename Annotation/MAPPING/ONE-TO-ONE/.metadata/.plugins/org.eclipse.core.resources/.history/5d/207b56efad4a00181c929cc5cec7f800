@@ -1,0 +1,412 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class MainWithForeignKey 
+{
+
+	public static void insertALL()
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		HusbandDTO hdto1=new HusbandDTO();
+		
+		hdto1.setHid(101);
+		
+		hdto1.setHname("Vijay");
+		
+		hdto1.setHegnder("Male");
+		
+		
+												WifeDTO wdto1=new WifeDTO();
+												
+												wdto1.setWid(101);
+												
+												wdto1.setWname("Sadhana");
+		
+												wdto1.setWgender("Female");
+		
+												wdto1.setHusbandParent(hdto1);
+		
+												
+												
+	/*	HusbandDTO hdto2=new HusbandDTO();
+												
+		hdto2.setHid(102);
+												
+		hdto2.setHname("Santosh");
+												
+		hdto2.setHegnder("Male");
+												
+*/												
+												WifeDTO wdto2=new WifeDTO();
+															
+												wdto2.setWid(102);
+												
+												wdto2.setWname("Aruna");
+												
+												wdto2.setWgender("Female");
+												
+												wdto2.setHusbandParent(hdto1);
+												
+												
+												
+												
+												
+												
+		Transaction ts=sess.beginTransaction();
+	
+		sess.save(hdto1);
+		
+//		sess.save(wdto1);
+		
+//		sess.persist(wdto2);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void insertSingleHusbandMultipleWife()
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		HusbandDTO hdto1=new HusbandDTO();
+		
+		hdto1.setHid(101);
+		
+		hdto1.setHname("Vijay");
+		
+		hdto1.setHegnder("Male");
+		
+		
+												WifeDTO wdto1=new WifeDTO();
+												
+												wdto1.setWid(101);
+												
+												wdto1.setWname("Sadhana");
+		
+												wdto1.setWgender("Female");
+		
+												wdto1.setHusbandParent(hdto1);
+		
+/*
+												WifeDTO wdto2=new WifeDTO();
+															
+												wdto2.setWid(102);
+												
+												wdto2.setWname("Aruna");
+												
+												wdto2.setWgender("Female");
+												
+												wdto2.setHusbandParent(hdto1);
+												
+												
+												
+												WifeDTO wdto3=new WifeDTO();
+												
+												wdto3.setWid(103);
+												
+												wdto3.setWname("Sunita");
+												
+												wdto3.setWgender("Female");
+												
+												wdto3.setHusbandParent(hdto1);
+*/
+												
+												
+		Transaction ts=sess.beginTransaction();
+	
+		sess.save(wdto1);
+
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+
+	
+	
+	public static void getALL()
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+
+		Query q=sess.createQuery("from WifeDTO");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			WifeDTO wdto=(WifeDTO) itr.next();
+			
+			
+			System.out.println(wdto.getWid()+"\t"+wdto.getWname()+"\t"+wdto.getWgender());
+			
+			
+			HusbandDTO hdto=wdto.getHusbandParent();
+			
+			
+			System.out.println(hdto.getHid()+"\t"+hdto.getHname()+"\t"+hdto.getHegnder());
+			
+			
+		}
+
+		sess.close();
+		
+		sf.close();
+		
+	}
+
+	
+	
+	
+	public static void getWifeOnly()
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+
+		Query q=sess.createQuery("from WifeDTO");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			WifeDTO wdto=(WifeDTO) itr.next();
+			
+			
+			System.out.println(wdto.getWid()+"\t"+wdto.getWname()+"\t"+wdto.getWgender());
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	
+	}	
+	
+
+	public static void getHusbandOnly()
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+
+		Query q=sess.createQuery("from HusbandDTO");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			HusbandDTO hdto=(HusbandDTO) itr.next();
+	
+		//	WifeDTO wdto=hdto.getWifeChild();
+			
+			
+			System.out.println(hdto.getHid()+"\t"+hdto.getHname()+"\t"+hdto.getHegnder());
+			
+		//	System.out.println(wdto.getWid()+"\t"+wdto.getWname()+"\t"+wdto.getWgender());
+			
+		}
+
+		sess.close();
+		
+		sf.close();
+		
+	}
+
+	
+	
+	public static void updateParent(int WID)
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+
+		
+		WifeDTO wdto=(WifeDTO) sess.get(WifeDTO.class, WID);
+		
+		HusbandDTO hdto=wdto.getHusbandParent();
+		
+		
+		hdto.setHname("Sunil");
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(wdto);
+		
+		ts.commit();
+		
+		
+		System.out.println("New Value is");
+		
+		System.out.println(hdto.getHid()+"\t"+hdto.getHname()+"\t"+hdto.getHegnder());
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	public static void deleteWifeOnly(int WID)
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		WifeDTO wdto=(WifeDTO) sess.get(WifeDTO.class, WID);
+		
+		
+		System.out.println("Before Transaction Details");
+		
+		System.out.println(wdto.getWid()+"\t"+wdto.getWname()+"\t"+wdto.getWgender());
+
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.delete(wdto);
+		
+		ts.commit();
+		
+		System.out.println("Delete Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}	
+	
+	
+	public static void deleteHusbandOnly(int HID)
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		HusbandDTO hdto=(HusbandDTO) sess.get(HusbandDTO.class, HID);
+		
+		
+		System.out.println("Before Transaction Details");
+		
+		System.out.println(hdto.getHid()+"\t"+hdto.getHname()+"\t"+hdto.getHegnder());
+
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.delete(hdto);
+		
+		ts.commit();
+		
+		System.out.println("Delete Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}	
+
+	
+	
+	public static void main(String[] args)
+	{
+		
+	//	insertALL();
+		
+		insertSingleHusbandMultipleWife();
+		
+		
+	//	getALL();
+		
+	//	getWifeOnly();
+		
+	//	getHusbandOnly();
+		
+	//	updateParent(101);
+		
+	//	deleteWifeOnly(102);
+		
+	//	deleteHusbandOnly(102);												// Exception Foreign Key Constraint fails
+		
+		
+	}
+	
+}

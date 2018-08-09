@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer uid, mobile, trainid;
+	
+	private String name, email, address;
+
+
+<hibernate-mapping package="co.in">
+
+<class name="UserDTO" table="RailwayUser">
+
+
+<id name="uid" column="U_ID">
+
+</id>
+
+
+<property name="" column=""></property>
+
+
+
+
+</class>
+
+</hibernate-mapping>

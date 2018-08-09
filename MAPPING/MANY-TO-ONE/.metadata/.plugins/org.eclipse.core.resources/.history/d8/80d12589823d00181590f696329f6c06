@@ -1,0 +1,60 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		ProductDTO pdto=new ProductDTO();
+		
+		pdto.setProductid(501);
+		
+		pdto.setProductname("Laptop");
+		
+		
+		
+																ManufacturerDTO mdto1=new ManufacturerDTO();
+																
+																mdto1.setMid(601);
+																
+																mdto1.setName("DELL");
+																
+																mdto1.setEmail("dell@gmail.com");
+		
+																mdto1.setAddress("India");
+																	
+																mdto1.setLicenceno(101010);
+		
+																mdto1.setValidity(2020);
+																
+																
+																
+																
+																
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+	
+}

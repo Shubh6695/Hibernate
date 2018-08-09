@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-configuration-3.0.dtd">
+
+	
+<hibernate-configuration>
+
+<session-Factory>
+
+
+<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+
+<property name="connection.url">jdbc:mysql://localhost:3306/download</property>
+
+
+<property name="connection.username">root</property>
+
+
+
+
+
+</session-Factory>
+
+</hibernate-configuration>	
+	

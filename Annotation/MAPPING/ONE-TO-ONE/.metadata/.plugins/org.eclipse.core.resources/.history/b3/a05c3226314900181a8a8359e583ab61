@@ -1,0 +1,16 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="familyhusband")
+
+public class HusbandDTO 
+{
+
+	
+	private Integer hid;
+	
+	
+}

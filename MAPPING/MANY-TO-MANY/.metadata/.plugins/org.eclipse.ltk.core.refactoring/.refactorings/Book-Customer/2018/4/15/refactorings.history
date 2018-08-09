@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Book-Customer/src/co/in/xml/BankDTO.hbm.xml&apos; to &apos;BookDTO.hbm.xml&apos;" description="Rename resource &apos;BankDTO.hbm.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/co/in/xml/BankDTO.hbm.xml" name="BookDTO.hbm.xml" stamp="1523701143446" updateReferences="true"/>
+</session>

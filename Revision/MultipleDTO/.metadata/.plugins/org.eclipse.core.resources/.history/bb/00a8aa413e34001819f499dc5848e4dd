@@ -1,0 +1,40 @@
+package co.in.pp;
+
+public class Test {
+
+	
+	public static void MultipleDTOFileTest() throws Exception
+	{
+	
+		
+		StudentDTO stu=new StudentDTO();
+		
+		
+		
+		
+		stu.setFname("Shubham");
+		
+		stu.setLname("Tale");
+		
+		stu.setPhysics(50);
+		
+		stu.setChemistry(50);
+		
+		stu.setMaths(50);
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception 
+	
+	{
+		
+		MultipleDTOFileTest();
+
+	}
+
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.in">
+
+
+<class name="EmployeeDTO" table="EmployeeDetails">
+
+<id name="id" column="EID">
+	<generator class="increment"></generator>
+
+</id>
+
+
+
+<property name="fname"></property>
+
+<property name="lname"></property>
+
+<property name="address"></property>
+
+<property name="mobile"></property>
+
+<property name="pincode"></property>
+
+</class>
+
+
+</hibernate-mapping>

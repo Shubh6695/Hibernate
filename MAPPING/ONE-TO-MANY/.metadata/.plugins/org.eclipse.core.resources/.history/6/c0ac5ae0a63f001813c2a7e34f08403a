@@ -1,0 +1,44 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		Configuration cfg=new Configuration().configure();
+		
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		UserDTO udto=new UserDTO();
+		
+		
+		GadgetDTO gdto1=new GadgetDTO();
+		
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+		
+	}
+	
+	
+	
+}

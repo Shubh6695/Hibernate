@@ -1,0 +1,16 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class TeacherDTO 
+{
+
+
+	private Integer teacherid, mobile;
+	
+	private String tname, subject, email , gender;
+
+	private Set StudentChild;
+	
+	
+}

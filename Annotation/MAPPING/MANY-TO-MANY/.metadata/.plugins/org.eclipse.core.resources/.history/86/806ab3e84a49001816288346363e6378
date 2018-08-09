@@ -1,0 +1,37 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+@Table(name="productmanufacturer")
+
+
+public class ManufacturerDTO 
+{
+
+	@Column(name="M_ID")
+	private Integer mid;
+	
+	
+	@Column(name="M_NAME")
+	private String mname;
+	
+	
+	@Column(name="M_ADDRESS")
+	private String maddress;
+	
+	
+	@Column(name="M_CONTACT")
+	private Integer mcontact;
+	
+	
+	private Set productParent;
+	
+	
+	
+	
+	
+	
+	
+}

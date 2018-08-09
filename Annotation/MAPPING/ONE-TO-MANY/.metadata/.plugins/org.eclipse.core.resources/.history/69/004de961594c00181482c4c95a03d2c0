@@ -1,0 +1,16 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="sportplayer")
+
+
+public class PlayerDTO 
+{
+
+	@Column(name="P_ID")
+	private int pid; 
+	
+	
+}

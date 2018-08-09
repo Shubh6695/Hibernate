@@ -1,0 +1,84 @@
+package co.in.dto;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test {
+
+	public static void TestInsert() throws Exception
+	{
+		
+		SessionFactory sf= new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		VendorDTO v=new VendorDTO();					// Parent Class Object
+		
+		v.setVendorid(101);
+		
+		v.setVendorname("DELL");
+		
+		
+		
+		CustomerDTO c=new CustomerDTO();				// 1 - Child Class Object  
+		
+		c.setCustomerid(201);
+		
+		c.setCustomername("Shubham");
+		
+		
+		
+		CustomerDTO c1=new CustomerDTO();				// 2 - Child Class Object
+		
+		c1.setCustomerid(201);
+		
+		c1.setCustomername("Aman");
+		
+		
+		
+
+		CustomerDTO c2=new CustomerDTO();				// 3 - Child Class Object
+		
+		c2.setCustomerid(202);
+		
+		c2.setCustomername("Ajay");
+		
+		
+		
+		
+	Set s=new HashSet();
+	
+	s.add(c);
+	
+	s.add(c1);	
+		
+	s.add(c2);	
+		
+	
+	
+	Transaction ts=sess.beginTransaction();
+	
+	sess.save(v);
+	
+	ts.commit();
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		TestInsert();
+		
+	}
+
+}

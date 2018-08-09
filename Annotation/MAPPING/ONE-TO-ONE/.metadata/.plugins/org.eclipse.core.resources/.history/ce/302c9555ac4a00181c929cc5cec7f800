@@ -1,0 +1,69 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="familyhusband")
+
+public class HusbandDTO 
+{
+
+	@Id
+	@Column(name="H_ID")
+	private Integer hid;
+	
+	@Column(name="H_NAME")
+	private String hname;
+	
+	
+	@Column(name="H_GENDER")
+	private String hegnder;
+
+
+//	private WifeDTO wifeChild;
+	
+//	@OneToOne(mappedBy = "husbandParent")
+	
+	public Integer getHid() {
+		return hid;
+	}
+
+
+	public void setHid(Integer hid) {
+		this.hid = hid;
+	}
+
+
+	public String getHname() {
+		return hname;
+	}
+
+
+	public void setHname(String hname) {
+		this.hname = hname;
+	}
+
+
+	public String getHegnder() {
+		return hegnder;
+	}
+
+
+	public void setHegnder(String hegnder) {
+		this.hegnder = hegnder;
+	}
+
+/*
+	public WifeDTO getWifeChild() {
+		return wifeChild;
+	}
+
+
+	public void setWifeChild(WifeDTO wifeChild) {
+		this.wifeChild = wifeChild;
+	}
+*/	
+	
+	
+}

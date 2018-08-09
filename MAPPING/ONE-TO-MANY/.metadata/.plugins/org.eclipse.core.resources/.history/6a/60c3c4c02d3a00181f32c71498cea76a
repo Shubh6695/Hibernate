@@ -1,0 +1,54 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		CustomerDTO cdto1=new CustomerDTO();
+		
+		
+		cdto1.setCustomerid(1001);
+		
+		cdto1.setFname("Shubham");
+		
+		cdto1.setLname("Tale");
+		
+		cdto1.setEmail("shubham@gmail.com");
+		
+		cdto1.setAddress("Indore");
+		
+		cdto1.setMobile(999666333);
+		
+		
+		
+								BookDTO bdto1=new BookDTO();
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+}

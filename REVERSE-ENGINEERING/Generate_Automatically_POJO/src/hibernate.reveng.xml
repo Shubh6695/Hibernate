@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="bugs"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="bugstatus"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="chatbug"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="customer"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="employee"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="employeemilestone"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="empmilestone"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="login"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="project"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="projectgroup"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="projectmilestone"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="projectstatus"/>
+  <table-filter match-catalog="hibernate_project_annotation" match-name="team"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,517 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+	
+	
+	public static void insert_ONE_TO_MANY() throws Exception
+	{
+	
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		CountryDTO country=new CountryDTO();
+		
+		country.setCountryid(101);
+		
+		country.setCountryname("India");
+		
+		
+		
+									CityDTO city1=new CityDTO();
+		
+									city1.setCityid(201);
+									
+									city1.setCityname("Indore");
+									
+									city1.setCountryParent(country);
+									
+									
+									
+									CityDTO city2=new CityDTO();
+									
+									city2.setCityid(202);
+									
+									city2.setCityname("Bhopal");
+									
+									city2.setCountryParent(country);		
+									
+							
+									
+									StateDTO state=new StateDTO();
+									
+									state.setStateid(301);
+						
+									state.setStatename("Madhya Pradesh");
+		
+									
+			city1.setStateParent(state);
+									
+			city2.setStateParent(state);
+			
+			
+												
+			Set s= new HashSet();
+			
+			s.add(city1);
+			
+			s.add(city2);
+	
+			
+			
+	//		state.setCityParentDemo(s);
+			
+			country.setCityChild(s);
+			
+			
+			Transaction ts=sess.beginTransaction();
+			
+	//		sess.save(state);
+		
+			sess.save(country);
+			
+			
+			ts.commit();
+			
+			
+			System.out.println("Insert Successfully");
+			
+			
+			sess.close();
+			
+			sf.close();
+			
+		
+	}
+	
+	
+	public static void insert_MANY_TO_ONE() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		
+		CountryDTO country=new CountryDTO();
+		
+		
+		country.setCountryid(101);
+		
+		country.setCountryname("India");
+		
+		
+		StateDTO state=new StateDTO();
+		
+		state.setStateid(301);
+						
+		state.setStatename("Madhya Pradesh");
+
+		
+		
+		
+		
+								CityDTO city1=new CityDTO();
+								
+								city1.setCityid(201);
+		
+								city1.setCityname("Indore");
+		
+								city1.setCountryParent(country);
+		
+								city1.setStateParent(state);
+								
+								
+								CityDTO city2=new CityDTO();
+								
+								city2.setCityid(202);
+								
+								city2.setCityname("Ujjain");
+								
+								city2.setCountryParent(country);
+								
+								city2.setStateParent(state);
+								
+				
+				
+		
+		Transaction ts=sess.beginTransaction();
+
+		
+		sess.save(city1);
+		
+		sess.save(city2);
+
+		
+		ts.commit();
+		
+		System.out.println("Insert Successfully");
+								
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+
+	
+	public static void get_ONE_TO_MANY(int CID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		CountryDTO country=(CountryDTO) sess.get(CountryDTO.class, CID);
+		
+		
+		System.out.println("Country Detail's");
+		
+		
+		System.out.println(country.getCountryid()+"\t"+country.getCountryname()+"\n");
+		
+		
+		Set s=country.getCityChild();
+		
+		
+		Iterator itr1=s.iterator();
+		
+		while(itr1.hasNext())
+		{
+			
+			CityDTO city=(CityDTO) itr1.next();
+			
+			
+			StateDTO state=city.getStateParent();
+			
+			System.out.println("State Detail's");
+			
+			System.out.println(state.getStateid()+"\t"+state.getStatename()+"\n");
+			
+			
+			System.out.println("City Detail's");
+			
+			System.out.println(city.getCityid()+"\t"+city.getCityname()+"\n");
+			
+			
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void get_ONE_TO_MANY_STATE(int SID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		StateDTO state=(StateDTO) sess.get(StateDTO.class, SID);
+		
+		
+		Set s1=state.getCityParentDemo();
+		
+		
+		Iterator itr=s1.iterator();
+		
+		System.out.println("City Detail's");
+		
+		CityDTO city=null;
+		
+		while(itr.hasNext())
+		{
+			
+			
+			city=(CityDTO) itr.next();
+			
+			System.out.println(city.getCityid()+"\t"+city.getCityname()+"\n");
+			
+		}
+		
+		
+		System.out.println("State Detail's");
+		
+		System.out.println(state.getStateid()+"\t"+state.getStatename()+"\n");
+		
+		
+		CountryDTO country=city.getCountryParent();
+		
+		
+		System.out.println("Country Detail's");
+		
+		System.out.println(country.getCountryid()+"\t"+country.getCountryname()+"\n");
+		
+		
+		
+	}
+	
+	
+	public static void update_State(int SID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from CountryDTO");
+		
+		List rows=q.list();
+		
+		Iterator itr1=rows.iterator();
+		
+		while(itr1.hasNext())
+		{
+			
+			CountryDTO country=(CountryDTO) itr1.next();
+			
+			Set s=country.getCityChild();
+			
+			
+			Iterator itr2=s.iterator();
+			
+				while(itr2.hasNext())
+				{
+					
+					CityDTO city=(CityDTO) itr2.next();
+					
+					StateDTO state=city.getStateParent();
+					
+					
+					if(state.getStateid() == SID)
+					{
+						
+						
+						state.setStatename("Maharashtra");
+						
+						
+					}																// If End
+					
+					
+					
+				}																	// itr2 while loop end
+			
+				
+			Transaction ts=sess.beginTransaction();	
+				
+			
+			sess.update(country);	
+				
+			ts.commit();
+			
+			System.out.println("Insert Successfully");
+			
+			
+		}																			// itr1 while loop end		
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void update_Country(int CID) throws Exception
+	{
+		
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from StateDTO");
+		
+		
+		List rows=q.list();
+		
+		Iterator itr1=rows.iterator();
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			StateDTO state=(StateDTO) itr1.next();
+			
+			Set s=state.getCityParentDemo();
+			
+			
+			Iterator itr2=s.iterator();
+			
+			
+			while(itr2.hasNext())
+			{
+				
+				CityDTO city=(CityDTO) itr2.next();
+				
+				CountryDTO country =city.getCountryParent(); 
+				
+				
+				if(country.getCountryid()  == CID)
+				{
+					
+					country.setCountryname("Australia");
+					
+					
+				}																				// End of If loop
+				
+				
+			}																					// End of While loop itr2
+			
+			
+			
+			Transaction ts=sess.beginTransaction();
+			
+			
+			sess.update(state);
+			
+			ts.commit();
+			
+			
+		}																						// End of While loop itr1
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void delete_Country(int CID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from StateDTO");
+		
+		List rows=q.list();
+		
+		Iterator itr1=rows.iterator();
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			StateDTO state=(StateDTO) itr1.next();
+			
+			Set s=state.getCityParentDemo();
+			
+			
+			Iterator itr2=s.iterator();
+			
+			
+			while(itr2.hasNext())
+			{
+				
+				CityDTO city=(CityDTO) itr2.next();
+				
+				CountryDTO country =city.getCountryParent(); 
+				
+				System.out.println("Country Detail's");
+				
+				System.out.println(country.getCountryid()+"\n"+country.getCountryname());
+				
+				
+			}																					// End of While loop itr2
+			
+			
+			
+			Transaction ts=sess.beginTransaction();
+			
+			
+			sess.delete(state);
+			
+			ts.commit();
+			
+			
+		}																						// End of While loop itr1
+			
+	}
+	
+	
+	
+	public static void delete_State(int SID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+
+		
+		StateDTO state=(StateDTO) sess.get(StateDTO.class, SID);
+		
+		sess.delete(state);
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		System.out.println("Delete State Only");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		
+	//	insert_ONE_TO_MANY();													// insert through country or state
+		
+		
+	//	insert_MANY_TO_ONE();													// insert through City
+		
+	
+	//	get_ONE_TO_MANY(101);													// Based on Country
+		
+		
+	//	get_ONE_TO_MANY_STATE(301);												// Based on State
+	
+		
+	//	update_State(301);														// Based on Country	
+		
+		
+	//	update_Country(101);													// Based on State 	
+		
+		
+	//	delete_Country(301);													// Based on State
+		
+		delete_State(301);
+		
+		
+	}
+	
+}

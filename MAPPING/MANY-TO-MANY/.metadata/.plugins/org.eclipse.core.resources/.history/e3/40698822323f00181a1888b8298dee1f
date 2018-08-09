@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDTO" table="DAVVStudent">
+
+
+<id name="stundentid" column="S_ID">
+
+
+</id>
+
+
+<property name="fname" column="F_NAME"></property>
+
+
+<property name="lname" column="L_NAME"></property>
+
+
+<property name="address" column="ADDRESS"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+
+<set name="TeacherParent" cascade="all" table="">
+
+
+
+</set>
+
+
+</class>
+
+</hibernate-mapping>	

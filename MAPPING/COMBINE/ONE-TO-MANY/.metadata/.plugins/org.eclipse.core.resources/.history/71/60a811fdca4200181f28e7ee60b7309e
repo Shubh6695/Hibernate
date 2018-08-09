@@ -1,0 +1,561 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void insertALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		ProductDTO pdto=new ProductDTO();
+		
+		pdto.setProductid(101);
+		
+		pdto.setProductname("Laptop");
+		
+		
+		
+		
+									ManufacturerDTO mdto1=new ManufacturerDTO();
+									
+									mdto1.setMid(201);
+		
+									mdto1.setMname("DELL");
+		
+									
+									
+																			CustomerDTO cdto1=new CustomerDTO();
+																			
+																			cdto1.setCid(301);
+																			
+																			cdto1.setCname("Shubham");
+									
+																			
+																			
+																			CustomerDTO cdto2=new CustomerDTO();
+																			
+																			cdto2.setCid(302);
+									
+																			cdto2.setCname("Aman");
+									
+									
+									Set s1=new HashSet();
+									
+									s1.add(cdto1);
+									
+									s1.add(cdto2);
+																			
+											
+									mdto1.setCustomerChild(s1);
+									
+									
+									
+									ManufacturerDTO mdto2=new ManufacturerDTO();
+									
+									mdto2.setMid(202);
+		
+									mdto2.setMname("APPLE");
+		
+		
+																			
+																			CustomerDTO cdto3=new CustomerDTO();
+									
+																			cdto3.setCid(303);
+									
+																			cdto3.setCname("Ankit");
+
+									
+									
+																			CustomerDTO cdto4=new CustomerDTO();
+									
+																			cdto4.setCid(304);
+									
+																			cdto4.setCname("Ankita");
+
+
+
+									Set s2=new HashSet();
+																			
+									s2.add(cdto3);
+																			
+									s2.add(cdto4);
+																													
+																					
+									mdto2.setCustomerChild(s2);
+
+									
+			
+		Set s3=new HashSet();
+		
+		s3.add(mdto1);
+		
+		s3.add(mdto2);
+		
+		
+		pdto.setManufacturerChild(s3);
+		
+		
+		Transaction ts=sess.beginTransaction();
+									
+		sess.save(pdto);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+									
+									
+		
+	}
+	
+	
+	public static void getALL(Integer PID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		ProductDTO pdto=(ProductDTO) sess.get(ProductDTO.class, PID);
+		
+		
+		System.out.println("Product Detail's");
+		
+		
+		System.out.println(pdto.getProductid()+"\t"+pdto.getProductname());
+		
+		
+		Set s1=pdto.getManufacturerChild();
+		
+		
+		Iterator itr1=s1.iterator();
+		
+		while(itr1.hasNext())
+		{
+			
+			
+			ManufacturerDTO mdto=(ManufacturerDTO) itr1.next();
+			
+			
+			System.out.println("Manufacturer Detail's ");
+			
+			System.out.println(mdto.getMid()+"\t"+mdto.getMname());
+			
+			
+			Set s2=mdto.getCustomerChild();
+			
+			
+			Iterator itr2=s2.iterator();
+			
+			
+			while(itr2.hasNext())
+			{
+				
+					CustomerDTO cdto=(CustomerDTO) itr2.next();
+				
+					
+					System.out.println("Customer Detail's");
+				
+					
+					System.out.println(cdto.getCid()+"\t"+cdto.getCname());
+					
+				
+			}
+			
+			
+			
+		}
+		
+		sess.close();
+		
+		
+		sf.close();
+		
+		
+		
+	}
+	
+	public static void updateALL(int PID ,int MID, int CID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession(); 
+		
+		
+		Query q1=sess.createQuery("from ProductDTO");
+		
+		
+		List rows=q1.list();
+		
+		Iterator itr1=rows.iterator();
+
+		
+		while(itr1.hasNext())
+		{
+
+			
+			
+			ProductDTO pdto=(ProductDTO) itr1.next();
+			
+			if(pdto.getProductid() == PID)
+				
+			{
+				pdto.setProductname("Desktop");													// Update Product Name 				
+			
+				
+				
+				Set s1=pdto.getManufacturerChild();
+			
+				Iterator itr2=s1.iterator();
+			
+					while(itr2.hasNext())
+					
+					{
+
+			
+						ManufacturerDTO mdto=(ManufacturerDTO) itr2.next();
+			
+						System.out.println("Manufacturer Part");
+						
+					if(mdto.getMid() == MID)
+					
+					{	
+			
+						mdto.setMname("APPLE");														// Update ManuFacturer Name
+						
+						
+						Set s2=mdto.getCustomerChild();
+						
+						Iterator itr3=s2.iterator();
+						
+						
+																				
+						
+								while(itr3.hasNext())
+								
+								{
+							
+									System.out.println("Customer Part");
+									
+									
+									CustomerDTO cdto=(CustomerDTO) itr3.next();
+							
+									
+									if(cdto.getCid() == CID)
+									{
+								
+										cdto.setCname("Hitansh");								// Update Customer Name
+										
+								
+									}															// If End				
+								
+									else
+									{
+										System.out.println("NOT Found");
+										
+									}
+									
+									
+									
+								}																// Third while loop end (CustomerDTO)
+						
+					}																			// If END (MID)																			
+						
+				}																				// Second while loop end (MAnufacturerDTO)		
+					
+			Transaction ts=sess.beginTransaction();
+			
+			sess.update(pdto);
+					
+			ts.commit();		
+					
+			
+			System.out.println("Update Successfully");
+					
+			}																					// If END (PID)
+			
+		}																						// First while loop end (ProductDTO)
+		
+		
+		
+		sess.close();
+		
+		sf.close();
+
+		
+	}
+
+	
+	
+	public static void updateChild(int MID, int CID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession(); 
+		
+		
+		Query q1=sess.createQuery("from ProductDTO");
+		
+		
+		List rows=q1.list();
+		
+		Iterator itr1=rows.iterator();
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			
+			ProductDTO pdto=(ProductDTO) itr1.next();
+			
+			Set s1=pdto.getManufacturerChild();
+			
+			
+			Iterator itr2=s1.iterator();
+			
+					while(itr2.hasNext())
+					
+					{
+
+			
+						ManufacturerDTO mdto=(ManufacturerDTO) itr2.next();
+			
+						System.out.println("Manufacturer Part");
+						
+					if(mdto.getMid() == MID)
+					
+					{	
+			
+						mdto.setMname("HP");														// Update ManuFacturer Name
+						
+						
+						Set s2=mdto.getCustomerChild();
+						
+						Iterator itr3=s2.iterator();
+						
+						
+																				
+						
+								while(itr3.hasNext())
+								
+								{
+							
+									System.out.println("Customer Part");
+									
+									
+									CustomerDTO cdto=(CustomerDTO) itr3.next();
+							
+									
+									if(cdto.getCid() == CID)
+									{
+								
+										cdto.setCname("Hitansh");								// Update Customer Name
+										
+								
+									}															// If End				
+								
+									else
+									{
+										System.out.println("NOT Found");
+										
+									}
+									
+									
+									
+								}																// Third while loop end (CustomerDTO)
+						
+					}
+					
+					
+					
+					}																			// Second while loop end (MAnufacturerDTO)		
+					
+			Transaction ts=sess.beginTransaction();
+			
+			sess.update(pdto);
+					
+			ts.commit();		
+					
+			
+			System.out.println("Update Successfully");
+					
+			
+			
+		}																						// First while loop end (ProductDTO)
+		
+		
+		
+		sess.close();
+		
+		sf.close();
+
+		
+	}
+	
+	
+	
+	public static void updateChildOnly(int CID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession(); 
+		
+		
+		Query q1=sess.createQuery("from ProductDTO");
+		
+		
+		List rows=q1.list();
+		
+		Iterator itr1=rows.iterator();
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			
+			ProductDTO pdto=(ProductDTO) itr1.next();
+			
+			Set s1=pdto.getManufacturerChild();
+			
+			
+			Iterator itr2=s1.iterator();
+			
+					while(itr2.hasNext())
+					
+					{
+
+			
+						ManufacturerDTO mdto=(ManufacturerDTO) itr2.next();
+			
+						System.out.println("Manufacturer Part");
+						
+					
+						Set s2=mdto.getCustomerChild();
+						
+						Iterator itr3=s2.iterator();
+						
+						
+																				
+						
+								while(itr3.hasNext())
+								
+								{
+							
+									System.out.println("Customer Part");
+									
+									
+									CustomerDTO cdto=(CustomerDTO) itr3.next();
+							
+									
+									if(cdto.getCid() == CID)
+									{
+								
+										cdto.setCname("Shubham");								// Update Customer Name 
+										
+								
+									}															// If End				
+								
+									
+									
+								}																// Third while loop end (CustomerDTO)
+					
+					
+					}																			// Second while loop end (MAnufacturerDTO)		
+					
+			Transaction ts=sess.beginTransaction();
+			
+			sess.update(pdto);
+					
+			ts.commit();		
+					
+			
+			System.out.println("Update Successfully");
+					
+			
+			
+		}																						// First while loop end (ProductDTO)
+		
+		
+		
+		sess.close();
+		
+		sf.close();
+
+		
+	}
+
+	
+	public static void deleteALL(int PID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		ProductDTO pdto=(ProductDTO) sess.get(ProductDTO.class, PID);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.delete(pdto);
+		
+		ts.commit();
+		
+		
+		System.out.println("Delete Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	insertALL();
+	
+		
+	//	getALL(101);
+		
+	//	updateALL(101, 201, 301);															// Update Product, Manufacturer and Customer
+		
+	//	updateChild(202, 304);																// Update Manufacturer and Customer 
+		
+	//	updateChildOnly(301);																// Update Customer Only
+		
+		
+	//	deleteALL(101);
+		
+		
+		
+		
+	}
+	
+	
+	
+}

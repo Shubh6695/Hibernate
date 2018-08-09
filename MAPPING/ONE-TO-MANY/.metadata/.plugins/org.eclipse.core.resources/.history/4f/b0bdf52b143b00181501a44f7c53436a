@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer complainid, customerid;
+	
+	private String complaindetail, complaintype, complainstatus;
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="ComplainDTO" table="FeedbackComplainDTO">
+
+
+
+</class>
+
+
+</hibernate-mapping>

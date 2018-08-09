@@ -1,0 +1,37 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+	private Integer cid, cmobile;
+	
+	private String cname, cemail;
+	
+	
+	private Set manufacturerParent;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="combine1customer">
+
+<id name="cid" column="C_ID">
+
+</id>
+
+
+<property name="cname" column="C_NAME"></property>
+
+
+<property name="cemail" column="C_EMAIL"></property>
+
+
+<property name="cmobile" column="C_MOBILE"></property>
+
+
+
+
+</class>
+
+</hibernate-mapping>	

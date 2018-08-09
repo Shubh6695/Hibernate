@@ -1,0 +1,32 @@
+package co.in.pp;
+
+public class EmployeeDTO {
+
+	private int id, pincode;
+	private String fname, lname, address;
+	
+	private long mobile;
+
+	
+	public int getId()
+	{
+		return id;
+	}
+	
+			public void setId(int id)
+			{
+				this.id=id;
+			}
+	
+	public int getPincode()
+	{
+		return pincode;
+	}
+			
+			public void setPincode(int pincode)
+			{
+				this.pincode=pincode;
+			}
+			
+	
+}

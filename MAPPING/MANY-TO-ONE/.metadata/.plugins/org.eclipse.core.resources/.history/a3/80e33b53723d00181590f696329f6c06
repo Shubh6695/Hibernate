@@ -1,0 +1,289 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+	
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		HotelDTO hdto1=new HotelDTO();
+		
+		hdto1.setHotelid(1001);
+		
+		hdto1.setHotelname("Sayaji");
+		
+		hdto1.setHotelemail("sayaji@gmail.com");
+		
+		hdto1.setHotelcity("Indore");
+		
+		hdto1.setHotelcontact(999666333);
+		
+		hdto1.setHotelrating(4.5f);
+		
+		
+														CustomerDTO cdto1=new CustomerDTO();
+														
+														cdto1.setCid(5001);
+														
+														cdto1.setFname("Shubham");
+		
+														cdto1.setLname("Tale");
+														
+														cdto1.setEmail("shubham@gmail.com");
+		
+														cdto1.setAddress("Indore");
+														
+														cdto1.setMobile(111222333);
+														
+														cdto1.setRoomno(1);
+														
+														cdto1.setHotelParent(hdto1);
+														
+														
+
+														CustomerDTO cdto2=new CustomerDTO();
+														
+														cdto2.setCid(5002);
+														
+														cdto2.setFname("Ankit");
+		
+														cdto2.setLname("Sharma");
+														
+														cdto2.setEmail("ankit@gmail.com");
+		
+														cdto2.setAddress("Indore");
+														
+														cdto2.setMobile(111222444);
+														
+														cdto2.setRoomno(2);
+														
+														cdto2.setHotelParent(hdto1);
+														
+														
+										
+														CustomerDTO cdto3=new CustomerDTO();
+														
+														cdto3.setCid(5003);
+														
+														cdto3.setFname("Aman");
+		
+														cdto3.setLname("Jain");
+														
+														cdto3.setEmail("aman@gmail.com");
+		
+														cdto3.setAddress("Bhopal");
+														
+														cdto3.setMobile(111222555);
+														
+														cdto3.setRoomno(3);
+
+														cdto3.setHotelParent(hdto1);
+														
+														
+														
+														CustomerDTO cdto4=new CustomerDTO();
+														
+														cdto4.setCid(5004);
+														
+														cdto4.setFname("Sunil");
+		
+														cdto4.setLname("Verma");
+														
+														cdto4.setEmail("sunil@gmail.com");
+		
+														cdto4.setAddress("Pune");
+														
+														cdto4.setMobile(111222666);
+														
+														cdto4.setRoomno(4);
+
+														cdto4.setHotelParent(hdto1);
+														
+														
+														
+														CustomerDTO cdto5=new CustomerDTO();
+														
+														cdto5.setCid(5005);
+														
+														cdto5.setFname("Naveen");
+		
+														cdto5.setLname("khapre");
+														
+														cdto5.setEmail("naveen@gmail.com");
+		
+														cdto5.setAddress("Mumbai");
+														
+														cdto5.setMobile(111222777);
+														
+														cdto5.setRoomno(5);
+
+														cdto5.setHotelParent(hdto1);
+														
+					
+														
+		sess.save(cdto1);
+		
+		sess.save(cdto2);
+		
+		sess.save(cdto3);
+		
+		sess.save(cdto4);
+		
+		sess.save(cdto5);
+														
+						
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		sess.close();
+		
+		sf.close();
+		
+														
+	}
+	
+	
+	public static void GETALLCHILD() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows =q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			System.out.println(cdto.getCid()+"\t"+cdto.getFname()+"\t"+cdto.getLname()+"\t"+cdto.getEmail()+"\t"+cdto.getAddress()+"\t"+cdto.getMobile()+"\t"+cdto.getRoomno());
+			
+			
+			System.out.println();
+			
+		}
+		
+		sess.close();
+		
+		sf.close();
+	}
+	
+	
+	
+	public static void UpdateChild(int HID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows =q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			if(cdto.getHotelParent().getHotelid() == HID)
+			{
+				
+				
+				System.out.println("OLD Parent Detail's");
+				
+				
+				System.out.println(cdto.getHotelParent().getHotelid()+"\t"+cdto.getHotelParent().getHotelname()+"\t"+cdto.getHotelParent().getHotelemail()+"\t"+
+				
+						cdto.getHotelParent().getHotelcity()+"\t"+cdto.getHotelParent().getHotelcity()+"\t"+cdto.getHotelParent().getHotelrating());
+				
+				
+				
+				System.out.println();
+				
+				
+				
+				cdto.getHotelParent().setHotelrating(3.5f);
+				
+				
+				sess.update(cdto);
+				
+				
+				Transaction ts=sess.beginTransaction();
+				
+				ts.commit();
+				
+				
+				
+				System.out.println("NEW Parent Detail's");
+				
+				
+				System.out.println(cdto.getHotelParent().getHotelid()+"\t"+cdto.getHotelParent().getHotelname()+"\t"+cdto.getHotelParent().getHotelemail()+"\t"+
+				
+						cdto.getHotelParent().getHotelcity()+"\t"+cdto.getHotelParent().getHotelcity()+"\t"+cdto.getHotelParent().getHotelrating());
+
+				
+				
+			}
+			else
+			{
+				
+				System.out.println("NOT FOUND");
+			}
+
+		}
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		
+	//	InsertALL();
+		
+	//	GETALLCHILD();
+		
+		
+		
+	}
+	
+
+}

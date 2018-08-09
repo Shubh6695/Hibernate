@@ -1,0 +1,18 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class ChildrenDTO 
+{
+
+	private Integer cid, cage, yearofbirth;
+	
+	private String name, email;
+	
+	private Set ParentInfo;
+	
+	
+	
+	
+	
+}

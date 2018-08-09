@@ -1,0 +1,41 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+	private Integer vendorid;
+	
+	private String vendorname;
+	
+	
+	private Set CustomerChild;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="VendorDTO" table="Vendor">
+
+
+<id name="vendorid" column="VENDOR_ID">
+
+
+</id>
+
+
+<property name="vendorname" column="VENDOR_NAME"></property>
+
+
+<set name="" cascade="all">
+
+
+
+
+</set>
+
+
+</class>
+
+
+</hibernate-mapping>	

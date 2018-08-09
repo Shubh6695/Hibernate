@@ -1,0 +1,27 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="bankdetails")
+
+public class BankDTO 
+{
+	@Id
+	@Column(name="BANK_ID")
+	private Integer bankid;
+	
+	
+	private String bankname;
+	
+	private String bankemail;
+	
+	private String bankaddress;
+	
+	
+	
+	private Integer bankcontact;	
+	
+	
+
+}

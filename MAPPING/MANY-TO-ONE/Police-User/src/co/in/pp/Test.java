@@ -1,0 +1,113 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		PoliceDTO pdto=new PoliceDTO();
+		
+		pdto.setPid(101);
+		
+		pdto.setPname("Ram");
+		
+		pdto.setPdepartment("Crime");
+		
+		pdto.setPstation("Vijay Nagar");
+		
+		pdto.setPpost("Sub-Inspector");
+		
+		
+		
+																		UserDTO udto1=new UserDTO();
+																		
+																		udto1.setUid(501);
+																			
+																		udto1.setName("Shubham");
+		
+																		udto1.setEmail("shubham@gmail.com");
+																		
+																		udto1.setAddress("Indore");
+																		
+																		udto1.setMobile(999666333);
+		
+																		udto1.setPoliceParent(pdto);
+																		
+																		
+																		
+																		UserDTO udto2=new UserDTO();
+																		
+																		udto2.setUid(502);
+																			
+																		udto2.setName("Ankit");
+		
+																		udto2.setEmail("ankit@gmail.com");
+																		
+																		udto2.setAddress("Bhopal");
+																		
+																		udto2.setMobile(999888555);
+		
+																		udto2.setPoliceParent(pdto);
+																		
+																		
+																		
+																		UserDTO udto3=new UserDTO();
+																		
+																		udto3.setUid(503);
+																			
+																		udto3.setName("Aman");
+		
+																		udto3.setEmail("aman@gmail.com");
+																		
+																		udto3.setAddress("Ujjain");
+																		
+																		udto3.setMobile(999777444);
+		
+																		udto3.setPoliceParent(pdto);
+
+				
+				sess.save(udto1);
+				
+				sess.save(udto2);
+				
+				sess.save(udto3);
+				
+				
+				Transaction ts=sess.beginTransaction();
+				
+				ts.commit();
+				
+				System.out.println("Inserted Successfully");
+																		
+														
+				sess.close();
+				
+				sf.close();
+				
+																		
+	}
+	
+	
+
+	public static void main(String[] args) throws Exception
+	{
+	
+		InsertALL();
+		
+		
+	}
+	
+	
+	
+}

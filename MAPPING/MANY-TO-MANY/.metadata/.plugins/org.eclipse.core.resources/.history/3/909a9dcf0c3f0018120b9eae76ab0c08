@@ -1,0 +1,47 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="ManufacturerDTO" table="productmanufacturer">
+
+
+<id name="mid" column="M_ID">
+
+</id>
+
+
+<property name="name" column="NAME"></property>
+
+
+<property name="email" column="EMAIL"></property>
+
+
+<property name="address" column="ADDRESS"></property>
+
+
+<property name="licenceno" column="LICENCE_NO"></property>
+
+
+<property name="validity" column="VALIDITY"></property>
+
+
+
+<set name="ProductParent" cascade="all">
+
+
+<key column="MAN_ID"></key>
+
+
+<many-to-many class="ProductDTO" column="PRODUCT_ID"></one-to-many>
+
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>

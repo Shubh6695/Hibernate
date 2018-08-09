@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer studentid, mobile; 
+
+	private String fname, lname, address ;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDTO" table="SchoolStudentDetail">
+
+
+<id name="studentid" column="S_ID">
+
+
+</id>
+
+
+</class>
+
+</hibernate-mapping>
+	

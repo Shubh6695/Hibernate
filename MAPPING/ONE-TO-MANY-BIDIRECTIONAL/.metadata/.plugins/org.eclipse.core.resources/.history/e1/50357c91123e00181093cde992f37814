@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-configuration-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="VendorCustomers">
+
+<id name="customerid" column="CUSTOMER_ID">
+
+</id>
+
+
+
+<property name="customername" column="CUSTOMER_NAME"></property>
+
+
+
+<!-- these V_ID set by the Primary Key of the VendorDTO.class (Set)  -->
+
+<property name="vid" column="V_ID" insert="false"></property>
+
+
+
+</class>
+
+</hibernate-mapping>

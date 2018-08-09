@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer uid, uage, umobile;
+	
+	private String uname, uemail;
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="userDTO" table="GadgetUser">
+
+
+<id name="uid" column="U_ID">
+
+</id>
+
+
+<property name="uname" column="U_NAME"></property>
+
+
+<property name="uemail" column="U_EMAIL"></property>
+
+
+<property name="uage" column="U_AGE"></property>
+
+
+
+</class>
+
+</hibernate-mapping>

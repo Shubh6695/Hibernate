@@ -1,0 +1,14 @@
+package co.in.pp;
+
+public class DepartmentDTO 
+{
+
+	private Integer departmentid;
+	
+	private String departmentname;
+
+	
+	
+	
+	
+}

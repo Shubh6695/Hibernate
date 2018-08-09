@@ -1,0 +1,304 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+	
+	public static void Insert_ONE_TO_MANY() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		ProductDTO pdto=new ProductDTO();
+		
+		pdto.setPid(501);
+		
+		pdto.setPname("Laptop");
+		
+		
+		
+														ManufacturerDTO mdto1=new ManufacturerDTO();
+														
+														mdto1.setMid(601);
+		
+														mdto1.setName("DELL");
+		
+														mdto1.setEmail("dell@gmail.com");
+														
+														mdto1.setAddress("India");
+														
+														mdto1.setLicenceno(101010);
+														
+														mdto1.setValidity(2020);
+		
+														mdto1.setProductParent(pdto);
+		
+
+														
+														ManufacturerDTO mdto2=new ManufacturerDTO();
+														
+														mdto2.setMid(602);
+		
+														mdto2.setName("APPLE");
+		
+														mdto2.setEmail("apple@gmail.com");
+														
+														mdto2.setAddress("America");
+														
+														mdto2.setLicenceno(102030);
+														
+														mdto2.setValidity(2025);
+		
+														mdto2.setProductParent(pdto);
+
+														
+														
+														
+														ManufacturerDTO mdto3=new ManufacturerDTO();
+														
+														mdto3.setMid(603);
+		
+														mdto3.setName("HP");
+		
+														mdto3.setEmail("hp@gmail.com");
+														
+														mdto3.setAddress("China");
+														
+														mdto3.setLicenceno(101020);
+														
+														mdto3.setValidity(2022);
+		
+														mdto3.setProductParent(pdto);
+
+														
+				Set s=new HashSet();
+				
+				s.add(mdto1);
+				
+				s.add(mdto2);
+				
+				s.add(mdto3);
+				
+														
+			pdto.setManufacturerChild(s);											
+										
+			
+			
+			sess.save(pdto);
+			
+			
+			Transaction ts=sess.beginTransaction();
+			
+			ts.commit();
+			
+			
+			System.out.println("Insert Successfully");
+			
+			
+			sess.close();
+			
+			sf.close();
+			
+			
+			
+	}
+	
+	
+	public static void Insert_MANY_TO_ONE() throws Exception
+	{
+		
+	SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		ProductDTO pdto=new ProductDTO();
+		
+		pdto.setPid(502);
+		
+		pdto.setPname("Mobile");
+		
+		
+		
+														ManufacturerDTO mdto1=new ManufacturerDTO();
+														
+														mdto1.setMid(604);
+		
+														mdto1.setName("HTC");
+		
+														mdto1.setEmail("htc@gmail.com");
+														
+														mdto1.setAddress("Taiwan");
+														
+														mdto1.setLicenceno(202020);
+														
+														mdto1.setValidity(2050);
+		
+														mdto1.setProductParent(pdto);
+		
+
+														
+														ManufacturerDTO mdto2=new ManufacturerDTO();
+														
+														mdto2.setMid(605);
+		
+														mdto2.setName("MOTO");
+		
+														mdto2.setEmail("moto@gmail.com");
+														
+														mdto2.setAddress("India");
+														
+														mdto2.setLicenceno(203040);
+														
+														mdto2.setValidity(2025);
+		
+														mdto2.setProductParent(pdto);
+
+														
+														
+														
+														ManufacturerDTO mdto3=new ManufacturerDTO();
+														
+														mdto3.setMid(606);
+		
+														mdto3.setName("SONY");
+		
+														mdto3.setEmail("sony@gmail.com");
+														
+														mdto3.setAddress("Japan");
+														
+														mdto3.setLicenceno(203020);
+														
+														mdto3.setValidity(2030);
+		
+														mdto3.setProductParent(pdto);
+
+					
+				sess.save(mdto1);
+				
+				sess.save(mdto2);
+				
+				sess.save(mdto3);
+				
+				
+				Transaction ts=sess.beginTransaction();
+														
+				ts.commit();
+				
+				
+				System.out.println("Insert Successfully ");
+				
+				sess.close();
+				
+				sf.close();
+				
+	}
+	
+	
+	
+	public static void Get_ALL_MANY_TO_ONE() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from ManufacturerDTO");
+		
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+		
+			ManufacturerDTO mdto=(ManufacturerDTO) itr.next();
+			
+			
+			System.out.println(mdto.getProductParent().getPid()+"\t"+mdto.getProductParent().getPname());
+			
+			System.out.println();
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void Get_ALL_Child_MANY_TO_ONE() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from ManufacturerDTO");
+		
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+		
+			ManufacturerDTO mdto=(ManufacturerDTO) itr.next();
+			
+			
+			System.out.println(mdto.getMid()+"\t"+mdto.getName()+"\t"+mdto.getEmail()+"\t"+mdto.getAddress()+"\t"+mdto.getLicenceno()+"\t"+mdto.getValidity()+"\t"+mdto.getProductParent().getPid()+"\t"+mdto.getProductParent().getPname());
+			
+			System.out.println();
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	Insert_ONE_TO_MANY();
+		
+	//	Insert_MANY_TO_ONE();
+		
+		
+	//	Get_ALL_Parent_MANY_TO_ONE();
+		
+	//	Get_ALL_Child_MANY_TO_ONE();
+		
+		
+		
+		
+	}
+	
+	
+
+}

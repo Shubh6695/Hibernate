@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="OrderDTO" table="BookOrder">
+
+
+<id name="orderid" column="ORDER_ID">
+
+</id>
+
+
+<property name="description" column="DESCRIPTION"></property>
+
+
+
+
+
+</class>
+
+</hibernate-mapping>
+

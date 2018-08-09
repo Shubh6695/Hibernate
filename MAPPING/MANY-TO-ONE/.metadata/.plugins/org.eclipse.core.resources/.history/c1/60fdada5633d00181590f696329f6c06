@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer doctorid, mobile;
+
+	private String dname, specialistIn, email, address;
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="DoctorDTO" table="CHLDoctor">
+
+<id name="doctorid" column="DOCTOR_ID">
+
+</id>
+
+
+
+<property name="dname" column="DOCTOR_NAME"></property>
+
+
+<property name="email" column="DOCTOR_EMAIL"></property>
+
+
+<property name="address" column="ADDRESS"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+</class>
+
+</hibernate-mapping>

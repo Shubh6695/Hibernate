@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer songid;
+	
+	private String songname, songmovie;
+	
+	private Float songlength;
+
+private SingerDTO SingerParent;
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="SongsDTO" table="SongInfo">
+
+
+<id name="songid" column="SONG_ID">
+
+</id>
+
+
+<property name="songname" column="SONG_NAME"></property>
+
+
+<property name="songmovie" column="SONG_MOVIE"></property>
+
+
+
+
+
+</class>
+
+</hibernate-mapping> 

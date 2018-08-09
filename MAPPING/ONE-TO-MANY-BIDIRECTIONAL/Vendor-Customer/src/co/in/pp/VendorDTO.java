@@ -1,0 +1,47 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class VendorDTO 
+{
+
+	
+	 private Integer vendorid;
+	 
+	 private String vendorname;
+	 
+	 
+	 private Set vendorChild;
+
+
+	public Integer getVendorid() {
+		return vendorid;
+	}
+
+
+	public void setVendorid(Integer vendorid) {
+		this.vendorid = vendorid;
+	}
+
+
+	public String getVendorname() {
+		return vendorname;
+	}
+
+
+	public void setVendorname(String vendorname) {
+		this.vendorname = vendorname;
+	}
+
+
+	public Set getVendorChild() {
+		return vendorChild;
+	}
+
+
+	public void setVendorChild(Set vendorChild) {
+		this.vendorChild = vendorChild;
+	}
+	
+	
+}

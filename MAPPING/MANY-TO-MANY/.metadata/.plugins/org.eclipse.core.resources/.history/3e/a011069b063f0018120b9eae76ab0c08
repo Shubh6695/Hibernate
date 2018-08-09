@@ -1,0 +1,17 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class ManufacturerDTO 
+{
+
+	
+	private Integer mid, licenceno, validity;
+	
+	private String name, email, address;
+	
+	private Set 
+	
+	
+	
+}

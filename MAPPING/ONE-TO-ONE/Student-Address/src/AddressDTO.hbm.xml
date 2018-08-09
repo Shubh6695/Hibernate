@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.DTO">
+
+<class name="AddressDTO" table="InfoAddress">
+
+
+<id name="aid" column="A_ID">
+
+
+</id>
+
+
+<property name="city" column="CITY"></property>
+
+
+<property name="state" column="STATE"></property>
+
+
+<property name="country" column="COUNTRY"></property>
+
+
+<property name="pincode" column="PINCODE"></property>
+
+
+</class>
+
+
+</hibernate-mapping>

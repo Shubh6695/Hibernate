@@ -1,0 +1,52 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void getALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from UserDTO");
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		getALL();
+		
+	}
+	
+	
+	
+}

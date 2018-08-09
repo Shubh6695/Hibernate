@@ -1,0 +1,28 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="sportteam")
+
+public class TeamDTO 
+{
+
+	@Id
+	@Column(name="TEAM_ID")
+	private Integer teamid;
+	
+	
+	@Column(name="TEAM_NAME")
+	private String teamname;
+	
+	
+	@Column(name="TEAM_COUNTRY")
+	private String teamcountry;
+	
+	@Column(name="TEAM_SPORT")
+	private String teamsport;
+	
+	
+}

@@ -1,0 +1,36 @@
+package co.in.pp;
+
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void insertALL() throws Exception
+	{
+		
+		
+		Configuration cfg=new Configuration().configure();
+		
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		insertALL();
+		
+		
+	}
+	
+	
+}

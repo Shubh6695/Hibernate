@@ -1,0 +1,13 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class BookDTO 
+{
+
+	private Integer bookid, bookisbn, bookpublicationyear ,aid;
+	
+	private String booktitle;
+	
+	
+}

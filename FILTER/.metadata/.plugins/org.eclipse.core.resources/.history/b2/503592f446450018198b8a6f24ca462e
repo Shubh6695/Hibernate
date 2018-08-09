@@ -1,0 +1,47 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDemo" table="studentinfo">
+
+
+<id name="sid" column="S_ID">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="email" column="EMAIL"></property>
+
+
+<property name="age" column="AGE"></property>
+
+
+<property name="mobile" column="MOBILE"></property>
+
+
+
+<filter name="likecondition" condition="FIRST_NAME like: '%n%' "></filter>
+
+
+</class>
+
+<filter-def  name="likecondition">
+
+
+</filter-def>
+
+
+
+</hibernate-mapping>

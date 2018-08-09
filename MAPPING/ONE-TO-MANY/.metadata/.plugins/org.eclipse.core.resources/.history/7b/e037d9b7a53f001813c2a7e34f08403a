@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="UserDTO" table="GadgetInfo">
+
+
+<id name="uid" column="U_ID">
+
+
+</id>
+
+
+<property name="uname" column="U_NAME"></property>
+
+
+<property name="uemail" column="U_EMAIL"></property>
+
+
+<property name="uage" column="U_AGE"></property>
+
+
+<property name="umobile" column="U_MOBILE"></property>
+
+
+
+
+
+<set name="GadgetChild" cascade="all">
+
+
+<key column="USER_ID"></key>
+
+
+<one-to-many class="GadgetDTO"></one-to-many>
+
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>	
+	

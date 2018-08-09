@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer complainid;
+	
+	private String complaindetail, complaintype, complainstatus;
+
+	private CustomerDTO CustomerParent;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="ComplainDTO" table="FeedbackComplainDTO">
+
+
+<id name="complainid" column="COMPLAIN_ID">
+
+
+</id>
+
+
+
+<property name="complaindeatil" column="COMPLAIN_DETAIL"></property>
+
+
+
+
+
+</class>
+
+</hibernate-mapping>	
+	

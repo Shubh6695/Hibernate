@@ -1,0 +1,15 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class CustomerDTO 
+{
+
+	private Integer customerid;
+	
+	private String customername;
+	
+	private Set VendorParent;
+	
+	
+}

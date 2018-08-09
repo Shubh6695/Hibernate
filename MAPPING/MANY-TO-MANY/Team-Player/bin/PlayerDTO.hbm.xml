@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="PlayerDTO" table="SportPlayer">
+
+<id name="pid" column="P_ID">
+
+</id>
+
+
+<property name="pname" column="P_NAME"></property>
+
+
+<property name="pemail" column="P_EMAIL"></property>
+
+
+<property name="paddress" column="P_ADDRESS"></property>
+
+
+<property name="page" column="P_AGE"></property>
+
+
+<property name="pmobile" column="P_MOBILE"></property>
+
+
+
+<set name="TeamParent" cascade="all" table="SportRelation">
+
+
+<key column="PLAYER_ID"></key>
+
+
+<many-to-many class="TeamDTO" column="TEAM_ID"></many-to-many>
+
+
+</set>
+
+
+</class>
+
+
+</hibernate-mapping>

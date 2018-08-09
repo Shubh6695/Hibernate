@@ -1,0 +1,14 @@
+package co.in.pp;
+
+public class EmployeeDTO {
+
+	private int id, pincode;
+	private String fname, lname, address;
+	
+	private long mobile;
+
+	
+	
+	
+	
+}

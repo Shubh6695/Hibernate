@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer sid, smobile, sage, courseid;
+	
+	private String sfname, slname, semail;
+
+	
+<hibernate-mapping package="co.in.DTO">
+
+<class name="StudentDTO" table="combine3student">
+
+<id name="sid" column="S_ID">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+<property name="sfname" coliumn="S_F_NAME"></property>
+
+
+<property name="slname" column="S_L_NAME"></property>
+
+
+
+</class>
+
+</hibernate-mapping>	

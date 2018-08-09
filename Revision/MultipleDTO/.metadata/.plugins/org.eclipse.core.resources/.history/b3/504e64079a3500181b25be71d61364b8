@@ -1,0 +1,25 @@
+package co.in.dto;
+
+public class CustomerDTO
+{
+
+	
+	private int customerid;
+	
+	private String customername; 
+	
+	private int foreignEID;
+	
+	
+	public int getCustomerId()
+	{
+		return customerid;
+	}
+	
+			public void setCustomerId(int customerid)
+			{
+				
+			}
+	
+	
+}

@@ -1,0 +1,14 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class BankDTO 
+{
+
+	
+	private Integer bankid, bankcontact;
+	
+	private String bankname, bankemail, bankaddress;
+
+	
+}

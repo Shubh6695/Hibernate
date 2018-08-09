@@ -1,0 +1,55 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer bookid, bookisbn, bookpublicationyear ,aid;
+	
+	private String booktitle, bookcategory;
+	
+	private Set CustomerChild;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="BookDTO" table="Combine1Book">
+
+
+<id name="bookid" column="BOOK_ID">
+
+	<generator class="class"></generator>
+
+</id>
+
+
+<property name="bookisbn" column="BOOK_ISBN"></property>
+
+
+<property name="booktitle" column="BOOK_TITLE"></property>
+
+
+<property name="bookcategory" column="BOOK_CATEGORY"></property>
+
+
+<property name="bookpublicationyear" column="BOOK_PUBLICATION_YEAR"></property>
+
+
+<property name="aid" column="A_ID"></property>
+
+
+
+<set name="CustomerChild" cascade="all">
+
+
+	<key column="B_ID"></key>
+
+
+	<one-to-many 
+
+
+</set>
+
+
+</class>
+
+</hibernate-mapping>	

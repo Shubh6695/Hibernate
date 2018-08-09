@@ -1,0 +1,55 @@
+package co.in.pp;
+
+public class Test {
+
+	
+	public static void MultipleDTOFileTest() throws Exception
+	{
+	
+		
+		StudentDTO stu=new StudentDTO();
+		
+		ResultDTO res=new ResultDTO();
+		
+		
+				stu.setFname("Shubham");
+		
+				stu.setLname("Tale");
+		
+				stu.setPhysics(50);
+		
+				stu.setChemistry(50);
+		
+				stu.setMaths(50);
+		
+		
+		
+		int Total=stu.getPhysics()+ stu.getChemistry()+ stu.getMaths();		
+				
+		float avg=(Total)/3;		
+		
+		System.out.println("Total is :--- "+Total+ " and Average is :--"+avg );
+		
+				
+				res.setRollno(stu.getRollno());
+				
+				res.setFname(stu.getFname());
+		
+				res.setLname(stu.getLname());
+				
+				res.setTotal(Total);
+				
+				res.setAverage(avg);
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception 
+	
+	{
+		
+		MultipleDTOFileTest();
+
+	}
+
+}

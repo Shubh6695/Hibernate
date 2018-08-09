@@ -1,0 +1,18 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class CustomerDTO 
+{
+
+	private Integer customerid, mobile;
+	
+	private String fname, lname, email, address;
+
+	private Set BankParent;
+	
+	
+	
+	
+	
+}

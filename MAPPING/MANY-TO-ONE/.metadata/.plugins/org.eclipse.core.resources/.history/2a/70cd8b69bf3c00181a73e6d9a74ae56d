@@ -1,0 +1,46 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		DepartmentDTO ddto=new DepartmentDTO();
+		
+		ddto.setDepartmentid(101);
+		
+		ddto.setDepartmentname("Developing");
+		
+		
+		
+		
+									EmployeeDTO edto1=new EmployeeDTO(); 
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+	
+
+}

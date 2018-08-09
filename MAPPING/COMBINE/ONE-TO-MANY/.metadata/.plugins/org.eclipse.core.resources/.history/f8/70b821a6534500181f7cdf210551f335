@@ -1,0 +1,52 @@
+package co.in.DTO;
+
+public class CollegeDTO 
+{
+
+	private Integer cid, ccontact;
+	
+	private String cname, cemail, cgrade;
+
+	
+	
+	public Integer getCid() {
+		return cid;
+	}
+
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
+
+	public Integer getCcontact() {
+		return ccontact;
+	}
+
+	public void setCcontact(Integer ccontact) {
+		this.ccontact = ccontact;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getCemail() {
+		return cemail;
+	}
+
+	public void setCemail(String cemail) {
+		this.cemail = cemail;
+	}
+
+	public String getCgrade() {
+		return cgrade;
+	}
+
+	public void setCgrade(String cgrade) {
+		this.cgrade = cgrade;
+	}
+	
+}

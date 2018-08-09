@@ -1,0 +1,14 @@
+package co.in.DTO;
+
+import java.util.*;
+
+public class UniversityDTO 
+{
+
+	private Integer uid, ucontact;
+	
+	private String uname, uemail ,ucode;
+	
+	
+	
+}

@@ -1,0 +1,50 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="productdetail")
+
+
+public class ProductDTO 
+{
+
+	private Integer pid;
+	
+	private String pname;
+	
+	private Set manufacturerChild;
+
+	
+	
+	@Column(name="P_ID")
+	
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public Set getManufacturerChild() {
+		return manufacturerChild;
+	}
+
+	public void setManufacturerChild(Set manufacturerChild) {
+		this.manufacturerChild = manufacturerChild;
+	}
+	
+	
+	
+}

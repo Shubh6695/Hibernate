@@ -1,0 +1,16 @@
+package co.in.pp;
+
+public class CustomerDTO 
+{
+
+	private Integer customerid, mobile;
+	
+	private String fname, lname, email, address;
+	
+	
+	
+	
+	
+	
+	
+}

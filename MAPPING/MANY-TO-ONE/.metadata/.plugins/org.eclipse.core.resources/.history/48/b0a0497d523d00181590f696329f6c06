@@ -1,0 +1,14 @@
+package co.in.pp;
+
+public class CustomerDTO 
+{
+
+	private Integer cid, mobile;
+	
+	private String name, email, address;
+
+	
+
+	
+	
+}

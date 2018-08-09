@@ -1,0 +1,91 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+@Table(name="productmanufacturer")
+
+
+public class ManufacturerDTO 
+{
+
+	@Id
+	@Column(name="M_ID")
+	private Integer mid;
+	
+	
+	@Column(name="M_NAME")
+	private String mname;
+	
+	
+	@Column(name="M_ADDRESS")
+	private String maddress;
+	
+	
+	@Column(name="M_CONTACT")
+	private Integer mcontact;
+	
+	
+	private Set productParent;
+
+	
+
+	
+	@ManyToMany(targetEntity = ProductDTO.class, mappedBy = "manufacturerChild")
+	
+	
+	
+
+	public Integer getMid() {
+		return mid;
+	}
+
+
+	public void setMid(Integer mid) {
+		this.mid = mid;
+	}
+
+
+	public String getMname() {
+		return mname;
+	}
+
+
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+
+
+	public String getMaddress() {
+		return maddress;
+	}
+
+
+	public void setMaddress(String maddress) {
+		this.maddress = maddress;
+	}
+
+
+	public Integer getMcontact() {
+		return mcontact;
+	}
+
+
+	public void setMcontact(Integer mcontact) {
+		this.mcontact = mcontact;
+	}
+
+
+	public Set getProductParent() {
+		return productParent;
+	}
+
+
+	public void setProductParent(Set productParent) {
+		this.productParent = productParent;
+	}
+	
+	
+	
+}

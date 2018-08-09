@@ -1,0 +1,47 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="HusbandDTO" table="Combine1Husband">
+
+
+<id name="hid" column="H_ID">
+
+	<generator class="foreign">
+	
+		<param name="property">wife</param>
+	
+	</generator>
+
+</id>
+
+
+<property name="hname" column="H_NAME"></property>
+
+
+<property name="hgender" column="H_GENDER"></property>
+
+
+<property name="hoccupation" column="H_OCCUPATION"></property>
+
+
+<property name="hage" column="H_AGE"></property>
+
+
+<property name="hmobile" column="H_MOBILE"></property>
+
+
+
+<one-to-one name="wife" class="WifeDTO" cascade="all"></one-to-one>
+
+
+
+</class>
+
+
+</hibernate-mapping>

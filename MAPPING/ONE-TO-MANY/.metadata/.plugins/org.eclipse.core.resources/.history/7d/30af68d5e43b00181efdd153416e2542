@@ -1,0 +1,22 @@
+package co.in.pp;
+
+import  java.util.*;
+
+public class MovieDTO
+{
+
+	private Integer movieid, releaseyear;
+	
+	private String moviename, movietype;
+	
+	private Float movielength;
+	
+	
+	private Set MovieChild;
+	
+	
+	
+	
+	
+	
+}

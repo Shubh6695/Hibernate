@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="SongsDTO" table="">
+
+
+<id name="songid" column="SONG_ID">
+
+</id>
+
+
+<property name="songname" column="SONG_NAME"></property>
+
+
+<property name="songmovie" column="SONG_MOVIE"></property>
+
+
+<property name="songlength" column="SONG_LENGTH"></property>
+
+
+
+<set name="SingerParent" cascade="all" table="SongRelatoionship">
+
+
+<key column="SONG_ID"></key>
+
+
+<many-to-many class="SingerDTO" column="SINGER_ID"></many-to-many>
+
+
+</set>
+
+
+</class>
+
+</hibernate-mapping> 	

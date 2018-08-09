@@ -1,0 +1,14 @@
+package co.in.pp;
+
+public class UserDTO 
+{
+
+	private Integer uid;
+	
+	private String uname, fname, lname, gender;
+	
+	
+	
+	
+	
+}

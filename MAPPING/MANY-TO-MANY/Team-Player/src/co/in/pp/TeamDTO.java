@@ -1,0 +1,56 @@
+package co.in.pp;
+
+import java.util.*;
+
+
+public class TeamDTO
+{
+
+	private Integer teamid;
+	
+	private String teamname, teamcountry, teamsport;
+	
+	private Set PlayerChild;
+
+	public Integer getTeamid() {
+		return teamid;
+	}
+
+	public void setTeamid(Integer teamid) {
+		this.teamid = teamid;
+	}
+
+	public String getTeamname() {
+		return teamname;
+	}
+
+	public void setTeamname(String teamname) {
+		this.teamname = teamname;
+	}
+
+	public String getTeamcountry() {
+		return teamcountry;
+	}
+
+	public void setTeamcountry(String teamcountry) {
+		this.teamcountry = teamcountry;
+	}
+
+	public String getTeamsport() {
+		return teamsport;
+	}
+
+	public void setTeamsport(String teamsport) {
+		this.teamsport = teamsport;
+	}
+
+	public Set getPlayerChild() {
+		return PlayerChild;
+	}
+
+	public void setPlayerChild(Set playerChild) {
+		PlayerChild = playerChild;
+	}
+
+	
+}

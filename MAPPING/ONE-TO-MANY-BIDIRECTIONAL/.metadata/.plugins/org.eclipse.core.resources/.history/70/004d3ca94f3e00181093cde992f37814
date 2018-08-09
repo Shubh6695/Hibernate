@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer carid, purchaseyear; 
+	
+	private String brand, model ,color;
+
+	private OwnerDTO OwnerParent;
+
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CarDTO" table="SpeedCar">
+
+
+<id name="carid" column="CAR_ID">
+
+</id>
+
+
+<property name="brand" column="CAR_BRAND"></property>
+
+
+<property name="model" column="CAR_MODEL"></property>
+
+
+<property name="color" column="CAR_COLOR"></property>
+
+
+</class>
+
+
+</hibernate-mapping>

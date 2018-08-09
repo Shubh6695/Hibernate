@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDTO" table="">
+
+<id name=""></id>
+
+</class>
+
+
+
+<class name="" table="">
+
+
+
+
+</class>
+
+
+</hibernate-mapping>

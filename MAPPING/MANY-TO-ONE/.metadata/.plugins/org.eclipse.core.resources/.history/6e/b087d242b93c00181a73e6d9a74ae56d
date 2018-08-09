@@ -1,0 +1,311 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		
+		TeamDTO tdto1=new TeamDTO();
+		
+		tdto1.setTeamid(1001);
+		
+		tdto1.setTeamname("Mumbai Indians");
+		
+		tdto1.setTeamcountry("India");
+		
+		tdto1.setTeamsport("Cricket");
+		
+		
+											PlayerDTO pdto1=new PlayerDTO();
+											
+											pdto1.setPid(5001);
+		
+											pdto1.setPname("Rohit Sharma");
+		
+											pdto1.setPemail("rohit@gmail.com");
+											
+											pdto1.setPaddress("Mumbai");
+											
+											pdto1.setPmobile(999988888);
+											
+											pdto1.setPage(30);	
+		
+											pdto1.setTeamParent(tdto1);
+											
+											
+						
+											PlayerDTO pdto2=new PlayerDTO();
+											
+											
+											pdto2.setPid(5002);
+											
+											pdto2.setPname("Hardik Pandya");
+		
+											pdto2.setPemail("hardik@gmail.com");
+											
+											pdto2.setPaddress("Baroda");
+											
+											pdto2.setPmobile(999977777);
+											
+											pdto2.setPage(27);	
+		
+											pdto2.setTeamParent(tdto1);
+	
+											
+											PlayerDTO pdto3=new PlayerDTO();
+											
+											pdto3.setPid(5003);
+											
+											pdto3.setPname("Chirs Rabada");
+				
+											pdto3.setPemail("chris@gmail.com");
+											
+											pdto3.setPaddress("OVEL");
+											
+											pdto3.setPmobile(999933333);
+											
+											pdto3.setPage(32);
+												
+											pdto3.setTeamParent(tdto1);
+
+											
+											
+											
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(pdto1);
+		
+		sess.save(pdto2);
+		
+		sess.save(pdto3);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+											
+	}
+	
+
+	public static void DeleteALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		Query q1=sess.createQuery("from PlayerDTO"); 	
+		
+		
+		List rows=q1.list();
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+				PlayerDTO pdto=(PlayerDTO) itr.next();
+			
+				
+				System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+				
+				System.out.println();
+				
+				
+				sess.delete(pdto);
+			
+				
+			}
+		
+
+				
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		
+		System.out.println("Deleted Successfully");
+
+	
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	public static void GetPlayerList() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession(); 
+		
+		
+		Query q1=sess.createQuery("from PlayerDTO");
+		
+		
+		List rows=q1.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			PlayerDTO pdto=(PlayerDTO) itr.next();
+		
+			
+			System.out.println("Player details");
+			
+			System.out.println(pdto.getPid()+"\t"+pdto.getPname()+"\t"+pdto.getPemail()+"\t"+pdto.getPaddress()+"\t"+pdto.getPmobile()+"\t"+pdto.getPage());
+			
+			System.out.println();
+
+			
+			System.out.println("Team Details");
+			
+			
+			System.out.println(pdto.getTeamParent().getTeamid()+"\t"+pdto.getTeamParent().getTeamname()+"\t"+pdto.getTeamParent().getTeamcountry()+"\t"+pdto.getTeamParent().getTeamsport());
+			
+			System.out.println();
+			
+		}
+		
+		sess.close();
+		
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void InsertChildOnly(int TID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from PlayerDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+		
+			
+			
+			
+			PlayerDTO pdto=(PlayerDTO) itr.next();
+			
+			
+			
+			if(pdto.getTeamParent().getTeamid() == TID)
+			
+			{
+			System.out.println("Team Details");
+			
+			
+			System.out.println(pdto.getTeamParent().getTeamid()+"\t"+pdto.getTeamParent().getTeamname()+"\t"+pdto.getTeamParent().getTeamcountry()+"\t"+pdto.getTeamParent().getTeamsport());
+			
+			System.out.println();
+			
+			
+			TeamDTO tdto=(TeamDTO) sess.get(TeamDTO.class, TID);
+			
+			
+			
+			pdto.setPid(5004);
+			
+			pdto.setPname("Sachin Tendulkar");
+
+			pdto.setPemail("sachin@gmail.com");
+			
+			pdto.setPaddress("Mumbai");
+			
+			pdto.setPmobile(999900000);
+			
+			pdto.setPage(36);	
+
+			pdto.setTeamParent(tdto);
+
+			
+			
+		sess.save(pdto);
+		
+		Transaction ts=sess.beginTransaction();
+			
+		ts.commit();
+		
+		
+		System.out.println("Inserted Successfully");
+		
+		
+		
+		break;		
+			}
+			
+			else
+			{
+				System.out.println("Error");
+			}
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	//	DeleteALL();
+		
+	//	GetPlayerList();
+		
+	//	InsertChildOnly(1001);
+		
+		
+	}
+	
+
+}

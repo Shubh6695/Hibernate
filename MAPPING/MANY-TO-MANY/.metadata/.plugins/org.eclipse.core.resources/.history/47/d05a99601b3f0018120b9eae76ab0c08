@@ -1,0 +1,141 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	
+	public static void Insert_ONE_TO_MANY() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		ParentDTO p1=new ParentDTO();
+		
+		p1.setPid(101);
+		
+		p1.setPname("Vijay");
+		
+		p1.setPgender("Male");
+		
+		p1.setPage(52);
+		
+		p1.setPmobile(999666333);
+		
+		
+
+		ParentDTO p2=new ParentDTO();
+		
+		p2.setPid(102);
+		
+		p2.setPname("Sadhana");
+		
+		p2.setPgender("Female");
+		
+		p2.setPage(52);
+		
+		p2.setPmobile(999666444);
+	
+		
+		
+		
+		
+																	ChildrenDTO c1=new ChildrenDTO();
+																	
+																	c1.setCid(501);
+																	
+																	c1.setName("Shubham");
+		
+																	c1.setEmail("shubham@gmail.com");
+		
+																	c1.setAge(24);
+																	
+																	c1.setYearofbirth(1994);
+																
+																	
+																	ChildrenDTO c2=new ChildrenDTO();
+																	
+																	c2.setCid(502);
+																	
+																	c2.setName("Hitansh");
+		
+																	c2.setEmail("hitansh@gmail.com");
+		
+																	c2.setAge(18);
+																	
+																	c2.setYearofbirth(1999);
+																
+
+																	
+				Set s=new HashSet();													
+	
+				s.add(c1);
+				
+				s.add(c2);
+				
+				
+				p1.setChildrenInfo(s);
+				
+				p2.setChildrenInfo(s);
+				
+				
+				Transaction ts=sess.beginTransaction();
+				
+				sess.save(p1);
+				
+				sess.save(p2);
+				
+				ts.commit();
+				
+				
+				System.out.println("Insert Successfully"); 
+		
+				sess.close();
+				
+				sf.close();
+				
+	}
+	
+	
+	public static void Update_CHILD_ONE_TO_MANY(int CID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from ParentDTO");
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		Insert_ONE_TO_MANY();
+		
+		Update_CHILD_ONE_TO_MANY();
+		
+		
+	}
+	
+	
+	
+	
+}

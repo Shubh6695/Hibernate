@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer mid;
+	
+	private String mname;
+	
+	
+	private Set CustomerChild;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="ManufacturerDTO" table="ProductManufacturer">
+
+
+<id name="mid" column="M_ID">
+
+	<generator class="assigned"></generator>
+
+</id>
+
+
+
+</class>
+
+
+</hibernate-mapping>	

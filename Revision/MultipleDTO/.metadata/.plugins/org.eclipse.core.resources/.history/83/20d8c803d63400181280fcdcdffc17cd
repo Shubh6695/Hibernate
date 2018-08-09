@@ -1,0 +1,23 @@
+package co.in.pp;
+
+import java.util.*;
+
+
+public class CombineTable {
+
+	
+	
+	public static void COMBINE() throws Exception 
+	{
+		
+	}
+	
+	
+	public static void main(String[] args) throws  Exception
+	{
+		
+		COMBINE();
+		
+	}
+
+}

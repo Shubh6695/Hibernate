@@ -1,0 +1,13 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class ParentDTO 
+{
+
+	private Integer pid, page;
+	
+	private String pname, pgender; 
+	
+	
+}

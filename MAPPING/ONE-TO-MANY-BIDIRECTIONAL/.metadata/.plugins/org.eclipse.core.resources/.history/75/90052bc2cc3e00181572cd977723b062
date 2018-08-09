@@ -1,0 +1,16 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class SingerDTO 
+{
+
+	private Integer sid, smobile;
+	
+	private String sname, semail, saddress; 
+
+	private Set 
+	
+	
+	
+}

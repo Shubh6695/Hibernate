@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="ComplainDTO" table="FeedbackComplainDTO">
+
+
+<id name="complainid" column="COMPLAIN_ID">
+
+
+</id>
+
+
+
+<property name="complaindeatil" column="COMPLAIN_DETAIL"></property>
+
+
+<property name="complaintype" column="COMPLAIN_TYPE"></property>
+
+
+<property name="complainstatus" column="COMPLAIN_STATUS"></property>
+
+
+
+
+<!-- many-to-one mapping created foreign key column="CUSTOMER_ID" and Taking Primary Key from CustomerDTO class -->
+
+
+<many-to-one name="CustomerParent" class="CUSTOMERDTO" column="CUSTOMER_ID" cascade="all"></many-to-one>
+
+
+
+</class>
+
+</hibernate-mapping>	
+	

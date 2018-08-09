@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+	private Integer pid, page, pmobile;
+	
+	private String pname, pgender; 
+	
+	private Set ChildrenInfo;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="ParentDTO" table="FamilyParent">
+
+
+<id name="pid" column="P_ID">
+
+</id>
+
+
+<property name="pname" column="P_NAME"></property> 
+
+
+<property name="" column="P_GENDER"></property>
+
+
+
+</class>
+
+
+</hibernate-mapping>	

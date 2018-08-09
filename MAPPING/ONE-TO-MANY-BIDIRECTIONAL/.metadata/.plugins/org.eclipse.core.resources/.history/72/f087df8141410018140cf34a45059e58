@@ -1,0 +1,281 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void Insert_ONE_TO_MANY() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeacherDTO tdto=new TeacherDTO();
+		
+		
+		tdto.setTeacherid(1001);
+		
+		tdto.setTname("Ankit");
+		
+		tdto.setEmail("ankit@gmail.com");
+		
+		tdto.setGender("Male");
+		
+		tdto.setSubject("MATHS");
+		
+		tdto.setMobile(999666333);
+		
+		
+														StudentDTO sdto1=new StudentDTO();
+														
+														sdto1.setStudentid(2001);
+														
+														sdto1.setFname("Shubham");
+														
+														sdto1.setLname("Tale");;
+														
+														sdto1.setAddress("Indore");
+		
+														sdto1.setMobile(100200300);
+														
+														sdto1.setTeacherParent(tdto);
+														
+			
+														
+														StudentDTO sdto2=new StudentDTO();
+														
+														sdto2.setStudentid(2002);
+														
+														sdto2.setFname("Aman");
+														
+														sdto2.setLname("Jain");;
+														
+														sdto2.setAddress("Bhopal");
+		
+														sdto2.setMobile(100100100);
+														
+														sdto2.setTeacherParent(tdto);		
+														
+														
+														
+														StudentDTO sdto3=new StudentDTO();
+														
+														sdto3.setStudentid(2003);
+														
+														sdto3.setFname("Vijay");
+														
+														sdto3.setLname("Patel");;
+														
+														sdto3.setAddress("Mumbai");
+		
+														sdto3.setMobile(100111222);
+														
+														sdto3.setTeacherParent(tdto);
+			
+														
+				Set s=new HashSet();
+				
+				s.add(sdto1);
+				
+				s.add(sdto2);
+				
+				s.add(sdto3);
+				
+				
+				tdto.setStudentChild(s);
+				
+				
+				
+				
+				Transaction ts=sess.beginTransaction();
+				
+				sess.save(tdto);
+				
+				ts.commit();
+				
+				System.out.println("Insert Successfully");
+				
+				
+				sess.close();
+				
+				sf.close();
+				
+														
+														
+		
+	}
+	
+	
+	
+	public static void Insert_MANY_TO_ONE() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		TeacherDTO tdto=new TeacherDTO();
+		
+		
+		tdto.setTeacherid(1002);
+		
+		tdto.setTname("Deepika");
+		
+		tdto.setEmail("deepika@gmail.com");
+		
+		tdto.setGender("Female");
+		
+		tdto.setSubject("Chemistry");
+		
+		tdto.setMobile(999777444);
+		
+		
+														StudentDTO sdto1=new StudentDTO();
+														
+														sdto1.setStudentid(2004);
+														
+														sdto1.setFname("Sunil");
+														
+														sdto1.setLname("Verma");;
+														
+														sdto1.setAddress("Indore");
+		
+														sdto1.setMobile(100400500);
+														
+														sdto1.setTeacherParent(tdto);
+														
+			
+														
+														StudentDTO sdto2=new StudentDTO();
+														
+														sdto2.setStudentid(2005);
+														
+														sdto2.setFname("Naveen");
+														
+														sdto2.setLname("Khapre");;
+														
+														sdto2.setAddress("Hyderabad");
+		
+														sdto2.setMobile(100222111);
+														
+														sdto2.setTeacherParent(tdto);		
+														
+														
+														
+														StudentDTO sdto3=new StudentDTO();
+														
+														sdto3.setStudentid(2006);
+														
+														sdto3.setFname("Shrangesh");
+														
+														sdto3.setLname("Chourey");;
+														
+														sdto3.setAddress("Bhopal");
+		
+														sdto3.setMobile(100333444);
+														
+														sdto3.setTeacherParent(tdto);
+			
+														
+							
+				Transaction ts=sess.beginTransaction();
+				
+				sess.save(sdto1);
+				
+				sess.save(sdto2);
+				
+				sess.save(sdto3);
+				
+				ts.commit();
+				
+				System.out.println("Insert Successfully");
+
+														
+				sess.close();
+				
+				sf.close();
+				
+		
+	}
+	
+	
+	public static void Update_Child_ONE_TO_MANY(int SID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from TeacherDTO");
+		
+		
+		List rows=q.list();
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			StudentDTO sdto=(StudentDTO) sess.get(StudentDTO.class, SID);
+			
+			
+			System.out.println("OLD Detail's ");
+			
+			System.out.println(sdto.getStudentid()+"\t"+sdto.getFname()+"\t"+sdto.getLname()+"\t"+sdto.getAddress()+"\t"+sdto.getMobile()+"\n");
+			
+			
+			
+			sdto.setLname("Sharma");
+			
+			sdto.setAddress("Delhi");
+			
+			
+			
+		}
+		
+		
+		
+		sess.update(q);
+		
+		ts.commit();
+		
+		
+		System.out.println("Update Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	Insert_ONE_TO_MANY();
+		
+		
+	//	Insert_MANY_TO_ONE();
+		
+		
+		Update_Child_ONE_TO_MANY(2002);
+		
+		
+	}
+	
+	
+}

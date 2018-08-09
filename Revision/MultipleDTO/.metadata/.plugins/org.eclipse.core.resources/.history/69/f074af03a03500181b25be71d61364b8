@@ -1,0 +1,36 @@
+package co.in.dto;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test {
+
+	public static void TestInsert() throws Exception
+	{
+		
+		SessionFactory sf= new Configuration().configure().buildSessionFactory();
+		
+		
+		Session s=sf.openSession();
+		
+		
+		VendorDTO v=new VendorDTO();
+		
+		v.setVendorid(101);
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		TestInsert();
+		
+	}
+
+}

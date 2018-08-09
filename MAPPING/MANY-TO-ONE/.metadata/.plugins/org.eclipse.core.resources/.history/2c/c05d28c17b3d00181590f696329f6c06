@@ -1,0 +1,11 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<!-- many-to-one mapping created foreign key column="O_ID" and Taking Primary Key from OwnerDTO class -->
+
+
+	private Integer uid, mobile, pid;
+	
+	private String name, email, address;

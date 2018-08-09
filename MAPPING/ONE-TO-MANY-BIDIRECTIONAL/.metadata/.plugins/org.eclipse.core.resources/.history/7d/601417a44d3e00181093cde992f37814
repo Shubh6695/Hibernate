@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer ownerid, ownermobile;
+	
+	private String ownername, ownergender,  owneremail;
+	
+	
+	private Set CarChild;
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="OwnerDTO" table="SpeedOwner">
+
+
+</class>
+
+</hibernate-mapping>
+

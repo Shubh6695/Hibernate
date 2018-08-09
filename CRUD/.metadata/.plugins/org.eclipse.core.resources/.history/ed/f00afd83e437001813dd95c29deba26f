@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-configuration-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="EmployeeDTO" table="employeedetails">
+
+<id name="id" column="EID">
+
+<generator class="increment"></generator>
+
+</id>
+
+
+<property name="fname" column="FNAME"></property>
+
+
+<property name="lname" column="LNAME"></property>
+
+
+<property name="address" column="ADDRESS"></property>
+
+<property name="pincode" column="PINCODE"></property>
+
+<property name=""></property>
+
+
+</class>
+
+</hibernate-mapping>

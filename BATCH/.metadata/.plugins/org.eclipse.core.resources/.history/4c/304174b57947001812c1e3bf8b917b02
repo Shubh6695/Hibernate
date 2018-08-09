@@ -1,0 +1,12 @@
+package co.in.DTO;
+
+public class AddressDTO 
+{
+
+	
+	private Integer aid, pincode;
+	
+	
+	
+	
+}

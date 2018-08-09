@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer customerid;
+	
+	private String customername, city, state;
+	
+	private UserDTO userParent;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" column="customer">
+
+
+<id name="customerid" column="CUSTOMER_ID">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+
+
+
+
+
+
+</class>
+
+
+</hibernate-mapping>	

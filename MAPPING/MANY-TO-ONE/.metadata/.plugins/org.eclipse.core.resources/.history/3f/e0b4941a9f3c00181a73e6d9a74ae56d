@@ -1,0 +1,592 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory(); 
+		
+		Session sess=sf.openSession();
+		
+		
+		
+		VendorDTO vdto=new VendorDTO();													// Creatring VendorDTO object(Child) 
+		
+		
+		vdto.setVendorid(101);
+		
+		vdto.setVendorname("DELL");
+		
+		
+		
+		
+								CustomerDTO cdto1=new CustomerDTO();					// Creating 1 CustomerDTO object(Parent)
+								
+								cdto1.setCustomerid(201);
+		
+								cdto1.setCustomername("Shubham");
+		
+								cdto1.setParentObject(vdto);							// Adding Parent to Child Object
+								
+		
+		
+								CustomerDTO cdto2=new CustomerDTO();			  		// Creating 2 CustomerDTO object(Parent)
+								
+								cdto2.setCustomerid(202);
+								
+								cdto2.setCustomername("Ankit");
+								
+								cdto2.setParentObject(vdto);							// Adding Parent to Child Object
+								
+								
+								
+								
+								CustomerDTO cdto3=new CustomerDTO();					// Creating 3 CustomerDTO object(Parent)
+								
+								cdto3.setCustomerid(203);
+								
+								cdto3.setCustomername("Aman");
+								
+								cdto3.setParentObject(vdto);							// Adding Parent to Child Object
+								
+								
+								
+																						// Here we are Saving all Child Object's		
+								
+								sess.save(cdto1);						// twist	// Here First Child Object will be Saved with the Parent		
+								
+								
+								sess.save(cdto2);									// Remaining both child Object are only saved
+								
+								sess.save(cdto3);									// Parent is already Saved.
+								
+								
+								
+								
+								Transaction ts=sess.beginTransaction();
+								
+								
+								ts.commit();
+								
+								
+								System.out.println("Record Inserted Successfully");
+					
+								
+		sess.close();
+		
+		sf.close();
+								
+								
+								
+	}
+	
+	
+	public static void InsertOnlyChild() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q1.list();
+		
+
+		Iterator itr=rows.iterator();
+		
+		
+		CustomerDTO cdto;
+		
+		int VID=0;
+		
+		
+		while(itr.hasNext())
+		{
+			
+			cdto=(CustomerDTO) itr.next();
+			
+			VID=cdto.getParentObject().getVendorid();
+			
+			System.out.println("Parent Class VendorDTO ID Sucessfully Get");
+			
+			break;
+			
+		}
+		
+		
+
+		
+		
+		cdto=new CustomerDTO();
+		
+		cdto.setCustomerid(204);
+		
+		cdto.setCustomername("Vijay");
+		
+	//	cdto.setParentObject();
+		
+		
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	public static void GetChildWithParent(int CID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess= sf.openSession();
+		
+		
+		Query q1= sess.createQuery("from CustomerDTO");
+		
+		
+		List rows= q1.list();
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			if(cdto.getCustomerid() == CID)
+			{
+				
+				System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername()+"\t"+cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());
+				
+				break;
+				
+			}
+			
+			else
+			{
+				System.out.println("Customer NOT Found");
+			}
+		}
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void GetALLChildWithParent() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+		
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername()+"\t"+cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());
+			
+			System.out.println();
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	
+	public static void GetChildList(int VID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q1.list();
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername());
+			
+			
+		//	System.out.println(cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());			// (o/p :- 101 DELL )
+			
+			System.out.println();
+			
+			
+		}
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	public static void UpdateChild(int CID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		CustomerDTO cdto=(CustomerDTO) sess.get(CustomerDTO.class, CID);
+		
+		
+		System.out.println("OLD Detail's");
+		
+		
+		System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername()+"\t"+cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());
+		
+		
+		
+		cdto.setCustomername("Naveen");
+		
+		
+		sess.update(cdto);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		ts.commit();
+		
+		
+		System.out.println("Update Successfully");
+
+
+		System.out.println("NEW Detail's");
+		
+		
+		System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername()+"\t"+cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());
+
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+		
+	}
+	
+	
+	
+	public static void UpdateParent(int VID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			if(cdto.getParentObject().getVendorid() == VID)										// Comparing foreign Key with VID
+			{
+				
+				
+				System.out.println("OLD Data");
+				
+				
+				System.out.println(cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());
+				
+				
+				
+				
+				cdto.getParentObject().setVendorname("DELL");													// Set New Vendor Name
+				
+				
+				
+				sess.update(cdto);
+				
+				Transaction ts=sess.beginTransaction();
+				
+				
+				ts.commit();
+				
+				
+				System.out.println("Update Successfully");
+				
+				
+				System.out.println("NEW Data");
+				
+				
+				System.out.println(cdto.getParentObject().getVendorid()+"\t"+cdto.getParentObject().getVendorname());
+				
+				
+				break;
+				
+			}
+			
+			else 
+			{
+				
+				System.out.println("Vendor's ID NOT Found");
+				
+			}
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	public static void UpdateParent1(int VID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			if(cdto.getParentObject().getVendorid() == VID)										// Comparing foreign Key with VID
+			{
+				
+				VendorDTO vdto=(VendorDTO) sess.get(VendorDTO.class, VID);
+				
+				
+				System.out.println("OLD Data");
+				
+				
+				System.out.println(vdto.getVendorid()+"\t"+vdto.getVendorname());
+				
+				
+				
+				vdto.setVendorname("APPLE");												 	// Set New Vendor Name
+				
+				
+				
+				Transaction ts=sess.beginTransaction();
+				
+				
+				sess.update(cdto);
+				
+				
+				ts.commit();
+				
+			
+				System.out.println("Update Successfully");
+				
+
+				System.out.println("NEW Data");
+				
+				
+				System.out.println(vdto.getVendorid()+"\t"+vdto.getVendorname());
+				
+				
+				break;
+				
+			}
+			
+		}	
+		
+		
+		sess.close();
+		
+		sf.close();
+				
+	}
+	
+	public static void DeleteChild(int CID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		CustomerDTO cdto=(CustomerDTO) sess.get(CustomerDTO.class, CID);
+		
+		
+		System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername());
+		
+		
+		
+		sess.delete(cdto);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		ts.commit();
+		
+		
+		System.out.println("Deleted Successfully");
+		
+	
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+
+	
+	
+	public static void DeleteParent(int VID) throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	InsertALL();
+		
+	//	InsertOnlyChild();							// In complete
+		
+		
+	//	GetChildWithParent(201);
+		
+		
+	//	GetALLChildWithParent();
+		
+		
+	//	GetChildList(101);
+		
+		
+	//	UpdateChild(203);
+		
+		
+	//	UpdateParent(101);
+		
+	//	UpdateParent1(101);
+		
+
+	//	DeleteChild(203);						// In complete
+		
+		
+		DeleteParent(101);
+		
+		
+	}
+	
+	
+	
+}

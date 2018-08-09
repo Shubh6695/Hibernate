@@ -1,0 +1,13 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class TrainDTO 
+{
+
+	private Integer tid, tno;
+	
+	private String tname, traintype, tsourcestation, tdestinationstation;
+	
+	
+}

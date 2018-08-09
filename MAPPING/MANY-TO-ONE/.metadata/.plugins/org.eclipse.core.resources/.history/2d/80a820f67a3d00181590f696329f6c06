@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class UserDTO
+{
+
+	private Integer uid, mobile;
+	
+	private String name, email, address;
+
+	private PoliceDTO PoliceParent;
+	
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CarDTO" table="SpeedCar">
+
+
+<id name="carid" column="CAR_ID">
+
+</id>
+
+
+<property name="brand" column="CAR_BRAND"></property>
+
+
+<property name="model" column="CAR_MODEL"></property>
+
+
+<property name="color" column="CAR_COLOR"></property>
+
+
+<property name="purchaseyear" column="CAR_PURCHASE_YEAR"></property>
+
+
+
+<many-to-one name="" column="" cascade="all"></many-to-one>
+
+
+
+
+</class>
+
+
+</hibernate-mapping>

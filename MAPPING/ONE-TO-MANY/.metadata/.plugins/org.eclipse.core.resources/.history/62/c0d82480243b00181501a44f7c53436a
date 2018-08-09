@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class UserDTO 
+{
+
+	private Integer uid, mobile, trainid;
+	
+	private String name, email, address;
+	
+	
+	
+}

@@ -1,0 +1,48 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		TrainDTO tdto1=new TrainDTO();
+		
+		tdto1.setTid(101);
+		
+		tdto1.setTnum(55220);
+		
+		tdto1.setTname("Tri-Shatabdi");
+		
+		tdto1.setTtype("Express");
+		
+		tdto1.setTsourcestation("Indore");
+		
+		tdto1.setTdestinationstation("Nagpur");
+		
+		
+		
+												UserDTO udto1=new UserDTO();
+												
+												
+												
+		
+		
+		
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+		
+	}
+	
+	
+	
+}

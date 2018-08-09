@@ -1,0 +1,14 @@
+package co.in.DTO;
+
+import java.util.*;
+
+public class CourseDTO 
+{
+
+	private Integer sid, smobile, sage;
+	
+	private String sfname, slname, semail;
+
+	private Set studentChild;
+
+}

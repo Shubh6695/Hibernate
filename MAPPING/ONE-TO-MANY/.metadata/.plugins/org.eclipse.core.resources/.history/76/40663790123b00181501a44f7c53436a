@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class ComplainDTO 
+{
+
+	private Integer complainid, customerid;
+	
+	private String complain,complainstatus,
+	
+	
+	
+}

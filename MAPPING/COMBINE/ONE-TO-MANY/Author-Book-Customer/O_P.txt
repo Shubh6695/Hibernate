@@ -1,0 +1,27 @@
+1. insertALL1()
+
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+Hibernate: select bookdto_.BOOK_ID, bookdto_.BOOK_ISBN as BOOK2_1_, bookdto_.BOOK_TITLE as BOOK3_1_, bookdto_.BOOK_CATEGORY as BOOK4_1_, bookdto_.BOOK_PUBLICATION_YEAR as BOOK5_1_, bookdto_.A_ID as A6_1_ from Combine1Book bookdto_ where bookdto_.BOOK_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_F_NAME as C2_2_, customerdt_.C_L_NAME as C3_2_, customerdt_.C_E_MAIL as C4_2_, customerdt_.C_TYPE as C5_2_, customerdt_.B_ID as B6_2_ from Combine1Customer customerdt_ where customerdt_.C_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_F_NAME as C2_2_, customerdt_.C_L_NAME as C3_2_, customerdt_.C_E_MAIL as C4_2_, customerdt_.C_TYPE as C5_2_, customerdt_.B_ID as B6_2_ from Combine1Customer customerdt_ where customerdt_.C_ID=?
+Hibernate: select bookdto_.BOOK_ID, bookdto_.BOOK_ISBN as BOOK2_1_, bookdto_.BOOK_TITLE as BOOK3_1_, bookdto_.BOOK_CATEGORY as BOOK4_1_, bookdto_.BOOK_PUBLICATION_YEAR as BOOK5_1_, bookdto_.A_ID as A6_1_ from Combine1Book bookdto_ where bookdto_.BOOK_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_F_NAME as C2_2_, customerdt_.C_L_NAME as C3_2_, customerdt_.C_E_MAIL as C4_2_, customerdt_.C_TYPE as C5_2_, customerdt_.B_ID as B6_2_ from Combine1Customer customerdt_ where customerdt_.C_ID=?
+Hibernate: select customerdt_.C_ID, customerdt_.C_F_NAME as C2_2_, customerdt_.C_L_NAME as C3_2_, customerdt_.C_E_MAIL as C4_2_, customerdt_.C_TYPE as C5_2_, customerdt_.B_ID as B6_2_ from Combine1Customer customerdt_ where customerdt_.C_ID=?
+Hibernate: insert into Combine1Author (AUTHOR_F_NAME, AUTHOR_L_NAME, AUTHOR_EMAIL, AUTHOR_ID) values (?, ?, ?, ?)
+Hibernate: insert into Combine1Book (BOOK_ISBN, BOOK_TITLE, BOOK_CATEGORY, BOOK_PUBLICATION_YEAR, A_ID, BOOK_ID) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into Combine1Customer (C_F_NAME, C_L_NAME, C_E_MAIL, C_TYPE, B_ID, C_ID) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into Combine1Customer (C_F_NAME, C_L_NAME, C_E_MAIL, C_TYPE, B_ID, C_ID) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into Combine1Book (BOOK_ISBN, BOOK_TITLE, BOOK_CATEGORY, BOOK_PUBLICATION_YEAR, A_ID, BOOK_ID) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into Combine1Customer (C_F_NAME, C_L_NAME, C_E_MAIL, C_TYPE, B_ID, C_ID) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into Combine1Customer (C_F_NAME, C_L_NAME, C_E_MAIL, C_TYPE, B_ID, C_ID) values (?, ?, ?, ?, ?, ?)
+Hibernate: update Combine1Book set A_ID=? where BOOK_ID=?
+Hibernate: update Combine1Book set A_ID=? where BOOK_ID=?
+Hibernate: update Combine1Customer set B_ID=? where C_ID=?
+Hibernate: update Combine1Customer set B_ID=? where C_ID=?
+Hibernate: update Combine1Customer set B_ID=? where C_ID=?
+Hibernate: update Combine1Customer set B_ID=? where C_ID=?
+Insert Successfully
+
+
+

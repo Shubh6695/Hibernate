@@ -1,0 +1,7 @@
+<ehcache>  
+  
+<defaultCache   
+maxElementsInMemory="100"   
+eternal="true"> </defaultCache>  
+  
+</ehcache>  

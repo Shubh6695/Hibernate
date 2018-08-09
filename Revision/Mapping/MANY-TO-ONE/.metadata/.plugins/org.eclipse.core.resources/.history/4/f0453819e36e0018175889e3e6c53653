@@ -1,0 +1,20 @@
+package co.in.DTO;
+
+public class EmployeeDTO {
+
+	private Integer eid;
+	
+	private String fname;
+	
+	private String lname;
+	
+	private String email;
+	
+	private Long mobile;
+	
+	private Double salary;
+	
+	
+	
+	
+}

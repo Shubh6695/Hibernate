@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="co.in.dto">
+
+<class name="VendorDTO" table="vendor">
+
+
+<id name="vendorid" column="V_ID">
+
+<generator class="increment"></generator>
+
+</id>
+
+
+<property name="vendorname" column="V_NAME"></property>
+
+
+
+<set name="children" cascade="all">
+
+
+<key column="FOR_VID"></key>
+
+
+<one-to-many class="CustomerDTO"></one-to-many>
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>

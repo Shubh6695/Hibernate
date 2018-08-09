@@ -1,0 +1,34 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		TrainDTO tdto1=new TrainDTO();
+		
+		tdto1.setTid(1001);
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+		
+	}
+	
+	
+	
+}

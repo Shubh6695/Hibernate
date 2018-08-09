@@ -1,0 +1,19 @@
+package co.in.DTO;
+
+import java.util.*;
+
+public class CourseDTO 
+{
+
+
+	private Integer courseid;
+	
+	private String coursename;
+	
+	private Set studentChild;
+	
+	
+	
+	
+
+}

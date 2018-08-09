@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="CityDTO" table="combine2city">
+
+<id name="cityid" column="CITY_ID">
+
+</id>
+
+<property name="cityname" column="CITY_NAME"></property>
+
+
+
+<many-to-one name="countryParent" class="CountryDTO" column="C_ID" cascade="delete"></many-to-one>
+
+
+<many-to-one name="stateParent" class="StateDTO" column="S_ID" cascade="delete"></many-to-one>
+
+
+</class>
+
+
+</hibernate-mapping>

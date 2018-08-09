@@ -1,0 +1,14 @@
+package co.in.pp;
+
+public class CarDTO
+{
+
+	private Integer carid, purchaseyear; 
+	
+	private String brand, model ,color;
+
+	
+	
+	
+	
+}

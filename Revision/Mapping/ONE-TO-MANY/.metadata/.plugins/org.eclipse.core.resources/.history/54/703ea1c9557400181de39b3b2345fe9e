@@ -1,0 +1,145 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	public static void insertALL()
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		DepartmentDTO depdto=new DepartmentDTO();
+		
+		depdto.setDepid(101);
+		depdto.setDepname("Developing");
+		
+		
+					EmployeeDTO edto1=new EmployeeDTO();
+					
+				//	edto1.setEid(201);
+		
+					edto1.setFname("Anmol");
+					
+					edto1.setLname("Rathore");
+					
+					edto1.setEmail("a@gmail.com");
+					
+					edto1.setMobile(888999666);
+					
+					edto1.setSalary(20000);
+					
+					
+					
+					
+					
+					EmployeeDTO edto2= new EmployeeDTO();
+					
+				//	edto2.setEid(202);
+					
+					edto2.setFname("Naveen");
+					
+					edto2.setLname("Khapre");
+					
+					edto2.setEmail("n@gmail.com");
+					
+					edto2.setMobile(777666333);
+					
+					edto2.setSalary(35000);
+					
+										
+					
+					
+					EmployeeDTO edto3=new EmployeeDTO();
+					
+				//	edto3.setEid(203);
+						
+					edto3.setFname("Shrangesh");
+					
+					edto3.setLname("Chourey");
+					
+					edto3.setEmail("sc@gmail.cocm");
+					
+					edto3.setMobile(666333999);
+					
+					edto3.setSalary(15000);
+
+					
+					
+		List al=new ArrayList();			
+					
+		al.add(edto1);
+		
+		al.add(edto2);
+		
+		al.add(edto3);
+		
+		
+/*		Iterator itr=al.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			EmployeeDTO emp=(EmployeeDTO) itr.next();
+			
+			System.out.println(emp.getEid()+"\t"+emp.getFname()+"\t"+emp.getLname()+"\t"+emp.getEmail()+"\t"+emp.getMobile()+"\t"+emp.getSalary()+"\t"+emp.getDid());
+			
+		}
+*/		
+		
+		
+		depdto.setEmployeeChild(al);
+		
+		/*List a=depdto.getEmployeeChild();
+		
+		Iterator itr=a.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			EmployeeDTO emp=(EmployeeDTO) itr.next();
+			
+			System.out.println(emp.getEid()+"\t"+emp.getFname()+"\t"+emp.getLname()+"\t"+emp.getEmail()+"\t"+emp.getMobile()+"\t"+emp.getSalary()+"\t"+emp.getDid());
+			
+		}*/
+		
+
+		
+		
+		
+		
+		sess.save(depdto);
+		
+		
+		ts.commit();
+		
+		System.out.println("Insert Successfully");
+		
+		sess.close();
+		
+		sf.close();
+			
+		
+	}
+	
+	
+	
+	public static void main(String[] args)
+	{
+		
+		insertALL();
+		
+	}
+	
+	
+	
+}

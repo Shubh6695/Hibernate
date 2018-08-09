@@ -1,0 +1,32 @@
+package co.in.dto;
+
+import java.util.*;
+
+public class VendorDTO {
+	
+	private int id;
+	
+	private String vendorname;
+	
+	private Set children;
+	
+	
+	public int getId()
+	{
+		return id;
+	}
+	
+			public void setId(int id)
+			{
+				this.id=id;
+			}
+	
+	
+	public String getVendoreName()
+	{
+		return vendorname;
+	}
+			
+			
+
+}

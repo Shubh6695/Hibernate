@@ -1,0 +1,15 @@
+package co.in.pp;
+
+public class PlayerDTO
+{
+
+	
+	private Integer pid, pmobile, page;
+	
+	private String pname, pemail, paddress;
+	
+	private TeamDTO TeamParent;
+	
+	
+	
+}

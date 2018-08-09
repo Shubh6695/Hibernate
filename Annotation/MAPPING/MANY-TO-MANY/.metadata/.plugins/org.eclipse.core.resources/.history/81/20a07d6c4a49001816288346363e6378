@@ -1,0 +1,18 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+@Table(name="productmanufacturer")
+
+
+public class ManufacturerDTO 
+{
+
+
+	private Integer 
+	
+	
+	
+}

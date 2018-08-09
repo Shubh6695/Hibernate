@@ -1,0 +1,17 @@
+package co.in.pp;
+
+public class SongsDTO 
+{
+
+	private Integer songid;
+	
+	private String songname, songmovie;
+	
+	private Float songlength;
+
+	
+	private SingerDTO SingerParent;
+	
+	
+	
+}

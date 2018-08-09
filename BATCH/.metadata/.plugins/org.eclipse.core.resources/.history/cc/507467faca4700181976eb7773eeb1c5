@@ -1,0 +1,95 @@
+package co.in.pp;
+
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void getALL() throws Exception
+	{
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		long start=System.currentTimeMillis();
+		
+		System.out.println("Starting Time :-- "+start);
+		
+		int count=0;
+		
+		
+		Query q=sess.createQuery("from CustomerDTO");
+		
+		
+		List rows=q.list();
+			
+		System.out.println("ROW Size :--" +rows.size());
+		
+		Iterator itr=rows.iterator();
+		
+		while(itr.hasNext())
+		{
+			
+			for(int i=1; i<=rows.size(); i++)
+			{
+			System.out.println("Hello "+i);
+			
+			}
+			
+	//		CustomerDTO cdto=(CustomerDTO) itr.next();
+			
+			
+			
+	//		UserDTO udto=cdto.getUserParent(); 
+			
+			
+			
+	//		System.out.println(cdto.getCustomerid()+"\t"+cdto.getCustomername()+"\t"+cdto.getCity()+"\t"+cdto.getState());
+			
+			
+	//		System.out.println(udto.getUid()+"\t"+udto.getUname()+"\t"+udto.getFname()+"\t"+udto.getLname()+"\t"+udto.getGender());
+			
+	//		count++;
+			
+		}
+		
+		
+	
+		
+		
+		long end=System.currentTimeMillis();
+		
+		System.out.println("Ending  Time :-- "+end);
+
+		
+		System.out.println("Difference :-- "+(end-start));
+		
+		
+		System.out.println("Count "+count);
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		getALL();
+		
+	}
+	
+	
+}

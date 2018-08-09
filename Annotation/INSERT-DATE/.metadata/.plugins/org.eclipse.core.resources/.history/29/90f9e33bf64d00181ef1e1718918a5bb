@@ -1,0 +1,24 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+@Table(name="datedemo")
+
+public class DateDTO 
+{
+
+	@Id
+	@Column(name="ID")
+	private Integer id;
+	
+	
+	@Column(name="")
+	private String name;
+	
+	
+	private Date date;
+	
+	
+}

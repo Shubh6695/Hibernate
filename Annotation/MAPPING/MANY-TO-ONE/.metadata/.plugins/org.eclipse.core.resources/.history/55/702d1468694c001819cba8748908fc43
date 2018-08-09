@@ -1,0 +1,25 @@
+package co.in.pp;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="sportteam")
+
+public class TeamDTO 
+{
+
+	
+	private Integer teamid;
+	
+	
+	private String teamname;
+	
+	
+	private String teamcountry;
+	
+	
+	private String teamsport;
+	
+	
+}

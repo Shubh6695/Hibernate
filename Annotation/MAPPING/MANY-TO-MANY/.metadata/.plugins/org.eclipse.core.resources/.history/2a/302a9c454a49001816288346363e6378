@@ -1,0 +1,30 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+@Table(name="productmanufacturer")
+
+
+public class ManufacturerDTO 
+{
+
+	
+	public static void insertALL()
+	{
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args)
+	{
+		
+		insertALL();
+		
+	}
+	
+	
+}

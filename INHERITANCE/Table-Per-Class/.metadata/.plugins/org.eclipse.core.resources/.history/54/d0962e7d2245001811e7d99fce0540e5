@@ -1,0 +1,15 @@
+package co.in.pp;
+
+public class Payment 
+{
+
+	public Integer pid;
+	
+	public Double amount;
+	
+	
+	
+	
+	
+	
+}

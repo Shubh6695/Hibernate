@@ -1,0 +1,14 @@
+package co.in.DTO;
+
+public class AddressDTO 
+{
+
+	
+	private Integer aid, pincode;
+	
+	private String city, state, country;
+	
+	private StudentDTO studentParent;
+	
+	
+}

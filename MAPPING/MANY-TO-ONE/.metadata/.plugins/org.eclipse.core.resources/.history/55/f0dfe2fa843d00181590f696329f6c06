@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class SingerDTO 
+{
+
+	private Integer sid, smobile;
+	
+	private String sname, semail, saddress; 
+
+	
+	
+}

@@ -1,0 +1,38 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+@Table(name="bankdetails")
+
+public class BankDTO 
+{
+	@Id
+	@Column(name="BANK_ID")
+	private Integer bankid;
+	
+	
+	@Column(name="BANK_NAME")
+	private String bankname;
+	
+	
+	@Column(name="BANK_EMAIL")
+	private String bankemail;
+	
+	
+	@Column(name="BANK_ADDRESS")
+	private String bankaddress;
+	
+	
+	@Column(name="BANK_CONTACT")
+	private Integer bankcontact;	
+	
+	
+
+	@OneToMany(targetEntity=CustomerDTO.class, cascade=CascadeType.All)
+	@JoinColumn(B_ID)	
+	
+	private Set customerChild;
+	
+}

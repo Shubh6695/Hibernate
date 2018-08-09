@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.DTO">
+
+	<class name="EmployeeDTO" table="aaremp">
+
+		<id name="eid" column="E_ID">
+
+			<generator class="assigned"></generator>
+
+		</id>
+
+	<property name="fname" column="F_NAME"></property>
+
+<property name="lname" column="L_NAME"></property>
+
+<property name="email" column="EMAIL"></property>
+
+<property name="mobile" column="MOBILE"></property>
+
+<property name="salary" column="SALARY"></property>
+
+	</class>
+
+</hibernate-mapping>

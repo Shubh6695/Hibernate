@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="Payment" table="paymenttablepersubclass">
+
+<id name="pid" column="P_ID">
+
+</id>
+
+
+<property name="amount" column="AMOUNT"></property>
+
+
+<joined-subclass name="CreditCard" table="creditcardtablepersubclass">
+
+	<key column=""></key>
+	
+	<property name="creditCardType" column="CREDIT_TYPE"></property>
+
+</joined-subclass>
+
+
+
+<joined-subclass name="Cheque" table="chequetablepersubclass">
+
+
+	<property name="chequeType" column="CHEQUE_TYPE"></property>
+	
+	
+</joined-subclass>
+
+
+
+
+</class>
+
+</hibernate-mapping>
+

@@ -1,0 +1,326 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	
+	public static void insertALL1() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		AuthorDTO adto=new AuthorDTO();
+		
+		adto.setAuthorid(1002);
+		
+		adto.setAuthorfname("Chetan");
+		
+		adto.setAuthorlname("Bhagat");
+		
+		adto.setAuthoremail("chetan@gmail.com");
+
+		
+		
+															BookDTO bdto1=new BookDTO();
+															
+															bdto1.setBookid(2003);
+		
+															bdto1.setBookisbn(222111);
+		
+															bdto1.setBooktitle("Half Girlfriend");
+		
+															bdto1.setBookcategory("Romance Novel");
+															
+															bdto1.setBookpublicationyear(2014);
+															
+															
+															
+																					CustomerDTO cdto1=new CustomerDTO();
+																					
+																					cdto1.setCid(5005);
+																					
+																					cdto1.setCfname("Naveen");
+															
+																					cdto1.setClname("Khapre");
+															
+																					cdto1.setCemail("naveen@gamil.com");
+															
+																					cdto1.setCtype("Student");
+																					
+																					
+																					CustomerDTO cdto2=new CustomerDTO();
+																					
+																					cdto2.setCid(5006);
+																					
+																					cdto2.setCfname("Sunil");
+															
+																					cdto2.setClname("Verma");
+															
+																					cdto2.setCemail("sunil@gamil.com");
+															
+																					cdto2.setCtype("Professor");																					
+																	
+																					
+																					
+															Set s1=new HashSet();
+															
+															s1.add(cdto1);
+															
+															s1.add(cdto2);
+															
+															
+															bdto1.setCustomerChild(s1);
+																					
+																					
+																					
+																					
+															
+															BookDTO bdto2=new BookDTO();
+															
+															bdto2.setBookid(2004);
+															
+															bdto2.setBookisbn(222000);
+															
+															bdto2.setBooktitle("2 States");
+															
+															bdto2.setBookcategory("FriendShip");
+															
+															bdto2.setBookpublicationyear(2004);
+															
+		
+															
+																					CustomerDTO cdto3=new CustomerDTO();
+															
+																					cdto3.setCid(5007);
+															
+																					cdto3.setCfname("Suraj");
+									
+																					cdto3.setClname("Gawande");
+									
+																					cdto3.setCemail("suraj@gamil.com");
+									
+																					cdto3.setCtype("Student");
+		
+															
+															
+																					CustomerDTO cdto4=new CustomerDTO();
+																					
+																					cdto4.setCid(5008);
+																					
+																					cdto4.setCfname("Pradeep");
+															
+																					cdto4.setClname("Shukla");
+															
+																					cdto4.setCemail("pradeep@gamil.com");
+															
+																					cdto4.setCtype("Student");
+																					
+																	
+																					
+															Set s2=new HashSet();
+															
+															s2.add(cdto3);
+															
+															s2.add(cdto4);
+															
+															
+															bdto2.setCustomerChild(s2);
+		
+															
+		Set s3=new HashSet();
+		
+		s3.add(bdto1);
+		
+		s3.add(bdto2);
+						
+		
+		adto.setBookChild(s3);
+		
+		
+		
+		Transaction ts= sess.beginTransaction();
+		
+		sess.save(adto);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	public static void getALL() throws Exception
+	{
+		
+	
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q1=sess.createQuery("from AuthorDTO");
+		
+		
+		List rows=q1.list();
+		
+		
+		Iterator itr1=rows.iterator();
+	
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			AuthorDTO adto=(AuthorDTO) itr1.next();
+			
+			
+				System.out.println("Author Detail's");
+			
+				System.out.println(adto.getAuthorid()+"\t"+adto.getAuthorfname()+"\t"+adto.getAuthorlname()+"\t"+adto.getAuthoremail()+"\n");
+			
+				
+			
+			Set s1=adto.getBookChild();
+			
+			
+			Iterator itr2=s1.iterator();
+			
+			
+		
+				
+				while(itr2.hasNext())
+				{
+				
+					BookDTO bdto=(BookDTO) itr2.next();
+				
+						System.out.println("Books Detail's");
+					
+						System.out.println(bdto.getBookid()+"\t"+bdto.getBookisbn()+"\t"+bdto.getBooktitle()+"\t"+bdto.getBookcategory()+"\t"+bdto.getBookpublicationyear()+"\n");
+						
+						
+					Set s2=bdto.getCustomerChild();
+						
+					Iterator itr3=s2.iterator();
+					
+					System.out.println("Customer Details");
+					
+						while(itr3.hasNext())
+						{
+							
+							CustomerDTO cdto =(CustomerDTO) itr3.next();
+							
+							System.out.println(cdto.getCid()+"\t"+cdto.getCfname()+"\t"+cdto.getClname()+"\t"+cdto.getCemail()+"\t"+cdto.getCtype()+"\n");
+							
+							
+						}											// While loop End (Customer DTO)	
+					
+					
+				}													// While loop End (Book DTO)
+			
+			
+		}															// While loop End (Author DTO)
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void getPerticularAuthorBook(int AID) throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		AuthorDTO adto=(AuthorDTO) sess.get(AuthorDTO.class, AID); 
+		
+
+				System.out.println("Author Detail's");
+			
+				System.out.println(adto.getAuthorid()+"\t"+adto.getAuthorfname()+"\t"+adto.getAuthorlname()+"\t"+adto.getAuthoremail()+"\n");
+			
+				
+			
+			Set s1=adto.getBookChild();
+			
+			
+			Iterator itr1=s1.iterator();
+	
+				
+				while(itr1.hasNext())
+				{
+				
+					BookDTO bdto=(BookDTO) itr1.next();
+				
+						System.out.println("Books Detail's");
+					
+						System.out.println(bdto.getBookid()+"\t"+bdto.getBookisbn()+"\t"+bdto.getBooktitle()+"\t"+bdto.getBookcategory()+"\t"+bdto.getBookpublicationyear()+"\n");
+						
+						
+					Set s2=bdto.getCustomerChild();
+						
+					Iterator itr2=s2.iterator();
+					
+					
+						System.out.println("Customer Details");
+					
+						while(itr2.hasNext())
+						
+						{
+							
+							CustomerDTO cdto =(CustomerDTO) itr2.next();
+							
+							System.out.println(cdto.getCid()+"\t"+cdto.getCfname()+"\t"+cdto.getClname()+"\t"+cdto.getCemail()+"\t"+cdto.getCtype()+"\n");
+							
+							
+						}											// While loop End (Customer DTO)	
+					
+					
+				}													// While loop End (Book DTO)
+	
+				
+		sess.close();
+		
+		sf.close();
+
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	insertALL1();
+	
+	//	getALL();
+		
+		getPerticularAuthorBook(1001);
+		
+		
+		
+	}
+	
+	
+}

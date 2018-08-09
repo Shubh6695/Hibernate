@@ -1,0 +1,16 @@
+package co.in.dto;
+
+import java.util.*;
+
+public class CustomerDTO 
+{
+
+	private Integer cid, cmobile;
+	
+	private String cname, cemail;
+	
+	
+	
+	
+	
+}

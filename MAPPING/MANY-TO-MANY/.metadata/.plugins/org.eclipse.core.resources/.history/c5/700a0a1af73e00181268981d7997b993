@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="CustomerDTO" table="VendorCustomer">
+
+
+<id name="customerid" column="CUSTOMER_ID">
+
+</id>
+
+
+<property name="customername" column="CUSTOMER_NAME"></property>
+
+
+
+
+<set name="VendorParent" cascade="all" table="VendorCustomerRelationship">
+
+
+<!-- these column is comes from VendorDTO.hbm.xml <many-to-many> tag -->
+
+<key column="C_ID"></key>
+
+
+<many-to-many class="VendorDTO" column="V_ID"></many-to-many>
+
+
+</set>
+
+
+
+
+
+</class>
+
+
+</hibernate-mapping>
+
+

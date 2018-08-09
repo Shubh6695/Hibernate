@@ -1,0 +1,19 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class TeamDTO 
+{
+
+	private Integer teamid;
+	
+	private String teamname, teamcountry, teamsport;
+	
+	
+	private Set TeamChild;
+	
+	
+	
+	
+	
+}

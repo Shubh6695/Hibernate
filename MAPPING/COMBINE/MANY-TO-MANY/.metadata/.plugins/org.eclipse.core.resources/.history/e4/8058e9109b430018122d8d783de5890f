@@ -1,0 +1,19 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class ManufacturerDTO 
+{
+
+	
+	private Integer mid;
+	
+	private String mname, memail;
+	
+	
+	private Set 
+	
+	
+	
+	
+}

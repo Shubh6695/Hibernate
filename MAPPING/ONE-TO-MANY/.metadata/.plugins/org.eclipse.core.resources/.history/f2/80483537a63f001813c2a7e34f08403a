@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+	private Integer gid, gyearofpurchase, uid;
+	
+	private String gname, gbrand;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="GadgetDTO" table="GadgetInfo">
+
+
+<id name="gid" column="G_ID">
+
+</id>
+
+
+<property name="gname"  column="G_NAME"></property>
+
+
+<property name="gbrand" column="G_BRAND"></property>
+
+
+<property name="gyearofpurchase" column="G_YEAR_OF_PURCHASE"></property>
+
+
+<property name="uid" column="USER_ID"></property>
+
+
+
+</class>
+
+</hibernate-mapping>
+
+	

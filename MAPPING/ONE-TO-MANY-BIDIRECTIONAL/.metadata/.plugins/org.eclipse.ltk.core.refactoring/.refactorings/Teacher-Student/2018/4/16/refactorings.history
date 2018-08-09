@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Teacher-Student/src/TteacherDTO.hbm.xml&apos; to &apos;TeacherDTO.hbm.xml&apos;" description="Rename resource &apos;TteacherDTO.hbm.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/TteacherDTO.hbm.xml" name="TeacherDTO.hbm.xml" stamp="1523857013433" updateReferences="true"/>
+</session>

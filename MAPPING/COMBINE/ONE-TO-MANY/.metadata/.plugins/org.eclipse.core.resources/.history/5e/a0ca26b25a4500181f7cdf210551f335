@@ -1,0 +1,13 @@
+package co.in.DTO;
+
+public class StudentDTO 
+{
+
+	private Integer sid, smobile, sage;
+	
+	private String sfname, slname, semail;
+
+	
+	
+	
+}

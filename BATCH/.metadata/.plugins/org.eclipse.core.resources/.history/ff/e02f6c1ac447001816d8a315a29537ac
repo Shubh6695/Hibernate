@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" column="customer">
+
+
+<id name="customerid" column="CUSTOMER_ID">
+
+	<generator class="foreign">
+	
+		<param name="property">userParent</param>
+	
+	</generator>
+
+</id>
+
+
+<property name="customername" column="CUSTOMER_NAME"></property>
+
+
+<property name="city" column="CITY"></property>
+
+
+<property name="state" column="STATE"></property>
+
+
+
+<one-to-one name="userParent" class="UserDTO" cascade="all"></one-to-one>
+
+
+
+</class>
+
+
+</hibernate-mapping>	

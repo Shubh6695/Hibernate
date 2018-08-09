@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class StudentDemo 
+{
+
+	private Integer sid, age, smobile;
+	
+	private String fname, lname, email;
+	
+	
+	
+}

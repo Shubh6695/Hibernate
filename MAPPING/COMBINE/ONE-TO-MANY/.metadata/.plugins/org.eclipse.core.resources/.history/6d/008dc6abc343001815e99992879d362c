@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+
+
+	private Integer stateid;
+	
+	private String statename;
+	
+	private CityDTO cityParent;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="StateDTO" table="combine2state">
+
+<id name="stateid" column="STATE_ID">
+
+</id>
+
+
+<property name="statename" column="STATE_NAME"></property>
+
+
+
+</class>
+
+
+</hibernate-mapping>	
+	

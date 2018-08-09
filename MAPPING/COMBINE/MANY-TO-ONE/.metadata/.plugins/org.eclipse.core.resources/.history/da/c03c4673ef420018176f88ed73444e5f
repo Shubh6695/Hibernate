@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+	private Integer authorid;
+	
+	private String authorfname, authorlname, authoremail;
+
+
+<hibarnate-mapping package="co.in.pp">
+
+
+<class name="AuthorDTO" table="Combine1Author">
+
+<id name="authorid" column="AUTHOR_ID">
+
+	<generator class="assigned"></generator>
+	
+</id>
+
+<property name="authorfname" column="AUTHOR_F_NAME"></property>
+
+
+<property name="" column="AUTHOR_L_NAME"></property>
+
+
+
+</class>
+
+
+</hibarnate-mapping>
+	

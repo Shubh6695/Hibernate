@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer bookid, bookisbn, bookpublicationyear;
+	
+	private String  booktitle, bookcategory;
+
+	
+	private AuthorDTO authorParent;
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="BookDTO" table="Combine1Book">
+
+
+<id name="bookid" column="BOOK_ID">
+
+	<generator class="assigned"></generator>
+
+</id>
+
+
+
+
+
+
+
+
+</class>
+
+</hibernate-mapping>
+
+	

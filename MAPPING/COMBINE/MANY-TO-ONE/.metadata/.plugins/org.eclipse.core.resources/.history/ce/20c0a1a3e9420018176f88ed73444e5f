@@ -1,0 +1,16 @@
+package co.in.pp;
+
+public class AuthorDTO 
+{
+
+	private Integer authorid;
+	
+	private String authorfname, authorlname, authoremail;
+	
+	
+	
+	
+	
+	
+	
+}

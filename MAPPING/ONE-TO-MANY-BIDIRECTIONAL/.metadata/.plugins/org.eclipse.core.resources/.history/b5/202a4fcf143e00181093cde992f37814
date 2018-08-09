@@ -1,0 +1,48 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class One_To_Many_Test
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		VendorDTO v=new VendorDTO();
+		
+		v.setVendorid(101);
+		
+		v.setVendorname("DELL");
+		
+		
+									CustomerDTO cdto1=new CustomerDTO();
+									
+									cdto1.setCustomerid(201);
+		
+									cdto1.setCustomername("Shubham");
+		
+									cdto1.setVid();
+		
+		
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		InsertALL();
+		
+	}
+	
+	
+	
+}

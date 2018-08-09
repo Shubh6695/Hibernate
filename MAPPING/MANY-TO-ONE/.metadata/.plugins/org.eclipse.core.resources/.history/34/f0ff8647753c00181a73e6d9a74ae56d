@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-configuration-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="VendorCustomers">
+
+
+<id name="customerid" column="C_ID">
+
+</id>
+
+
+<property name="customername" column="C_NAME"></property>
+
+
+
+
+
+
+</class>
+
+</hibernate-mapping>
+

@@ -1,0 +1,8 @@
+package co.in.pp;
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test {
+
+}

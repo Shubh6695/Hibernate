@@ -1,0 +1,16 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class HotelDTO
+{
+
+	private Integer hotelid, hotelcontact;
+	
+	private String hotelname, hotelcity;
+	
+	private Float hotelrating;
+	
+	
+	
+}

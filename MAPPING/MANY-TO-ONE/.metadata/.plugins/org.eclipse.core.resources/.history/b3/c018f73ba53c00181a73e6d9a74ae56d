@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class TeamDTO 
+{
+	private Integer teamid;
+	
+	private String teamname, teamcountry, teamsport;
+	
+	
+	
+	
+}

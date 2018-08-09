@@ -1,0 +1,13 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class AuthorDTO 
+{
+
+	private Integer authorid;
+	
+	private String authorfname, authorlname;
+	
+	
+}

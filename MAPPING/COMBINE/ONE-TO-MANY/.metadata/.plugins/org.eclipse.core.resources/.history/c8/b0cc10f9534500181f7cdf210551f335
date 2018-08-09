@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+	private Integer cid, ccontact;
+	
+	private String cname, cemail, cgrade;
+
+
+<hibernate-mapping package="co.in.DTO">
+
+
+<class name="CollegeDTO" table="combine3college">
+
+<id name="" column="">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+</class>
+
+
+</hibernate-mapping>

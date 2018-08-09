@@ -1,0 +1,20 @@
+package co.in.pp;
+
+public class BookDTO 
+{
+
+
+	private Integer bookid, bookisbn, bookpublicationyear;
+	
+	private String  booktitle, bookcategory;
+
+	
+	private AuthorDTO authorParent;
+	
+	
+	
+	
+	
+	
+	
+}

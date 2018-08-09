@@ -1,0 +1,74 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	public static void getALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session sess1 =sf.openSession();
+		
+		
+		Long start1 =System.currentTimeMillis();
+		
+		
+		System.out.println("Starting Time :-- "+start1);
+		
+		
+		Query q1=sess1.createQuery("from UserDTO");
+		
+		List rows1=q1.list();
+		
+		Iterator itr1=rows1.iterator();
+		
+		
+		while(itr1.hasNext())
+		{
+			
+			UserDTO udto1=(UserDTO) itr1.next();
+			
+			System.out.println(udto1.getUserid()+"\t"+udto1.getUsername()+"\t"+udto1.getFname()+"\t"+udto1.getLname()+"\t"+udto1.getGender());
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		Long end1=System.currentTimeMillis();
+		
+		System.out.println("END Time :-- "+end1);
+		
+		
+		System.out.println("Diference :-- "+(end1-start1));
+		
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		getALL();
+		
+	}
+	
+	
+	
+}

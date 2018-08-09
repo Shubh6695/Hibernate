@@ -1,0 +1,12 @@
+package co.in.pp;
+
+public class ManufacturerDTO 
+{
+
+	
+	private Integer mid, licenceno, validity;
+	
+	private String name, email, address;
+	
+	
+}

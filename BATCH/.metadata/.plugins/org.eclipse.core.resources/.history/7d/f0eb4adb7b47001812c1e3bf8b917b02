@@ -1,0 +1,44 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer aid, pincode;
+	
+	private String city, state, country;
+	
+	private StudentDTO studentParent;
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="AddressDTO" table="withoutbatchaddressinfo">
+
+
+<id name="aid" column="A_ID">
+
+	<generator class="assigned"></generator>
+
+</id>
+
+
+<property name="city" column="CITY"></property>
+
+
+<property name="state" column="STATE"></property>
+
+
+<property name="country" column="COUNTRY"></property>
+
+
+<property name="pincode" column="PINCODE"></property>
+
+
+<one-to-one name="studentParent" class="StudentDTO" cascade="all"></one-to-one>
+
+
+
+</class>
+
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+package co.in.DTO;
+
+public class CollegeDTO 
+{
+
+	private Integer cid, ccontact;
+	
+	private String cname, cemail, cgrade;
+	
+	
+	
+}

@@ -1,0 +1,101 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+import org.hibernate.criterion.*;
+
+
+public class SearchResult {
+	
+	
+	public static void SearchList() throws Exception
+	{
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Insert Type of Result You Want PASS/FAIL :---");
+		
+		String result=sc.next();
+		
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		Session s=sf.openSession();
+		
+		
+		Criteria crit1=s.createCriteria(StudentDTO.class);
+		
+		
+		ProjectionList p=Projections.projectionList();
+		
+		p.add(Projections.property("rollno"));
+		
+		p.add(Projections.property("fname"));
+		
+		p.add(Projections.property("lname"));
+		
+		p.add(Projections.property("physics"));
+		
+		p.add(Projections.property("chemistry"));
+		
+		p.add(Projections.property("maths"));
+		
+		crit1.setProjection(p);		
+		
+		
+		
+		
+		Criteria crit2=s.createCriteria(ResultDTO.class);
+		
+		ProjectionList p1=Projections.projectionList();
+		
+		p1.add(Projections.property("total"));
+		
+		p1.add(Projections.property("average"));
+		
+		p1.add(Projections.property("status"));
+		
+		crit2.setProjection(p1);
+		
+		
+		crit2.add(Restrictions.eq("status", result));
+		
+		List l1=crit1.list();
+		
+		Iterator itr1=l1.iterator();
+		
+		StudentDTO stu;
+		ResultDTO res;
+		
+		
+		while(itr1.hasNext())
+		{
+		
+			Object columns[]=(Object[]) itr1.next();
+			
+			Integer rollno=(Integer) columns[0];
+			
+			String fname=(String) columns[1];
+			
+			String lname=(String) columns[2];
+			
+			Integer physics=(Integer) columns[3];
+			
+			Integer chemistry=(Integer) columns[4];
+			
+		}
+		
+		s.close();
+		
+	}
+	
+
+	public static void main(String[] args) throws Exception
+	{
+	
+		SearchList();
+		
+	}
+
+}

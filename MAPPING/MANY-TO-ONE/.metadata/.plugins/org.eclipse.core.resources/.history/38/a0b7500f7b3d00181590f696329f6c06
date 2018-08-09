@@ -1,0 +1,13 @@
+package co.in.pp;
+
+public class PoliceDTO
+{
+
+	private Integer pid;
+	
+	private String pname, pdepartment, pstation,  ppost;
+
+	
+	
+	
+}

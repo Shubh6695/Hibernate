@@ -1,0 +1,62 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="StudentDTO" table="studetail">
+
+<id name="rollno" column="ROLL_NO">
+
+<generator class="increment"></generator>
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="physics" column="PHYSICS"></property>
+
+
+<property name="chemistry" column="CHEMISTRY"></property>
+
+
+<property nmae="maths" column="MATHS"></property>
+
+
+</class>
+
+
+
+<class name="ResultDTO" table="sturesult">
+
+
+
+<id name="rollno" column="ROLL_NO">
+
+<generator class="increment"></generator>
+
+</id>
+
+
+<property name="fname" column="FIRST_NAME"></property>
+
+
+<property name="lname" column="LAST_NAME"></property>
+
+
+<property name="total" column="TOTAL"></property>
+
+
+<property name="average" column="AVERAGE"></property>
+
+
+</class>
+
+
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class CombineTable {
+
+	
+	
+	public static void COMBINE() throws Exception 
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session s=sf.openSession();
+		
+		
+		Query q=s.createQuery("from StudentDTO INNER JOIN ResultDTO ON StudentDTO.rollno=ResultDTO.rollno");
+		
+		
+		List rows= q.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws  Exception
+	{
+		
+		COMBINE();
+		
+	}
+
+}

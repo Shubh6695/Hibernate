@@ -1,0 +1,47 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf= new Configuration().configure().buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		PoliceDTO pdto1=new PoliceDTO();
+		
+		pdto1.setPid(101);
+		
+		pdto1.setPname("Ram");
+		
+		pdto1.setPdepartment("Crime");
+		
+		pdto1.setPstation("Vijay Nagar");
+		
+		pdto1.setPpost("Sub-Inspector");
+		
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		
+		InsertALL();
+		
+	}
+	
+	
+}

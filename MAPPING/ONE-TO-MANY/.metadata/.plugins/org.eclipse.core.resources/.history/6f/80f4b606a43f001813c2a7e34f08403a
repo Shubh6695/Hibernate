@@ -1,0 +1,15 @@
+package co.in.pp;
+
+import java.util.*;
+
+
+public class UserDTO
+{
+
+	
+	private Integer uid, umobile;
+	
+	private String uname,uemail, uage;
+	
+	
+}

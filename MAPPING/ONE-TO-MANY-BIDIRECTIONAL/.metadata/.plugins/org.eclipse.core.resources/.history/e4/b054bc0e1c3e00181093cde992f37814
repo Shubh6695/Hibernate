@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="VendorCustomers">
+
+<id name="customerid" column="CUSTOMER_ID">
+
+</id>
+
+
+<property name="customername" column="CUSTOMER_NAME"></property>
+
+
+
+<!-- these V_ID set by the Primary Key of the VendorDTO.class (Set)  -->
+
+<property name="vid" column="V_ID" insert="true"></property>
+
+
+
+<many-to-one name="vendorParent" column="V_ID" cascade="all"></many-to-one> 
+
+
+
+</class>
+
+</hibernate-mapping>

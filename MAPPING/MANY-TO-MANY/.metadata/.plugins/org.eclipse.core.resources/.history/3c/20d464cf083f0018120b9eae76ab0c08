@@ -1,0 +1,41 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+	private Integer pid;
+	
+	private String pname;
+	
+	private Set ManufacturerChild;
+
+
+
+	
+<hibernate-mapping package="co.in.pp">
+
+<class name="ProductDTO" table="ProductDetails">
+
+
+<id name="pid" column="P_ID">
+
+</id>
+
+<property name="pname" column="P_NAME"></property>
+
+
+<set name="ManufacturerChild" cascade="all">
+
+
+<key column="PRODUCT_ID"></key>
+
+
+<many-to-many class="ManufacturerDTO" column="MAN_ID"></many-to-many>
+
+
+</set>
+
+
+
+</class>
+
+</hibernate-mapping>

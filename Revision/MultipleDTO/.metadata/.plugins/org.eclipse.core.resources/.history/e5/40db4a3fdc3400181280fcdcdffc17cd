@@ -1,0 +1,50 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+import org.hibernate.criterion.Restrictions;
+
+
+public class CombineTable {
+
+	
+	
+	public static void COMBINE() throws Exception 
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session s=sf.openSession();
+		
+		
+		Criteria crit=s.createCriteria(StudentDTO.class, "stu").createAlias("stu.result", "result")
+				
+				.add(Restrictions.eq("stu.rollno", 1))
+				.add(Restrictions.eq("result.rollno", 1))
+				;
+				
+		List rows=crit.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasnext())
+		{
+			Object columns[]=(Object[]) itr.next();
+		}
+		
+		
+	}
+	
+	
+	public static void main(String[] args) throws  Exception
+	{
+		
+		COMBINE();
+		
+	}
+
+}

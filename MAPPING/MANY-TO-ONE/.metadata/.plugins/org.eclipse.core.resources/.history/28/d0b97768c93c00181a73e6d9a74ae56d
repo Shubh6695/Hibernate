@@ -1,0 +1,122 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+
+public class Test 
+{
+
+	public static void InsertALL() throws Exception
+	{
+		
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		DepartmentDTO dto=new DepartmentDTO();
+		
+		
+		dto.setDepartmentid(101);
+		
+		dto.setDepartmentname("MATHS");
+		
+		
+										StudentDTO sdto1=new StudentDTO();
+										
+										sdto1.setSid(301);
+		
+										sdto1.setFname("Shubham");
+										
+										sdto1.setLname("Tale");
+										
+										sdto1.setEmail("shubham@gmail.com");
+										
+										sdto1.setBranch("Computer Science");
+										
+										sdto1.setMobile(111222333);
+										
+										sdto1.setDepParent(dto);
+										
+										
+										StudentDTO sdto2=new StudentDTO();
+										
+										sdto2.setSid(302);
+		
+										sdto2.setFname("Ankit");
+										
+										sdto2.setLname("Sharma");
+										
+										sdto2.setEmail("ankit@gmail.com");
+										
+										sdto2.setBranch("Information Technology");
+										
+										sdto2.setMobile(111333222);
+										
+										sdto2.setDepParent(dto);
+										
+										
+										
+										StudentDTO sdto3=new StudentDTO();
+										
+										sdto3.setSid(303);
+		
+										sdto3.setFname("Pankaj");
+										
+										sdto3.setLname("Trivedi");
+										
+										sdto3.setEmail("pankaj@gmail.com");
+										
+										sdto3.setBranch("Civil");
+										
+										sdto3.setMobile(111555444);
+		
+										sdto3.setDepParent(dto);
+										
+										
+										
+										sess.save(sdto1);
+										
+										sess.save(sdto2);
+										
+										sess.save(sdto3);
+										
+										
+										Transaction ts=sess.beginTransaction();
+										
+										ts.commit();
+										
+										
+										System.out.println("Insert Successfully");
+										
+		
+										
+			sess.close();
+			
+			sf.close();
+										
+	}
+	
+	
+	public static void UpdateParent(int DID) throws Exception
+	{
+		
+		
+		
+		
+	}
+	
+
+	public static void main(String[] args) throws Exception
+	{
+		
+
+		InsertALL();
+		
+	}
+	
+	
+}

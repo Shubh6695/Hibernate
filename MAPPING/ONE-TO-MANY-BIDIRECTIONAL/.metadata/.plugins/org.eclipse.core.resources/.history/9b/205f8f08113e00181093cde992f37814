@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-configuration-3.0.dtd">
+
+
+<hibernate-mapping package="co.in.pp">
+
+
+<class name="VendorDTO">
+
+
+<id name="vendorid" column="VENDOR_ID">
+
+</id>
+
+
+<property name="vendorname" column="VENDOR_NAME"></property>
+
+
+
+<set name="vendorChild" cascade="all" inverse="true">
+
+
+
+
+
+</set> 
+
+
+
+
+</class>
+
+
+</hibernate-mapping>

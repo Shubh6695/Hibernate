@@ -1,0 +1,13 @@
+package co.in.pp;
+
+public class EmployeeDTO 
+{
+
+	private Integer eid, mobile, salary, did;
+	
+	private String fname, lname, email;
+
+	private DepartmentDTO DepParent;
+	
+	
+}

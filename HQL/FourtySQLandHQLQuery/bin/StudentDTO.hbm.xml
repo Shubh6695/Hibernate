@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+<hibernate-mapping package="co.in">
+
+<class name="StudentDTO" table="studetails">
+
+
+<!-- Generating Primary Key column -->
+
+
+<id name="rollno" column="ROLL_NO">
+
+	<generator class="increment"></generator>
+
+</id>
+
+
+<!-- Generating normal Column -->
+
+
+<property name="name" column="S_NAME"></property>
+
+
+<property name="physics" column="PHYSICS"></property>
+
+
+<property name="chemistry" column="CHEMISTRY"></property>
+
+
+<property name="maths" column="MATHS"></property>
+
+
+</class>
+</hibernate-mapping>

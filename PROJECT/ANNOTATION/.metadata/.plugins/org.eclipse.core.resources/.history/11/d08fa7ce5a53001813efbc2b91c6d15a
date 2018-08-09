@@ -1,0 +1,2160 @@
+package co.in.MAIN;
+
+import co.in.DTO.*;
+import java.util.*;
+import java.text.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+import org.hibernate.criterion.*;
+
+
+public class Test 
+{
+
+	public static void insertCustomerWithLogin()throws Exception
+	{
+		
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		
+		Scanner sc=new Scanner(System.in);
+		
+		
+		
+		System.out.println("Insert Customer First Name :-- ");
+		
+	//	sc.nextLine();
+		
+		String fname=sc.nextLine();
+		
+		
+		System.out.println("Insert Customer Last Name :-- ");
+		
+		String lname=sc.nextLine();
+		
+		
+		System.out.println("Insert Customer Email :-- ");
+		
+		String email=sc.nextLine();
+		
+		
+		System.out.println("Insert Customer Date of Birth in (dd/mm/yyyy) format :-- ");
+		
+		String dob1=sc.nextLine();
+		
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Date dob=dateformat.parse(dob1);																	// Parsing String into Date		
+		
+		
+		System.out.println("Insert Customer Gender :-- ");
+		
+		String gender=sc.nextLine();
+		
+		
+		System.out.println("Insert Customer Mobile :-- ");
+		
+		Integer mobile=sc.nextInt();
+		
+		sc.nextLine();
+		
+		System.out.println("Insert Customer Address :-- ");
+		
+		String address=sc.nextLine();
+		
+		
+		
+		CustomerDTO cdto=new CustomerDTO();
+		
+	//	cdto.setCid(101);
+		
+		cdto.setFname(fname);
+		
+		cdto.setLname(lname);
+		
+		cdto.setEmail(email);
+		
+		cdto.setDateofbirth(dob);
+		
+		cdto.setGender(gender);
+		
+		cdto.setMobile(mobile);
+		
+		cdto.setAddress(address);
+		
+		
+		
+		System.out.println("Hello "+fname+" Insert your Login Detail's");
+		
+
+		
+		System.out.println("Insert Login Id :-- ");
+		
+	//	sc.nextLine();
+		
+		String loginid=sc.nextLine();
+		
+		
+		System.out.println("Insert Password");
+		
+		String password=sc.nextLine();
+		
+		
+		System.out.println("Insert Alternate Password");
+		
+		String alternatepassword=sc.nextLine();
+		
+		
+		
+		LoginDTO ldto=new LoginDTO();
+		
+	//	ldto.setId(101);
+		
+		ldto.setLoginemail(loginid);
+		
+		ldto.setPassword(password);
+		
+		ldto.setAltenatepassword(alternatepassword);
+		
+		Date creationdate= dateformat.parse(dateformat.format(new Date()));											// get Current Date
+		
+		ldto.setAccountcreationdate(creationdate);
+		
+		ldto.setCustomerParent(cdto);
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(ldto);
+		
+		ts.commit();
+		
+		System.out.println("Thank You for Registration");
+		
+		System.out.println("Your Registration was Successfully Done");
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void insertProject() throws Exception
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		
+			Scanner sc=new Scanner(System.in);
+			
+		//	sc.nextLine();
+			System.out.println("Insert Login Email Id");
+			
+			String email=sc.nextLine();
+			
+			System.out.println("Insert Password");
+			
+			String pass=sc.nextLine();
+			
+			
+			Criteria crit=sess.createCriteria(LoginDTO.class);
+			
+			Criterion c1= Restrictions.eq("loginemail", email);
+			
+			Criterion c2= Restrictions.eq("password", pass);
+			
+			Criterion c3= Restrictions.and(c1, c2);			
+			
+			crit.add(c3);
+			
+			
+			List rows=crit.list();
+			
+			Iterator itr=rows.iterator();
+			
+			String emailid=null;
+			
+			String password=null;
+			
+			String name=null;
+			
+			Integer cusid=0;
+			
+			boolean flag=false;
+			
+			while(itr.hasNext())
+			{
+				
+				LoginDTO ldto=(LoginDTO) itr.next();
+				
+				emailid=ldto.getLoginemail();
+				password=ldto.getPassword();
+				name=ldto.getCustomerParent().getFname();
+				cusid=ldto.getCustomerParent().getCid();
+				
+	//			System.out.println(emailid+"\t"+password+"\t"+name+"\t"+cusid);
+				
+				flag=true;
+				
+			}
+			
+			
+			if(flag==true)
+			{
+			
+			if(emailid.equals(email) && password.equals(pass))
+			{
+				
+				System.out.println("Welcom "+name+" :- ");
+				
+				System.out.println("Please Provide Project Details");
+				
+				System.out.println("Insert Project Name");
+				
+				String pname=sc.nextLine();
+				
+				
+				System.out.println("Insert Project Description");
+				
+				String pdescription=sc.nextLine();
+				
+				
+				System.out.println("Insert Project End Date in (dd/mm/yyyy) format");
+				
+				String enddate=sc.nextLine();
+				
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				
+				Date start= dateFormat.parse(dateFormat.format(new Date()));										// get current Date
+
+				Date end = dateFormat.parse(enddate);
+				
+				
+				ProjectDTO project=new ProjectDTO();
+				
+				project.setPname(pname);
+				
+				project.setDescription(pdescription);
+				
+				project.setStartdate(start);
+				
+				project.setEnddate(end);
+				
+				project.setCusid(cusid);
+				
+				
+																		StatusDTO status=new StatusDTO();
+																		
+																		status.setProjectname(pname);
+				
+																		status.setStatus("Open");
+
+																		status.setSubmissiondate(null);
+				
+																	//	status.setProjectParent(project);
+																		
+																	//	status.setTeamParent(teamParent);				// Currently we are not set it
+																														// reason at a time of project assign to team 
+																														// we will update it.
+																		
+																	
+				project.setStatusChild(status);
+																		
+																		
+				Transaction ts=sess.beginTransaction();														
+																		
+				sess.save(project);
+				
+				ts.commit();
+				
+				System.out.println("Project Successfully Added");
+				
+			}
+			
+			}																								// If close of flag
+			else if(flag==false)
+			{
+				
+				System.out.println("LoginId and Password are Wrong");
+				
+			}
+			
+			
+			
+			
+			
+			
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	public static void insertteamWithEmployee() throws Exception
+	{
+		
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		
+			Scanner sc=new Scanner(System.in);
+
+			
+			System.out.println("Insert Team Name");
+			
+			String teamname=sc.nextLine();
+			
+			
+			
+		System.out.println("Insert Team Lead Information");
+
+		System.out.println("Insert Team Lead First Name");
+
+		String fname1 = sc.nextLine();
+
+		System.out.println("Insert Team Lead Last Name");
+
+		String lname1 = sc.nextLine();
+
+		System.out.println("Insert Team Lead EMAIL");
+
+		String email1 = sc.nextLine();
+
+		System.out.println("Insert Team Lead Mobile");
+
+		Integer mobile1 = sc.nextInt();
+
+		sc.nextLine();
+		
+		System.out.println("Insert Team Lead Role");
+
+		String role1 = sc.nextLine();
+
+		System.out.println("Insert Team Lead Date of Birth in (dd/mm/yyyy) format");
+
+		String dateofbirth = sc.nextLine();
+		
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Date dob1=dateformat.parse(dateofbirth);																	// Parsing String into Date		
+
+		
+		
+		EmployeeDTO edto1=new EmployeeDTO();
+		
+		edto1.setFname(fname1);
+		
+		edto1.setLname(lname1);
+		
+		edto1.setEmail(email1);
+		
+		edto1.setMobile(mobile1);
+		
+		edto1.setRole(role1);
+		
+		edto1.setDateofbirth(dob1);
+		
+	
+		
+		
+		TeamDTO team=new TeamDTO();
+		
+		team.setTeamname(teamname);
+		
+		team.setTeamleadname(fname1);
+		
+		
+		Set s=new HashSet();
+		
+		s.add(edto1);																							// Adding Team Lead into Team 
+		
+		
+		System.out.println("Insert Number of Employee You Want");
+		
+		int size=sc.nextInt();
+					
+		sc.nextLine();
+		
+		for(int i=1; i<=size ; i++)
+		{
+		System.out.println("Insert Details of Employee No :-- "+i);
+	
+	
+		System.out.println("Insert Employee First Name");
+
+		String fname2 = sc.nextLine();
+
+		System.out.println("Insert Employee Last Name");
+
+		String lname2 = sc.nextLine();
+
+		System.out.println("Insert Employee EMAIL");
+
+		String email2 = sc.nextLine();
+
+		System.out.println("Insert Employee Mobile");
+
+		Integer mobile2 = sc.nextInt();
+
+		sc.nextLine();
+		
+		System.out.println("Insert Employee Role");
+
+		String role2 = sc.nextLine();
+
+		System.out.println("Insert Employee Date of Birth in (dd/mm/yyyy) format");
+
+		String dateofbirth2 = sc.nextLine();
+		
+		
+		Date dob2=dateformat.parse(dateofbirth2);																	// Parsing String into Date		
+
+		
+		
+		EmployeeDTO edto2=new EmployeeDTO();
+		
+		edto2.setFname(fname2);
+		
+		edto2.setLname(lname2);
+		
+		edto2.setEmail(email2);
+		
+		edto2.setMobile(mobile2);
+		
+		edto2.setRole(role2);
+		
+		edto2.setDateofbirth(dob2);
+
+		
+		s.add(edto2);																								// Adding Remaining Employees in to Team
+		
+		
+		}
+		
+		
+		team.setEmployeeChild(s);
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(team);
+		
+		ts.commit();
+		
+		System.out.println("Team and Employee Details Insert Successfully");
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	public static void insertEmployeeOnly() throws Exception
+	{
+
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Transaction ts=sess.beginTransaction();
+		
+
+		Scanner sc=new Scanner(System.in);
+		
+		Criteria crit=sess.createCriteria(TeamDTO.class);
+		
+		ProjectionList p=Projections.projectionList();
+		
+		
+		p.add(Projections.property("teamid"));
+	
+		p.add(Projections.property("teamname"));
+		
+		crit.setProjection(p);
+		
+		List rows=crit.list();
+		
+		Iterator itr=rows.iterator();
+		
+		System.out.println("Team Name List");
+		
+		Object[] columns;
+		
+		Integer count=1;
+		
+		boolean flag=false;
+		
+		while(itr.hasNext())
+		{
+			
+			columns=(Object[]) itr.next();
+			
+
+			Integer teamid=(Integer) columns[0];
+			
+			String teamname=(String) columns[1];
+		
+			
+	//		System.out.println(teamid);
+			
+			System.out.println(count+"\t"+teamname);
+			
+			count++;
+			
+			flag=true;
+			
+		}
+		
+		
+		System.out.println("Flag Status :-- "+flag);
+		
+		if(flag==true)
+		{
+		
+			System.out.println("Insert Team Name from the Above List from Employee Insertion");
+			
+			String tname=sc.nextLine();
+
+			
+			Criteria crit1=sess.createCriteria(TeamDTO.class);
+			
+			Criterion c1= Restrictions.eq("teamname", tname);
+			
+			crit1.add(c1);
+			
+			List rows1=crit1.list();
+			
+			Iterator itr1=rows1.iterator();
+			
+			boolean flag1=false;
+			
+			while(itr1.hasNext())
+			{
+				
+				
+				TeamDTO team=(TeamDTO) itr1.next();
+				
+				System.out.println("From User :-- "+tname);
+				
+				System.out.println("From DB :-- "+team.getTeamname());
+				
+
+				if(team.getTeamname().equalsIgnoreCase(tname))
+				{
+					
+					System.out.println("Insert Number of Employee You Want");
+					
+					int size=sc.nextInt();
+																				
+					for(int i=1; i<=size ; i++)
+					{
+					System.out.println("Insert Details of Employee No :-- "+i);
+				
+					sc.nextLine();
+					System.out.println("Insert Employee First Name");
+
+					String fname2 = sc.nextLine();
+
+					System.out.println("Insert Employee Last Name");
+
+					String lname2 = sc.nextLine();
+
+					System.out.println("Insert Employee EMAIL");
+
+					String email2 = sc.nextLine();
+
+					System.out.println("Insert Employee Mobile");
+
+					Integer mobile2 = sc.nextInt();
+
+					sc.nextLine();
+					
+					System.out.println("Insert Employee Role");
+
+					String role2 = sc.nextLine();
+
+					System.out.println("Insert Employee Lead Date of Birth in (dd/mm/yyyy) format");
+
+					String dateofbirth2 = sc.nextLine();
+					
+					SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+					
+					Date dob2=dateformat.parse(dateofbirth2);																	// Parsing String into Date		
+
+					
+					
+					EmployeeDTO edto2=new EmployeeDTO();
+					
+					edto2.setFname(fname2);
+					
+					edto2.setLname(lname2);
+					
+					edto2.setEmail(email2);
+					
+					edto2.setMobile(mobile2);
+					
+					edto2.setRole(role2);
+					
+					edto2.setDateofbirth(dob2);
+
+
+
+					Set s=team.getEmployeeChild();
+
+					s.add(edto2);
+				
+					team.setEmployeeChild(s);
+					
+					
+					
+					}																				// for loop is close.
+				
+					
+					sess.update(team);
+					
+					ts.commit();
+					
+					System.out.println("Employee Insert Successfully");
+
+					
+					flag1=true;
+					
+				}																					// If is close
+				
+				
+				
+				
+				
+			}																						// While is close	
+				
+			if(flag1==false)
+			{
+				
+				System.out.println("\n \n Team Name is NOT Found");
+				
+			}																					// If is close (flag1)			
+			
+			
+		}																						// If is close (flag)		
+		
+		else if(flag==false)
+		{
+			
+			System.out.println("You Have NO Team");
+			
+		}
+		
+				
+		
+		sess.close();
+		
+		sf.close();
+		
+		
+	}
+	
+	
+	
+	
+	public static void insertBug() throws Exception
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("Insert Login Email Id");
+		
+		String email=sc.nextLine();
+		
+		System.out.println("Insert Password");
+		
+		String pass=sc.nextLine();
+		
+		
+		Criteria crit=sess.createCriteria(LoginDTO.class);
+		
+		Criterion c1= Restrictions.eq("loginemail", email);
+		
+		Criterion c2= Restrictions.eq("password", pass);
+		
+		Criterion c3= Restrictions.and(c1, c2);			
+		
+		crit.add(c3);
+		
+		
+		List rows=crit.list();
+		
+		Iterator itr=rows.iterator();
+		
+		String name=null;
+		
+		Integer cusid=0;
+		
+		boolean flag2=false;
+		
+		while(itr.hasNext())
+		{
+			
+			LoginDTO ldto=(LoginDTO) itr.next();
+			
+			name=ldto.getCustomerParent().getFname();
+			cusid=ldto.getCustomerParent().getCid();
+			
+			System.out.println(" \n \n Hello "+name);
+			
+			flag2=true;
+		}
+
+		if(flag2==true)
+		{
+			
+			
+		Criteria crit1=sess.createCriteria(ProjectDTO.class);
+		
+		Criterion c4= Restrictions.eq("cusid", cusid);
+		
+		crit1.add(c4);
+		
+		List rows1=crit1.list();
+		
+		Iterator itr1=rows1.iterator();
+
+		System.out.println(" \n Your Project List \n");
+	
+		Integer count =1;
+		
+		boolean flag=false;
+		
+		while(itr1.hasNext())
+		{
+			
+			ProjectDTO project=(ProjectDTO) itr1.next();
+			
+			if(project.getCusid().equals(cusid))
+			{
+	
+								
+				System.out.println(count+"\t"+project.getPname());
+				
+				
+				count++;
+
+				flag =true;
+				
+			}
+			
+			
+		}																				// Close while loop (itr1)
+
+
+		if(flag==true)
+		{
+			
+			System.out.println("Insert Project Name from the Above List");	
+			
+			String projectname=sc.nextLine();
+
+			
+			Criteria crit2=sess.createCriteria(ProjectDTO.class);
+			
+			Criterion c5= Restrictions.eq("pname", projectname);
+			
+			Criterion c6= Restrictions.eq("cusid", cusid);
+			
+			Criterion c7= Restrictions.and(c5, c6);
+			
+			crit2.add(c7);
+			
+			List rows2=crit2.list();
+			
+		//	System.out.println("Row size :- "+rows2.size());
+			
+			Iterator itr2=rows2.iterator();
+
+			boolean flag1=false;
+			
+			while(itr2.hasNext())
+			{
+				
+				ProjectDTO project=(ProjectDTO) itr2.next();
+				
+				Set s=project.getBugChild();
+				
+				
+			//	System.out.println("Project name from DB :-- "+project.getPname());
+				
+			//	System.out.println("Project Name from user :-- "+projectname );
+
+				
+				
+				if(project.getPname().equalsIgnoreCase(projectname))
+				{
+					
+					System.out.println("How Many Bug You Want to Insert");
+					
+					int size=sc.nextInt();
+					
+					sc.nextLine();
+					
+					for(int i=1; i<=size; i++)
+					{
+
+						System.out.println("Insert Bug Name");
+						
+						String bname=sc.nextLine();
+						
+						
+						System.out.println("Insert Bug Description");
+						
+						String bdescription=sc.nextLine();
+						
+						
+						System.out.println("Insert Bug End Date in (dd/mm/yyyy) format");
+						
+						String benddate=sc.nextLine();
+						
+						
+						
+						
+						SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+						
+						Date start= dateFormat.parse(dateFormat.format(new Date()));										// get current Date
+
+						Date end = dateFormat.parse(benddate);
+
+						
+						BugDTO bug=new BugDTO();
+						
+						bug.setBugname(bname);
+						
+						bug.setBugdescription(bdescription);
+						
+						bug.setBugstartdate(start);
+						
+						bug.setBugenddate(end);
+						
+						
+						
+																	BugStatusDTO status=new BugStatusDTO();
+						
+																	status.setBugname(bname);
+
+																	status.setStatus("Open");
+
+																	status.setSubmissiondate(null);
+
+																	
+						bug.setBugstatusChild(status);
+																	
+																	
+						s.add(bug);
+
+						
+						
+					}																			// For Loop Close.
+				
+					project.setBugChild(s);														// Add Bug into Project
+					
+					flag1=true;
+					
+				}																				// If Loop Close.	
+				
+				
+				
+				
+				sess.update(project);
+				
+				ts.commit();
+				
+			}																					// While Loop End for itr2		
+
+			
+			if(flag1==false)
+			{
+				
+				System.out.println(" \n \n Project Name is Wrong \n ");
+				
+				System.out.println("Insert Correct Project Name ");
+				
+			}
+
+			
+			
+		}																						// If close of flag(Project available)
+		else if (flag==false)
+		{
+			
+				
+				System.out.println("\n\n YOU Have NO Project \n");
+		
+				System.out.println("Insert Project First \n");
+
+		}
+		
+		}
+		else if(flag2==false)
+		{
+			System.out.println("You Have Insert Wrong User Id and Password");
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	
+	public static void assignProjectToTeam() throws Exception
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		Scanner sc=new Scanner(System.in);
+
+		
+		Query q=sess.createQuery("from ProjectDTO");
+		
+		List rows=q.list();
+
+		Iterator itr=rows.iterator();	
+			
+		System.out.println("\n \n Project List \n");
+		
+		Integer count=1;
+		
+		while(itr.hasNext())
+		{
+			
+			ProjectDTO project=(ProjectDTO) itr.next(); 
+			
+			System.out.println(count+"\t"+project.getPname());
+			
+			count++;
+			
+		}
+		
+	
+			
+		System.out.println("Insert Project Name from the above List");	
+		
+		String pname=sc.nextLine();
+		
+		
+		Query q1=sess.createQuery("from ProjectDTO");
+		
+		List rows1=q.list();
+
+		Iterator itr1=rows1.iterator();	
+			
+		Integer flag1=0;
+		Integer projectid=0;
+		
+		while(itr1.hasNext())
+		{
+			 
+			
+			
+			ProjectDTO project=(ProjectDTO) itr1.next(); 
+			
+			if(project.getPname().equalsIgnoreCase(pname))
+			{
+				projectid=project.getPid();
+									
+				flag1 =1;
+				
+				break;
+			}
+			
+		}
+
+
+		if(flag1 ==0)
+		{
+			System.out.println("Project NOT Available");
+		}
+		
+		
+			
+		Query q2=sess.createQuery("from TeamDTO");
+		
+		List rows2=q2.list();
+			
+		Iterator itr2=rows2.iterator();		
+		
+		System.out.println("\n \n Team List \n");
+		
+		while(itr2.hasNext())
+		{
+			
+			TeamDTO team=(TeamDTO) itr2.next();
+			
+			System.out.println(team.getTeamid()+"\t"+team.getTeamname()+"\t"+team.getTeamleadname());
+			
+		}
+
+		
+		
+		System.out.println("Insert Team Name from the above List");	
+		
+		String tname=sc.nextLine();
+		
+		Query q3=sess.createQuery("from TeamDTO");
+		
+		List rows3=q3.list();
+			
+		Iterator itr3=rows3.iterator();		
+		
+
+		Integer flag2=0;
+		
+		Integer teamid=0;
+		String teamname=null;
+		
+		while(itr3.hasNext())
+		{
+			
+			TeamDTO team=(TeamDTO) itr3.next();
+			
+			if(team.getTeamname().equalsIgnoreCase(tname))
+			{
+				
+				teamid=team.getTeamid();
+				teamname=team.getTeamname();
+				
+				flag2=1;
+				
+				break;
+			}
+			
+		}
+
+		if(flag2 ==1)
+		{
+			System.out.println("Team Name is Available");
+		}
+		
+		else
+		{
+			System.out.println("Team Name is NOT Available");
+			
+			
+		}
+
+		StatusDTO pstatus=(StatusDTO) sess.get(StatusDTO.class, projectid);
+		
+		if(pstatus.getTid() == null)
+		{
+			
+			pstatus.setTid(teamid);
+		
+			System.out.println("Project is Assigned to Team "+teamname);
+			
+		}
+		
+		else
+		{
+			
+			System.out.println("Project Is already Assigned To Team ");
+		}
+			
+		sess.update(pstatus);
+		
+		ts.commit();
+		
+		
+		sess.close();
+		
+		sf.close();
+			
+			
+	}
+	
+	
+/*	public static void assignBugToEmployee() throws Exception
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		Scanner sc=new Scanner(System.in);
+
+		Query q=sess.createQuery("from ProjectDTO");
+		
+		List rows=q.list();
+
+		Iterator itr=rows.iterator();	
+			
+		System.out.println("\n \n Project List \n");
+		
+		ProjectDTO project;
+		
+		while(itr.hasNext())
+		{
+			
+			project=(ProjectDTO) itr.next(); 
+			
+			System.out.println(project.getPid()+"\t"+project.getPname()+"\t\t\t"+project.getStartdate()+"\t"+project.getEnddate());
+			
+			
+			
+		}
+		
+	
+			
+		System.out.println("Insert Project Name from the above List");	
+		
+		String pname=sc.nextLine();
+		
+		
+		
+		Query q1=sess.createQuery("from ProjectDTO");
+		
+		List rows1=q.list();
+
+		Iterator itr1=rows1.iterator();	
+			
+		Integer flag1=0;
+		Integer projectid=0;
+		
+		
+		while(itr1.hasNext())
+		{
+
+			project=(ProjectDTO) itr1.next();
+			
+			if(project.getPname().equalsIgnoreCase(pname))
+			{
+			
+				projectid=project.getPid();
+				
+				Set s=project.getBugChild();
+				
+				Iterator itr3=s.iterator();
+				
+				int count=1;
+				
+				while(itr3.hasNext())
+				{
+				
+					BugDTO bug=(BugDTO) itr3.next();
+					
+					System.out.println(count+"\t"+bug.getBugname()+"\t");
+				
+					
+					
+					count++;
+				}
+				flag1 =1;
+				
+				break;
+			}
+			
+		}
+
+
+		if(flag1 ==0)
+		{
+			System.out.println("Project NOT Available");
+		}
+		
+		
+		
+		System.out.println("Insert Bug Name from the above Bug List");
+		
+		String bname=sc.nextLine();
+	
+		
+		Criteria crit1=sess.createCriteria(BugDTO.class);		
+				
+		
+		
+		Criterion c2=Restrictions.eq("projectid", projectid);
+		
+		System.out.println("Project id " +projectid);
+		
+		crit1.add(c2);
+		
+		List rows5=crit1.list();
+		
+		System.out.println("Row Size "+rows5.size());
+		
+		Iterator itr5=rows5.iterator();
+		
+		Integer flag = 0;
+		Integer bugid=0;
+		System.out.println("Hello");
+		
+		while(itr5.hasNext())
+		{
+			System.out.println("Hello 1");
+			
+			BugDTO bug=(BugDTO) itr5.next();
+			
+			if(bug.getBugname().equalsIgnoreCase(bname))
+			{
+				
+				System.out.println("Bug is Available.");
+				
+				
+				
+				bugid=bug.getBugid();
+				
+				flag=1;
+				
+				break;
+			}
+			
+			
+			
+		}
+		
+		
+		if(flag==0)
+		{
+			System.out.println("Bug is NOT Available.");
+			
+		}
+		
+		
+	
+	Criteria crit=sess.createCriteria(StatusDTO.class);	
+		
+	Criterion c1=Restrictions.eq("projectname", pname);
+		
+	crit.add(c1);
+	
+	List rows4=crit.list();
+	
+	Iterator itr4=rows4.iterator();
+	
+	Integer teamid=0;
+	
+	while(itr4.hasNext())
+	{
+		
+		StatusDTO status=(StatusDTO) itr4.next();
+		
+		teamid=status.getTid();
+		
+	}
+	
+	
+	
+	
+	
+	TeamDTO team=(TeamDTO) sess.get(TeamDTO.class, teamid);
+	
+	Set s=team.getEmployeeChild();
+	
+	Iterator itr6=s.iterator();
+	
+	while(itr6.hasNext())
+	{
+		
+		EmployeeDTO employee=(EmployeeDTO) itr6.next();
+		
+		System.out.println(employee.getFname()+"\t"+employee.getLname());
+		
+	}
+	
+//	System.out.println("Insert Employee Name ");
+	
+	BugStatusDTO bugstatus=(BugStatusDTO)sess.get(BugStatusDTO.class, bugid);
+	
+	Set s3=bugstatus.get
+
+
+	
+	
+	Iterator itr7=s.iterator();
+	
+	while(itr7.hasNext())
+	{
+			
+		EmployeeDTO employee=(EmployeeDTO) itr7.next();
+		
+		
+		
+		
+		
+		
+	}
+
+
+	
+	sess.close();
+	
+	sf.close();
+	
+	}
+*/	
+	
+	public static void assignBugToEmployee() throws Exception
+	{
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		Transaction ts=sess.beginTransaction();
+		
+		
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("Insert Login Email Id");
+		
+		String email=sc.nextLine();
+		
+		System.out.println("Insert Password");
+		
+		String pass=sc.nextLine();
+		
+		
+		Criteria crit=sess.createCriteria(LoginDTO.class);
+		
+		Criterion c1= Restrictions.eq("loginemail", email);
+		
+		Criterion c2= Restrictions.eq("password", pass);
+		
+		Criterion c3= Restrictions.and(c1, c2);			
+		
+		crit.add(c3);
+		
+		
+		List rows=crit.list();
+		
+		Iterator itr=rows.iterator();
+		
+		String name=null;
+		
+		Integer cusid=0;
+		
+		while(itr.hasNext())
+		{
+			
+			LoginDTO ldto=(LoginDTO) itr.next();
+			
+			name=ldto.getCustomerParent().getFname();
+			cusid=ldto.getCustomerParent().getCid();
+			
+			System.out.println("Hello "+name);
+			
+		}
+
+		
+		Criteria crit1=sess.createCriteria(ProjectDTO.class);
+		
+		Criterion c4= Restrictions.eq("cusid", cusid);
+		
+		crit1.add(c4);
+		
+		List rows1=crit1.list();
+		
+		Iterator itr1=rows1.iterator();
+
+		System.out.println(" \n Your Project List \n");
+	
+		Integer count =1;
+		
+		boolean flag=false;
+		
+		while(itr1.hasNext())
+		{
+			
+			ProjectDTO project=(ProjectDTO) itr1.next();
+			
+			if(project.getCusid().equals(cusid))
+			{
+	
+								
+				System.out.println(count+"\t"+project.getPname());
+				
+				
+								
+				count++;
+
+				flag =true;
+				
+			}
+			
+				
+			
+			
+		}
+
+		if(flag==true)
+		{
+			
+			System.out.println("Insert Project Name from the Above List");	
+			
+			String pname=sc.nextLine();
+
+		
+					
+			
+			
+			Criteria crit2=sess.createCriteria(StatusDTO.class);
+			
+			Criterion c7= Restrictions.eq("projectname", pname);
+			
+			crit2.add(c7);
+
+			
+			List rows2=crit2.list();
+			
+			Iterator itr3=rows2.iterator();
+			
+			Integer teamid=0;
+			
+			Integer projectid=0;
+			
+			while(itr3.hasNext())
+			{
+				StatusDTO status=(StatusDTO) itr3.next();
+				
+				projectid=status.getSid();
+				
+				teamid=status.getTid();
+				
+			}
+			
+			
+			
+			Criteria crit3=sess.createCriteria(BugDTO.class);
+			
+			Criterion c8= Restrictions.eq("projectid", projectid);
+			
+			crit3.add(c8);
+			
+			List rows3=crit3.list();
+			
+			Iterator itr4=rows3.iterator();
+			
+			int count1=1;
+			
+			System.out.println("List of Bugs");
+			
+			boolean flag1=false;
+			
+			while(itr4.hasNext())
+			{
+				
+				BugDTO bug=(BugDTO) itr4.next();
+				
+				System.out.println(count1+"\t"+bug.getBugname());
+				
+				count1++;
+				
+				flag1=true;
+				
+			}
+			
+			
+			if(flag1==true)
+			{
+				System.out.println("Insert Bug Name");
+				
+				String bugname=sc.nextLine();
+				
+				
+				Criteria crit8=sess.createCriteria(BugDTO.class);
+				
+				Criterion c20= Restrictions.eq("bugname", bugname);
+				
+				Criterion c21= Restrictions.eq("projectid", projectid);
+				
+				Criterion c22= Restrictions.and(c20, c21);
+				
+				crit8.add(c22);
+				
+				List rows8=crit8.list();
+				
+				Iterator itr8=rows8.iterator();
+				
+				Integer bugid=0;
+				
+				while(itr8.hasNext())
+				{
+					
+					BugDTO bug=(BugDTO) itr8.next();
+					
+					bugid=bug.getBugid();
+					
+				}
+				
+				
+				
+				Criteria crit4=sess.createCriteria(EmployeeDTO.class);
+				
+				Criterion c9= Restrictions.eq("tid", teamid);
+				
+				crit4.add(c9);
+				
+				List rows4=crit4.list();
+				
+				Iterator itr5=rows4.iterator();
+				
+				int count2=1;
+				
+				System.out.println("List of Employee");
+				
+				boolean flag2=false;
+				
+				while(itr5.hasNext())
+				{
+
+					EmployeeDTO employee=(EmployeeDTO) itr5.next();
+					
+					
+					System.out.println(count2+"\t"+employee.getFname()+"\t"+employee.getRole());
+					
+					count2++;
+				
+					flag2=true;
+				}	
+				
+				
+				if(flag2==true)
+				{
+					
+					System.out.println("Insert Employee FIRST NAME from the above list");
+					
+					String efname=sc.nextLine();
+					
+					System.out.println("Insert Employee LAST NAME from the above list");
+					
+					String elname=sc.nextLine();
+					
+					
+					Criteria crit5=sess.createCriteria(EmployeeDTO.class);
+					
+					Criterion c10= Restrictions.eq("fname", efname);
+					
+					Criterion c11= Restrictions.eq("lname", elname);
+					
+					Criterion c12= Restrictions.eq("tid", teamid);
+					
+					Criterion c13= Restrictions.and(c10, Restrictions.and(c10, c11));
+					
+					crit5.add(c13);
+					
+					
+					List rows5=crit5.list();
+					
+					Iterator itr6=rows5.iterator();
+					
+					boolean flag3=false;
+					
+					Integer empid=0;
+					
+					while(itr6.hasNext())
+					{
+						
+						EmployeeDTO employee=(EmployeeDTO) itr6.next();
+						
+						empid=employee.getEid();
+						
+						flag3=true;
+						
+					}
+					
+					
+					if(flag3==true)
+					{
+						
+						Criteria crit6=sess.createCriteria(EmployeeDTO.class);
+						
+						Criterion c14= Restrictions.eq("eid", empid);
+						
+						Criterion c15= Restrictions.eq("tid", teamid);
+
+						Criterion c16= Restrictions.and(c14, c15);
+						
+						crit6.add(c16);
+
+						List rows6=crit6.list();
+						
+						Iterator itr7=rows6.iterator();
+
+						boolean flag4=false;
+						
+						Integer count4=1;
+						
+						while(itr7.hasNext())
+						{
+							
+							EmployeeDTO emp=(EmployeeDTO) itr7.next();
+							
+							System.out.println(count4+"\t"+emp.getFname()+"\t"+emp.getLname());
+										
+							count4++;
+							
+							flag4=true;
+						}
+						
+						
+						if(flag4==true)
+						{
+							
+							Criteria crit7=sess.createCriteria(BugStatusDTO.class);
+							
+							Criterion c17= Restrictions.eq("bugname", bugname);
+							
+							Criterion c18= Restrictions.eq("sid", bugid);
+							
+							Criterion c19= Restrictions.and(c17, c18);
+							
+							crit7.add(c19);
+							
+							List rows9=crit7.list();
+							
+							Iterator itr9=rows9.iterator();
+							
+							while(itr9.hasNext())
+							{
+								
+								BugStatusDTO bugstatus=(BugStatusDTO) itr9.next();
+								
+								System.out.println("Before Assigning Bug to Employee \n");
+								
+								System.out.println(bugstatus.getSid()+"\t"+bugstatus.getBugname()+"\t"+bugstatus.getEid()+"\t"+bugstatus.getStatus()+"\t"+bugstatus.getSubmissiondate()+"\n");
+								
+								bugstatus.setEid(empid);
+
+								sess.update(bugstatus);
+							
+								System.out.println("Bug is Successfully Assign to Employee  "+efname );
+								
+							}
+							
+							
+						}
+							
+						else if(flag4==false)
+						{
+						
+							System.out.println("\n Employee Name is NOT FOUND in Your Team ");
+							
+						}
+					}
+					else if(flag3==false)
+					{
+						
+						System.out.println("\n \n Employee Name is NOT FOUND. \n");
+						
+												
+					}
+					
+				}
+				
+				else if(flag2==false)
+				{
+					
+					
+				}
+				
+			}
+			else if(flag1==false)
+			{
+				
+				System.out.println("\n You Dont have any Bug's \n");
+				
+				
+			}
+			
+			
+			
+		}	
+			
+		
+		else if(flag==false)
+		{
+			
+			System.out.println("\n\n YOU Have NO Project \n");
+			
+			System.out.println("Insert Project First \n");
+
+		}
+		
+		ts.commit();
+		
+		sess.close();
+		
+		sf.close();
+	}
+	
+	
+	public static void insertProjectMilestone() throws Exception
+	{
+		
+		
+		AnnotationConfiguration cfg=new AnnotationConfiguration().configure();
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		Session sess=sf.openSession();
+		
+		
+		
+			Scanner sc=new Scanner(System.in);
+			
+		//	sc.nextLine();
+			System.out.println("Insert Login Email Id");
+			
+			String email=sc.nextLine();
+			
+			System.out.println("Insert Password");
+			
+			String pass=sc.nextLine();
+			
+			
+			Criteria crit=sess.createCriteria(LoginDTO.class);
+			
+			Criterion c1= Restrictions.eq("loginemail", email);
+			
+			Criterion c2= Restrictions.eq("password", pass);
+			
+			Criterion c3= Restrictions.and(c1, c2);			
+			
+			crit.add(c3);
+			
+			
+			List rows=crit.list();
+			
+			Iterator itr=rows.iterator();
+			
+			String name=null;
+			
+			boolean flag1=false;
+			
+			Integer cusid=0;
+			
+			while(itr.hasNext())
+			{
+				
+				LoginDTO ldto=(LoginDTO) itr.next();
+				
+				name=ldto.getCustomerParent().getFname();
+				cusid=ldto.getCustomerParent().getCid();
+				
+				System.out.println("Hello "+name);
+				
+				flag1=true;
+
+			}
+			
+
+			if(flag1==true)
+			{
+				
+		
+			Criteria crit1=sess.createCriteria(ProjectDTO.class);
+			
+			Criterion c4= Restrictions.eq("cusid", cusid);
+			
+			crit1.add(c4);
+			
+			List rows1=crit1.list();
+			
+			Iterator itr1=rows1.iterator();
+
+			System.out.println(" \n Your Project List \n");
+		
+			int count =1;
+			
+			boolean flag=false;
+			
+			while(itr1.hasNext())
+			{
+				
+				ProjectDTO project=(ProjectDTO) itr1.next();
+				
+				System.out.println(count+"\t"+project.getPname()+"\n");
+				
+				count++;
+				
+				flag=true;
+			}
+		
+			if(flag==true)
+			{
+				
+				System.out.println("Insert Project Name for Add MileStone ");
+				
+				String pname=sc.nextLine();
+				
+				
+				Criteria crit2=sess.createCriteria(ProjectDTO.class);
+				
+				Criterion c5= Restrictions.eq("cusid", cusid);
+				
+				Criterion c6= Restrictions.eq("pname", pname);
+				
+				Criterion c7= Restrictions.and(c5, c6);
+				
+				crit2.add(c7);
+				
+				
+				List rows2=crit2.list();
+				
+				Iterator itr2=rows2.iterator();
+				
+				boolean flag2=false;
+				
+				Integer projectid=0;
+				
+				while(itr2.hasNext())
+				{
+					
+					ProjectDTO project=(ProjectDTO) itr2.next();
+					
+					projectid=project.getPid();
+				
+					flag2=true;
+				}
+				
+				if(flag2==true)
+				{
+					
+					
+					Query q=sess.createQuery("from ProjectDTO")
+					
+							
+							
+					
+					for(int i=1; i<=size; i++)
+					{
+					
+					System.out.println("Insert MileStone Name");
+					
+					String mname=sc.nextLine();
+					
+					
+					System.out.println("Insert MileStone End-Date");
+					
+					String enddate=sc.nextLine();
+					
+			
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					
+					Date start= dateFormat.parse(dateFormat.format(new Date()));										// get current Date
+
+					Date end = dateFormat.parse(enddate);
+
+					
+					ProjectMilestoneDTO mile=new ProjectMilestoneDTO();
+					
+					mile.setPmname(mname);
+					
+					mile.setPmstartdate(start);
+					
+					mile.setPmenddate(end);
+					
+					mile.setProjectParent(project);
+					
+					
+					
+					
+					}																							// for loop close.
+					
+					
+				}																								// If close of flag2
+				
+				else if(flag2== false)
+				{
+					
+					System.out.println("\n \n You Have Insert Wrong Project Name");
+					
+				}
+			}
+			
+			else if(flag== false)
+			{
+				System.out.println("\n\n YOU Have NO Project \n");
+
+				
+			}
+			
+			}																												// If Close flag1	
+			
+			else if(flag1==false)
+			{
+				System.out.println("\n You Have Insert Wrong User Id and Password");
+				
+			}
+			
+			
+		sess.close();
+		
+		sf.close();
+
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+		Scanner sc=new Scanner(System.in);
+		
+		
+		System.out.println("Insert 1 for New Customer Insert \n");
+		
+		System.out.println("Insert 2 for New Project Insert \n");
+		
+		System.out.println("Insert 3 for New Team Insert \n");
+		
+		System.out.println("Insert 4 for Only Employee Insert \n");
+					
+		System.out.println("Insert 5 for Insert New Bug \n");
+		
+		System.out.println("Insert 6 for Assign Project to Team \n");
+		
+		System.out.println("Insert 7 for Assign Bug to Employee \n");
+		
+		System.out.println("Insert 8 from GET ALL the Customer \n");									// from getMain Class
+		
+		System.out.println("Insert 9 for GET Project List Of Perticular Customer \n");					// from getMain Class
+		
+		System.out.println("Insert 10 for GET Bug List Of Perticular Customer \n");						// from getMain Class
+		
+		System.out.println("Insert 11 for Update Bug \n");												// from UpdateMain Class
+		
+		System.out.println("Insert 12 for Update Project \n");											// from UpdateMain Class
+		
+		System.out.println("Insert 13 for Get All Information Of Perticular Customer \n");				// from getMain Class
+		
+		System.out.println("Insert 14 for Get All Team \n");											// from getMain Class
+		
+		System.out.println("Insert 15 for Get ALL Team With Employee \n");								// from getMain Class
+		
+		System.out.println("Insert 16 for Update Employee Name \n");									// from UpdateMain Class
+		
+		System.out.println("Insert 17 for Insert MileStone in Project");
+		
+		
+		
+		GetMain g=new GetMain();																		// Create object of GetMain Class 
+		
+		UpdateMain u=new UpdateMain();																	// Create object of UpdateMain Class 
+		
+		
+		int choice=sc.nextInt();
+		
+		if(choice == 1)
+		{
+			
+			 insertCustomerWithLogin();
+				
+		
+		}																			// If close for insert Customer																						
+		
+		else if(choice == 2)
+		{
+			
+						
+			Scanner sc1=new Scanner(System.in);
+
+			System.out.println("Insert 1 for Sign Up ");
+			
+			System.out.println("Insert 2 for Sign In  ");
+			
+			int choice1=sc.nextInt();
+			
+			
+			if(choice1 == 1)
+			{
+				System.out.println("Please Sign Up");
+				
+				insertCustomerWithLogin();
+			
+				System.out.println("Login for Project Insert");
+				
+				insertProject();
+				
+			}
+
+			
+			if(choice1 == 2)
+			{
+				System.out.println("Login for Project Insert");
+				
+				insertProject();
+				
+			}
+			
+		
+		}																				// If close for insert Project
+
+		
+		
+		
+		else if(choice == 3)
+		{
+			
+			insertteamWithEmployee();
+				
+		
+		}																				// If close for insert Team		
+
+		
+		
+		else if(choice==4)
+		{
+			
+			insertEmployeeOnly();
+			
+		}																				// If close for insert Employee Only	
+		
+		
+		else if(choice == 5)
+		{
+			
+			insertBug();
+		}																				// If close for insert Bug Only
+		
+		else if(choice == 6)
+		{
+			
+			assignProjectToTeam();
+		}																				// assign project to team
+		
+		
+		else if(choice == 7)
+		{
+			assignBugToEmployee();
+			
+		}																				// assign Bug to Employee
+		
+		else if(choice == 8)
+		{
+			
+			g.getALLCustomer();
+			
+		}																				// get ALL the Customer List
+		
+		
+		else if(choice==9)
+		{
+			
+			g.getProjectListCustomerBased();
+			
+		}																				//get Project List Based On Customer
+
+		else if(choice == 10)
+		{
+			
+			g.getBugListProjectBased();
+		}																				// get Bug List Based On Project
+		
+		else if(choice == 11)
+		{
+			
+			u.updateBugListProjectBased();
+		}																				// update bug and bug status.
+		
+		
+		else if(choice == 12)
+		{
+			
+			u.updateProjectListCustomerBased();
+		}																			 	// update project and project status			
+	
+		else if(choice == 13)
+		{
+			g.getALLInformationOfCustomer();
+			
+		}																				// get All Information of Customer Project
+	
+		else if(choice == 14 )
+		{
+			
+			g.getALLTeam();
+			
+		}																				// get All Team List	
+		
+		else if(choice == 15)
+		{
+			
+			g.getALLTeamWithEmployee();
+		}																				// get All Team With Employee
+		
+		else if(choice == 16)
+		{
+			
+			u.updateEmployee();
+		}																				// update Employee		
+		
+	
+		else if(choice == 17)
+		{
+			
+			insertProjectMilestone();
+		}																				// insert Milestone in a project.		
+		
+		else
+		{
+			System.out.println("Invalid Data Insert");
+			
+		}
+		
+	
+	}
+	
+	
+	
+}

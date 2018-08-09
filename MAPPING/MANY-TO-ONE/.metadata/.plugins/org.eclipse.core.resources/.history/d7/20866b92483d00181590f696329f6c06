@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+<!-- many-to-one mapping created foreign key column="DEP_ID" and Taking Primary Key from DepartmentDTO class -->
+	private Integer customerid, mobile;
+	
+	private String fname, lname, email, address;
+
+	private BankDTO BankParent;
+
+
+
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="CustomerDTO" table="BankCustomer">
+
+<id name="customerid" column="CUSTOMER_ID">
+
+</id>
+
+
+<property name="fname" column="lname"></property>
+
+
+
+</class>
+
+
+</hibernate-mapping>

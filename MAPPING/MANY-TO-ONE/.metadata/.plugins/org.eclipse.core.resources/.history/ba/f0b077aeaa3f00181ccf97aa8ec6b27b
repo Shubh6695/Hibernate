@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-configuration-3.0.dtd">
+
+
+<hiberfnate-configuration>
+
+<session-factory>
+
+
+<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+
+
+
+
+
+</session-factory>
+
+</hiberfnate-configuration>

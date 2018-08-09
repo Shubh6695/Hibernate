@@ -1,0 +1,44 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+	private Integer departmentid;
+	
+	private String departmentname;
+
+
+	private Set EmployeeChild;
+
+	
+
+<hibernate-mapping package="co.in.pp">
+
+<class name="DepartmentDTO" table="AartekDepartment">
+
+
+<id name="departmentid" column="DEPARTMENT_ID">
+
+</id>
+
+
+<property name="departmentname" column="DEPARTMENT_NAME"></property>
+
+
+
+<set name="EmployeeChild" cascade="all" inverse="true">
+
+
+<key column="D_ID"></key>
+
+
+<one-to-many class=""></one-to-many>
+
+
+</set>
+
+</class>
+
+</hibernate-mapping>	
+	

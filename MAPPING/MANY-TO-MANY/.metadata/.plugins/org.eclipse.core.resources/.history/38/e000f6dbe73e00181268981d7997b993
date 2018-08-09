@@ -1,0 +1,16 @@
+package co.in.pp;
+
+import java.util.*;
+
+public class VendorDTO 
+{
+
+	private Integer vendorid;
+	
+	private String vendorname;
+	
+	
+	private Set CustomerChild;
+	
+	
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"C:\Users\Shubham\Desktop\Hibernate DTD\hibernate-mapping-3.0.dtd">
+
+
+
+		private Integer bookid, price;
+	
+	private String title, author, category;
+	
+	private Set CustomerParent;
+
+<hibernate-mapping package="co.in.dto">
+
+
+<class name="BookDTO" table="BookInfo">
+
+
+<id name="bookid" column="BOOK_ID">
+
+</id>
+
+
+<property name="title" column="TITLE"></property>
+
+
+<property name="author" column="AUTHOR"></property>
+
+
+<property name="category" column="CATEGORY"></property>
+
+
+<property name="price" column="PRICE"></property>
+
+
+
+<set name="" cascade="all" table="">
+
+
+<key column=""></key>
+
+
+<many-to-many name=""
+
+
+</set>
+
+
+
+
+</class>
+
+
+</hibernate-mapping>	

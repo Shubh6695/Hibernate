@@ -1,0 +1,22 @@
+package co.in.pp;
+
+import java.util.*;
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="productdetail")
+
+
+public class ProductDTO 
+{
+
+	private Integer pid;
+	
+	private String pname;
+	
+	private Set manufacturerChild
+	
+	
+	
+}

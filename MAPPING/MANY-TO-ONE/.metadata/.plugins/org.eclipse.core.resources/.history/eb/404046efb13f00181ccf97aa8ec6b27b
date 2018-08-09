@@ -1,0 +1,111 @@
+package co.in.pp;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class Test 
+{
+
+	
+	public static void InsertALL() throws Exception
+	{
+		
+		
+		Configuration cfg=new Configuration().configure();
+		
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		
+		UserDTO udto1=new UserDTO(1001, 25, 999555111, "Shubahm", "shubahm@gmail.com");
+		
+		
+		GadgetDTO gdto1=new GadgetDTO(101, 2015, "Mobile", "HTC", udto1);
+		
+		GadgetDTO gdto2=new GadgetDTO(102, 2016, "Laptop", "DELL", udto1);
+		
+		
+		
+		
+		
+		Transaction ts=sess.beginTransaction();
+		
+		sess.save(gdto1);
+		
+		sess.save(gdto2);
+		
+		ts.commit();
+		
+		
+		System.out.println("Insert Successfully");
+		
+		
+		sess.close();
+		
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	
+	public static void GETALL() throws Exception
+	{
+		
+		
+		Configuration cfg=new Configuration().configure();
+		
+		
+		SessionFactory sf=cfg.buildSessionFactory();
+		
+		
+		Session sess=sf.openSession();
+		
+		
+		Query q=sess.createQuery("from GadgetDTO");
+		
+		
+		List rows=q.list();
+		
+		
+		Iterator itr=rows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			GadgetDTO gdto=(GadgetDTO) itr.next();
+			
+			
+			
+			
+		}
+		
+		
+		sess.close();
+		
+		sf.close();
+		
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception
+	{
+		
+	//	InsertALL();
+		
+		GETALL();
+		
+	}
+	
+	
+}
